@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{279C5C96-5031-407A-919C-EF50FD06454D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>Connect.Modules.Kickstart</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\..\..\bin\</OutputPath>
+    <DocumentationFile>Connect.Modules.Kickstart.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\</OutputPath>
+    <DocumentationFile>Connect.Modules.Kickstart.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetNuke">
+      <HintPath>..\..\..\bin\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Web, Version=7.2.1.367, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.WebControls, Version=2.4.0.598, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.WebControls.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.WebUtility, Version=4.2.1.783, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.WebUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="Telerik.Web.UI, Version=2013.2.717.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="DotNetNuke" />
+    <Import Include="DotNetNuke.Common" />
+    <Import Include="DotNetNuke.Common.Utilities" />
+    <Import Include="DotNetNuke.Data" />
+    <Import Include="DotNetNuke.Entities" />
+    <Import Include="DotNetNuke.Entities.Tabs" />
+    <Import Include="DotNetNuke.Framework" />
+    <Import Include="DotNetNuke.Modules" />
+    <Import Include="DotNetNuke.Security" />
+    <Import Include="DotNetNuke.Services" />
+    <Import Include="DotNetNuke.Services.Exceptions" />
+    <Import Include="DotNetNuke.Services.Localization" />
+    <Import Include="DotNetNuke.UI" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Controller\ConfigController.vb" />
+    <Compile Include="Components\Controller\CommentController.vb" />
+    <Compile Include="Components\Controller\ProjectController.vb" />
+    <Compile Include="Components\Controller\IncentiveController.vb" />
+    <Compile Include="Components\Controller\ParticipantsController.vb" />
+    <Compile Include="Components\Controller\FundingController.vb" />
+    <Compile Include="Components\Controller\FeatureController.vb" />
+    <Compile Include="Components\Controller\UserVoteController.vb" />
+    <Compile Include="Components\Entities\Status.vb" />
+    <Compile Include="Components\Entities\CommentInfo.vb" />
+    <Compile Include="Components\Entities\ProjectInfo.vb" />
+    <Compile Include="Components\Entities\ProjectConfigInfo.vb" />
+    <Compile Include="Components\Entities\IncentiveInfo.vb" />
+    <Compile Include="Components\Entities\ParticipantInfo.vb" />
+    <Compile Include="Components\Entities\FundingInfo.vb" />
+    <Compile Include="Components\Entities\UserVoteInfo.vb" />
+    <Compile Include="Components\Integration\Integration.vb" />
+    <Compile Include="Components\Integration\KickstartController.vb" />
+    <Compile Include="Components\Integration\NotificationKey.vb" />
+    <Compile Include="Components\Integration\SubscriptionController.vb" />
+    <Compile Include="Components\Integration\NotificationController.vb" />
+    <Compile Include="Components\Integration\JournalController.vb" />
+    <Compile Include="Components\Permissions\KickstartAuthorizeAttribute.vb" />
+    <Compile Include="Components\Settings\Settings.vb" />
+    <Compile Include="Components\Shared\Utilities.vb" />
+    <Compile Include="Components\Templates\ParticipantsTemplateController.vb" />
+    <Compile Include="Components\Templates\CommentsTemplateController.vb" />
+    <Compile Include="Components\Templates\ProjectTemplateController.vb" />
+    <Compile Include="Components\Templates\TemplateHelper.vb" />
+    <Compile Include="Services\KickstartController.vb" />
+    <Compile Include="Services\RouteMapper.vb" />
+    <Compile Include="Settings.ascx.designer.vb">
+      <DependentUpon>Settings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.ascx.vb">
+      <DependentUpon>Settings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Components\Shared\SettingsBase.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Components\Shared\ModuleBase.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View.ascx.designer.vb">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View.ascx.vb">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\frmFund.ascx.designer.vb">
+      <DependentUpon>frmFund.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\frmFund.ascx.vb">
+      <DependentUpon>frmFund.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\ProjectMembers.ascx.designer.vb">
+      <DependentUpon>ProjectMembers.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\ProjectMembers.ascx.vb">
+      <DependentUpon>ProjectMembers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\Funding.ascx.designer.vb">
+      <DependentUpon>Funding.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\Funding.ascx.vb">
+      <DependentUpon>Funding.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\frmProject.ascx.designer.vb">
+      <DependentUpon>frmProject.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\frmProject.ascx.vb">
+      <DependentUpon>frmProject.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\ProjectsDetail.ascx.designer.vb">
+      <DependentUpon>ProjectsDetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\ProjectsDetail.ascx.vb">
+      <DependentUpon>ProjectsDetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\frmParticipate.ascx.designer.vb">
+      <DependentUpon>frmParticipate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\frmParticipate.ascx.vb">
+      <DependentUpon>frmParticipate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\frmIdea.ascx.designer.vb">
+      <DependentUpon>frmIdea.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\frmIdea.ascx.vb">
+      <DependentUpon>frmIdea.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\frmBecomeLead.ascx.designer.vb">
+      <DependentUpon>frmBecomeLead.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\frmBecomeLead.ascx.vb">
+      <DependentUpon>frmBecomeLead.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\ProjectsList.ascx.designer.vb">
+      <DependentUpon>ProjectsList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\ProjectsList.ascx.vb">
+      <DependentUpon>ProjectsList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documentation\Documentation.css" />
+    <Content Include="Documentation\Documentation.html" />
+    <Content Include="js\Kickstart.js" />
+    <Content Include="License.txt" />
+    <Content Include="module.css" />
+    <Content Include="ReleaseNotes.txt" />
+    <Content Include="Settings.ascx" />
+    <Content Include="Templates\DnnConnect\Comment_ListFooter.html" />
+    <Content Include="Templates\DnnConnect\Comment_ListHeader.html" />
+    <Content Include="Templates\DnnConnect\Comment_ListItem.html" />
+    <Content Include="Templates\DnnConnect\Participants_ListFooter.html" />
+    <Content Include="Templates\DnnConnect\Participants_ListHeader.html" />
+    <Content Include="Templates\DnnConnect\Participants_ListItem.html" />
+    <Content Include="Templates\DnnConnect\Project_Details.html" />
+    <Content Include="Templates\DnnConnect\Project_ListFooter.html" />
+    <Content Include="Templates\DnnConnect\Project_ListHeader.html" />
+    <Content Include="Templates\DnnConnect\Project_ListItem.html" />
+    <Content Include="Templates\DnnConnect\Project_Status.html" />
+    <Content Include="Templates\DnnConnect\TeamMembers_ListFooter.html" />
+    <Content Include="Templates\DnnConnect\TeamMembers_ListHeader.html" />
+    <Content Include="Templates\DnnConnect\TeamMembers_ListItem.html" />
+    <Content Include="Templates\Default\Participants_ListFooter.html" />
+    <Content Include="Templates\Default\Participants_ListHeader.html" />
+    <Content Include="Templates\Default\Participants_ListItem.html" />
+    <Content Include="Templates\Default\Project_Status.html" />
+    <Content Include="Templates\Default\TeamMembers_ListFooter.html" />
+    <Content Include="Templates\Default\Comment_ListFooter.html" />
+    <Content Include="Templates\Default\TeamMembers_ListHeader.html" />
+    <Content Include="Templates\Default\TeamMembers_ListItem.html" />
+    <Content Include="Templates\Default\Project_ListFooter.html" />
+    <Content Include="Templates\Default\Project_Details.html" />
+    <Content Include="Templates\Default\Comment_ListHeader.html" />
+    <Content Include="Templates\Default\Comment_ListItem.html" />
+    <Content Include="Templates\Default\Project_ListItem.html" />
+    <Content Include="Templates\Default\Project_ListHeader.html" />
+    <Content Include="View.ascx" />
+    <Content Include="ViewControls\frmFund.ascx" />
+    <Content Include="ViewControls\ProjectMembers.ascx" />
+    <Content Include="ViewControls\images\Delete.png" />
+    <Content Include="ViewControls\images\Edit.png" />
+    <Content Include="ViewControls\Funding.ascx" />
+    <Content Include="ViewControls\frmProject.ascx" />
+    <Content Include="ViewControls\ProjectsDetail.ascx" />
+    <Content Include="ViewControls\frmParticipate.ascx" />
+    <Content Include="ViewControls\frmIdea.ascx" />
+    <Content Include="ViewControls\frmBecomeLead.ascx" />
+    <Content Include="ViewControls\ProjectsList.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Kickstart.dnn" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Edit.ascx.resx" />
+    <Content Include="App_LocalResources\Settings.ascx.resx" />
+    <Content Include="App_LocalResources\View.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BuildScripts\ModulePackage.targets" />
+    <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.01.sqldataprovider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\UnInstall.sqldataprovider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\SharedResources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ViewControls\App_LocalResources\Funding.ascx.resx" />
+    <Content Include="ViewControls\App_LocalResources\ProjectMembers.ascx.resx" />
+    <Content Include="ViewControls\App_LocalResources\frmParticipate.ascx.resx" />
+    <Content Include="ViewControls\App_LocalResources\ProjectsDetail.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ViewControls\App_LocalResources\frmIdea.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ViewControls\App_LocalResources\frmProject.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ViewControls\App_LocalResources\ProjectsList.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Providers\DataProviders\SqlDataProvider\01.00.00.sqldataprovider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ViewControls\App_LocalResources\frmFund.ascx.resx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62640</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://dnnconnect/desktopmodules/connect/kickstart</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://dnnconnect/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <DNNFileName>Kickstart</DNNFileName>
+    <PackageName>Connect.Kickstart</PackageName>
+    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\BuildScripts</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  <Import Project="BuildScripts\ModulePackage.targets" />
+  <Target Name="AfterBuild" DependsOnTargets="PackageModule">
+  </Target>
+</Project>

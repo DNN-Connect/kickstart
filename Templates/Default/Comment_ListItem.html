@@ -1,0 +1,46 @@
+﻿    <div class="kickstart-commentitem dnnClear" id="Comment-[CommentId]">
+
+        <div class="kickstart-commentitem-avatar">
+            <img src="[CreatedByPictureUrl]" />
+        </div>
+
+        <div class="kickstart-commentitem-data">
+
+            <div class="kickstart-commentitem-head">
+                <a href="[CreatedByProfileUrl]">[CreatedByDisplayName]</a> <span>[Resx:Wrote] [DateCreated][TimeAgo]</span>
+            </div>
+
+            <div class="kickstart-commentitem-content">
+                [Content]
+            </div>
+
+            <div class="kickstart-commentitem-likes">
+                [VotesText]
+            </div>
+
+            <div class="kickstart-commentitem-children">
+                [Comments]
+            </div>
+
+            <div class="kickstart-commentitem-tools">
+                [IfIsAuthenticated]
+                <ul>                
+                    <li>
+                        [ifcannotvote]<span class="isliked">[Resx:CommentIsLiked]</span> <a href="#" class="kickstart-commentitem-unlike" rel="[CommentId]">[Resx:CommentUnLike]</a>[/ifcannotvote]
+                        [ifcanvote]<a href="#" class="kickstart-commentitem-like" rel="[CommentId]">[Resx:CommentLike]</a>[/ifcanvote]
+                    </li>                       
+                    <li><a href="#reply" class="kickstart-commentitem-reply" rel="[CommentId]">[Resx:CommentReply]</a></li>
+                    [IfCanEdit]
+                    <li><a href="#reply" class="kickstart-commentitem-edit" rel="[CommentId]">[Resx:CommentEdit]</a></li>
+                    [/IfCanEdit]
+                    [IfCanDelete]
+                    <li><a href="#" class="kickstart-commentitem-delete" rel="[CommentId]">[Resx:CommentDelete]</a></li>
+                    [/IfCanDelete]
+                
+                </ul>
+                [/IfIsAuthenticated]
+            </div>
+
+        </div>
+
+    </div>

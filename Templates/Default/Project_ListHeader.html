@@ -1,0 +1,14 @@
+﻿<div class="kickstart-projectlist">
+
+    <div class="kickstart-actions">
+
+        <ul class="dnnActions">
+            [IfCanSubmit]
+            <li><a href="[CREATEIDEAURL]" class="dnnPrimaryAction">[Resx:cmdCreateIdea]</a></li>
+            [/IfCanSubmit]
+            [IfCanSubscribe]
+            <li><a href="#" class="kickstart-managesubscription-project dnnSecondaryAction">[ifissubscribed][Resx:UnsubscribeFromProjects][/ifissubscribed][ifnotsubscribed][Resx:SubscribeToProjects][/ifnotsubscribed]</a></li>
+            [/IfCanSubscribe]
+        </ul>
+
+    </div>

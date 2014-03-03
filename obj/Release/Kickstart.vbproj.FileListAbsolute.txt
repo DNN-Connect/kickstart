@@ -1,0 +1,9 @@
+D:\Development\Websites\dev_DNNConnect\wwwRoot\DesktopModules\bin\Connect.Modules.Kickstart.dll
+D:\Development\Websites\dev_DNNConnect\wwwRoot\DesktopModules\bin\Connect.Modules.Kickstart.pdb
+D:\Development\Websites\dev_DNNConnect\wwwRoot\DesktopModules\bin\Connect.Modules.Kickstart.xml
+D:\Development\Websites\dev_DNNConnect\wwwRoot\bin\Connect.Modules.Kickstart.dll
+D:\Development\Websites\dev_DNNConnect\wwwRoot\bin\Connect.Modules.Kickstart.pdb
+D:\Development\Websites\dev_DNNConnect\wwwRoot\bin\Connect.Modules.Kickstart.xml
+D:\Development\Websites\dev_DNNConnect\wwwRoot\DesktopModules\Connect\Kickstart\obj\Release\Connect.Modules.Kickstart.dll
+D:\Development\Websites\dev_DNNConnect\wwwRoot\DesktopModules\Connect\Kickstart\obj\Release\Connect.Modules.Kickstart.xml
+D:\Development\Websites\dev_DNNConnect\wwwRoot\DesktopModules\Connect\Kickstart\obj\Release\Connect.Modules.Kickstart.pdb

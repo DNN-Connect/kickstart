@@ -1,0 +1,152 @@
+.kickstart-projectform h5                           { line-height: 24px; font-size: 16px;}
+.kickstart-projectform .control                     { padding: 10px 0 20px 0;}
+.kickstart-projectform .control input[type="text"]  { width: 95%; padding: 4px; height: 30px;}
+
+.kickstart-projectform .control textarea            { width: 95%; padding: 4px; height: 100px;}
+.kickstart-note                                     { padding: 15px; background: #3fa8b6;}
+.kickstart-note span                                { color: #fefefe; font-weight: bold;}
+
+.kickstart a.disabled                               { color: #333; font-style: italic; cursor: not-allowed;}
+
+.kickstart-comment-form h4.commenthead              { font-size: 18px; padding: 20px 0 0 0;}
+.kickstart-comment-form .dnnFormItem textarea.kickstart-commentcontrol {width: 80% !important; height: 100px; max-width:initial; }
+
+.kickstart-commentitem                  { background: #eee; border: 1px solid #ccc; padding: 15px; margin: 0 0 10px 0; }
+.kickstart-commentitem .kickstart-commentitem   { background: transparent; border: 0px solid #ccc; padding: 15px 0 15px 0; margin: 0 0 10px 0; }
+.kickstart-commentitem-avatar           { float: left; width: 10%; }
+.kickstart-commentitem-avatar img       { background: #fff; padding: 3px; border: 1px solid #ccc; }
+.kickstart-commentitem-data          { float: left; width: 80%; }
+.kickstart-commentitem-head             { padding: 0 0 10px 0;}
+.kickstart-commentitem-head a,
+.kickstart-commentitem-head span        { font-size: 14px; }
+.kickstart-commentitem-content          { font-size: 14px; font-style: italic; padding: 10px 0 10px 0;}
+.kickstart-commentitem-likes            { background: #dedede; border: 1px solid #fefefe; padding: 5px; color: #444; font-size: 14px;}
+.kickstart-commentitem-tools            { padding: 10px 0 20px 0;}
+.kickstart-commentitem-tools ul,
+.kickstart-commentitem-tools ul li      { list-style-type: none; }
+.kickstart-commentitem-tools ul         { margin: 0; padding: 0; }
+.kickstart-commentitem-tools ul li      { margin: 0 10px 0 0; padding:0; float:left;}
+.kickstart-commentitem-tools ul li,
+.kickstart-commentitem-tools ul li a    { font-size: 14px; }
+
+.kickstart-quote                        { padding: 0 10px 10px 10px; font-size: 12px; width: 80%; }
+
+.kickstart-projectitem-meta             { padding: 0 0 30px 0; }
+.kickstart-projectitem-meta ul          { padding: 0; margin: 0;}
+.kickstart-projectitem-meta ul li       { list-style-type: none; float: left; margin: 0 10px 0 0;}
+
+div.kickstart-projectitem-metabox                   { float: left; width: 32%; height: 80px; margin: 0 1% 1% 0; border: 1px solid #ccc; background: #eee; }
+div.kickstart-projectitem-metabox.lead              { background: #E671B8; position: relative; }
+div.kickstart-projectitem-metabox.external          { background: #E671B8 url(images/icn-web.png) 10px 10px no-repeat; position: relative; }
+div.kickstart-projectitem-metabox.members           { background: #E671B8 url(images/icn-team.png) 10px 10px no-repeat; position: relative; margin: 0 0 1% 0; }
+div.kickstart-projectitem-metabox.participate       { background: #E671B8 url(images/icn-participate.png) 10px 10px no-repeat; position: relative; margin: 0 0 1% 0; }
+div.kickstart-projectitem-metabox.votes             { background: #E671B8 url(images/icn-votes.png) 10px 10px no-repeat; position: relative; }
+div.kickstart-projectitem-metabox.subscribe         { background: #E671B8 url(images/icn-mail.png) 10px 10px no-repeat; position: relative;}
+
+
+div.kickstart-projectitem-metabox p                 { padding: 0; margin: 10px 0 5px 65px; font-size: 14px; }
+div.kickstart-projectitem-metabox.lead img          { float: left; margin: 20px 35px 0 20px; background: #fff; border: 1px solid #ccc; padding: 1px;}
+div.kickstart-projectitem-metabox.lead .displayname { float: left;  font-size: 14px; color: #fff; font-weight: bold; padding: 15px 30px 0px 0; }
+div.kickstart-projectitem-metabox.lead .profilelink { float: left;  font-size: 14px; color: #fff; font-weight: bold; padding: 3px 30px 0px 0; }
+div.kickstart-projectitem-metabox.lead a            { clear: both; font-size: 14px; color: #fff; font-weight: normal; }
+div.kickstart-projectitem-metabox.lead a:hover      { color: #555; }
+.kickstart-memberlist-popup                         { display: none; }
+
+div.kickstart-projectitem-metabox .votes-count      { display: block; padding: 0; font-size: 25px; font-weight: bold; width:40px; float: left; color: #fff;margin: 33px 10px 0 75px;}
+div.kickstart-projectitem-metabox .votes-text       { display: none; padding: 0; font-size: 0px; font-weight: normal; width:0px; float: left; color: #555; }
+div.kickstart-projectitem-metabox.votes a           { display: block; padding: 33px 0 0 35px; font-size: 14px; font-weight: normal; width:90px; float: left; color: #fff; }
+div.kickstart-projectitem-metabox.votes a:hover     { color: #555; }
+
+div.kickstart-projectitem-metabox.external p        { margin: 10px 0 0 90px; color: #fff; }
+div.kickstart-projectitem-metabox.external a        { color: #fff; }
+div.kickstart-projectitem-metabox.external a:hover  { color: #555; }
+
+div.kickstart-projectitem-metabox.subscribe .link,
+div.kickstart-projectitem-metabox.participate .link { margin: 15px 10px 0 90px; }
+div.kickstart-projectitem-metabox.subscribe a,
+div.kickstart-projectitem-metabox.participate a       { font-size: 14px; color: #fff; }
+div.kickstart-projectitem-metabox.subscribe a:hover,
+div.kickstart-projectitem-metabox.participate a:hover { color: #555; }
+
+
+.kickstart-memberlist-popuplink                     { display: block; line-height: 80px; padding: 0 0 0 90px; color: #fff !important;}
+.kickstart-memberlist-popuplink:hover               { color: #555 !important; }
+a.members-link                          { font-size: 16px;}   
+.kickstart-memberlist-popup                         { position: absolute; left: -1px; top : 80px; border: 1px solid #ccc; padding: 10px; background: #fff; width: 92.5%; z-index: 100;}     
+.kickstart-participantitem-avatar       { width: 10%; float: left; }
+.kickstart-participantitem-data         { float: left; margin: 0 0 0 20px; }
+
+img.nolead                              { width: 32px; height: 32px; }
+
+
+.kickstart-projectitem-comments         { width: 98.5%; }
+.kickstart-config p.strong              { padding: 30px 0 0px 0; font-size: 18px; font-weight:bold; }
+.kickstart-incentives .dnnLeft          { width: 50%; }
+.kickstart-incentives .dnnActions       { float:right; margin: 20px 0 0 0;}
+
+.kickstart-config-resources .riSingle .riTextBox[type="text"] { padding: 0 5px 0 5px; width: 60%; height: 30px; }
+.kickstart-config-funding .riSingle .riTextBox[type="text"] { padding: 0 5px 0 5px; width: 60%; height: 41px; }
+.kickstart-config .riSingle a.riDown  { top:0; }
+.kickstart-config .funding-amount .riSingle .riTextBox[type="text"] { width: 100%; }
+.kickstart-config-publishing .dnnFormItem select { width: 45%; max-width: 400px; }
+.kickstart-config-publishing .dnnFormItem input[type="text"] { width: 43%; max-width: 400px; }
+.kickstart-config-publishing .riSingle .riTextBox[type="text"] { padding: 0 5px 0 5px; width: 95%; height: 41px; }
+.kickstart-config-publishing .rcInputCell { width: 90% !important; }
+/*.kickstart-config select { height: 28px; padding: 1px 0 0 0; line-height: 28px; }*/
+.currencyinput  { padding: 18px 0 0 0;}
+.fundinginput { padding: 0px 0 0 0;}
+.dnnActions.kickstart-actions { margin: 30px 0 0 0;}
+
+.dnnFormItem.checkbox   { padding-bottom: 15px; }
+
+.kickstart-locked-note,
+.kickstart-deleted-note { background: #f2632d; padding: 20px; }
+.kickstart-locked-note span,
+.kickstart-deleted-note span { color: #333; font-weight: bold; }
+
+.kickstart-paging   {margin: 20px 0 20px 0; float: right; }
+.kickstart-paging ul    { margin: 0; padding: 0; }
+.kickstart-paging ul li { list-style-type: none; float: left;  margin: 0 10px 0 0;}
+.kickstart-paging a      { display: block; padding: 5px 10px 5px 10px; background: #E671B8; color: #fff; text-decoration: none; }
+.kickstart-paging a.active { color: #000; }
+
+
+.kickstart-participate td       { padding: 4px; }
+.kickstart-participate td label {margin-left: 20px; }
+
+.kickstart-participate td input[disabled]+label { color: red;}
+
+/*Participation*/
+
+.kickstart-rolepanel            { padding: 0 0 40px 0;}
+.kickstart-rolepanel.managers   { margin: 30px 0 0 0;}
+.kickstart-roledescription      { float:left; width: 50%;}
+.kickstart-roledescription h3   { margin: 0; padding: 0 0 15px 0 !important; font-size: 18px;}
+.kickstart-roledata             { float: left; width: 45%; margin: 0 0 0 5%;}
+.kickstart-roledata p           { padding: 5px 0 5px 0;}
+.kickstart-roledata h4          { margin: 0; padding: 0 0 10px 0 !important; font-size: 16px; color: #333;}
+.kickstart-currentmember        { clear: both; margin: 0 0 10px 0;}
+.kickstart-currentmember img    { float: left; margin: 0 20px 0 0;}
+.kickstart-currentmember p      { margin: 0; padding: 0; float: left;}
+.kickstart-roledata .dnnActions { padding: 10px 0 0 0; margin: 0;}
+
+/* Funding */
+
+.kickstart-projectmeter         { background: #E671B8; padding: 15px; }
+.funding-needed,
+.funding-reached                { color: #fff; }
+.kickstart-projectmeter .dnnActions li { text-align: center; float: none;}
+
+.kickstart-funding div.selectedIncentive    { padding: 5px 0 25px 0;}
+.kickstart-funding .customfunding .riSingle .riTextBox[type="text"] { height: 33px !important; padding: 10px !important; }
+.kickstart-funding .dnnFormItem.selectfunding select    { width: 19%; }
+.kickstart-funding .dnnFormItem.anonymousfunding { margin: 15px 0 0 0; }
+.kickstart-funding .dnnFormItem.anonymousfunding input[type="checkbox"] + span { margin: 6px 0 !important; }
+
+.kickstart-funding .dnnFormItem a.dnnFormHelp { margin: 3px 0 0 0 !important;}
+.kickstart-funding .dnnActions  { margin: 20px 0 30px 0;}
+
+/*members*/
+.kickstart-members { padding: 15px; }
+.kickstart-members h4   { padding: 20px 0 10px 0; }
+.kickstart-participant-item { margin: 0 0 5px 0;}

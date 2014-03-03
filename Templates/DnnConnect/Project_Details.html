@@ -1,0 +1,73 @@
+﻿    <div class="kickstart-projectitem">
+
+        <h2>[Subject]</h2>
+        <p>[Content]</p>
+        <div class="kickstart-projectitem-meta dnnClear">
+
+            <div class="kickstart-projectitem-metabox votes">
+                <span class="votes-count">+[VotesCount]</span><span class="votes-text">[Resx:Votes]</span>
+                [IfIsAuthenticated]
+                [ifcanvote]<a href="#" class="kickstart-projectitem-like">[Resx:ProjectLike]</a>[/ifcanvote]
+                [ifcannotvote]<a href="#" class="kickstart-projectitem-unlike">[Resx:ProjectUnLike]</a>[/ifcannotvote]
+                [/IfIsAuthenticated]
+            </div>
+
+            [hasexternals]
+            <div class="kickstart-projectitem-metabox external">
+                
+                [hasprojecturl]
+                <p><a href="[projecturl]" target="_blank">[Resx:ProjectUrlLink]</a></p>
+                [/hasprojecturl]
+                
+                [hasprojectplatform]
+                <p>[Resx:ProjectPlatform] [projectplatform]</p>
+                [/hasprojectplatform]
+
+                [hasplatformrssurl]
+                <p><a href="[platformrssurl]" target="_blank">[Resx:PlatformRssUrl]</a></p>
+                [/hasplatformrssurl]
+
+            </div>
+            [/hasexternals]
+
+            [IfCanSubscribe]
+            <div class="kickstart-projectitem-metabox subscribe">
+                <div class="link">
+                    <a href="#" class="kickstart-managesubscription-release">[ifissubscribed][Resx:UnsubscribeFromRelease][/ifissubscribed][ifnotsubscribed][Resx:SubscribeToRelease][/ifnotsubscribed]</a>
+                </div>
+            </div>
+            [/IfCanSubscribe]
+
+        </div>
+
+        <div class="kickstart-projectitem-comments">
+            [Comments]
+        </div>
+
+        <div class="[StatusContainerCss]">
+            [Status]
+        </div>
+
+        [CanDoThings]
+        <ul class="dnnActions">
+            
+            [IfCanApprove]
+            <li><a href="#" class="dnnSecondaryAction visibility [VisibilityClass]">[Resx:cmdApproveProject]</a></li>
+            [/IfCanApprove]
+            
+            [IfCanEdit]
+            <li><a href="[EditProjectUrl]" class="dnnSecondaryAction">[Resx:cmdEditProject]</a></li>
+            [/IfCanEdit]
+
+            [IfCanLock]
+            <li><a href="#" class="dnnSecondaryAction locking [LockingClass]">[Resx:cmdLockProject]</a></li>
+            [/IfCanLock]
+
+            [IfCanDelete]
+            <li><a href="#" class="dnnSecondaryAction deleting [DeletingClass]">[Resx:cmdDeleteProject]</a></li>
+            [/IfCanDelete]
+
+        </ul>
+        [/CanDoThings]
+
+    </div>

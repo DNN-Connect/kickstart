@@ -1,0 +1,260 @@
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/* =====================================================================================
+/   TABLE: UserVote
+/  ===================================================================================== */
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_List    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByComment    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByComment') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByComment
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByProject    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByProject
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByUsers    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByUsers') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByUsers
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Update    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete
+GO
+
+	
+
+
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_List
+AS
+
+SELECT
+	[Connect_Kickstart_UserVote].[VoteId],
+	[Connect_Kickstart_UserVote].[CommentId],
+	[Connect_Kickstart_UserVote].[ProjectId],
+	[Connect_Kickstart_UserVote].[UserId],
+	[Connect_Kickstart_UserVote].[Votes]
+FROM {objectQualifier}Connect_Kickstart_UserVote
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_ListByComment
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByComment
+	@CommentId int
+AS
+
+SELECT
+	[Connect_Kickstart_UserVote].[VoteId],
+	[Connect_Kickstart_UserVote].[CommentId],
+	[Connect_Kickstart_UserVote].[ProjectId],
+	[Connect_Kickstart_UserVote].[UserId],
+	[Connect_Kickstart_UserVote].[Votes]
+FROM {objectQualifier}Connect_Kickstart_UserVote
+WHERE
+	[Connect_Kickstart_UserVote].[CommentId] = @CommentId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[Connect_Kickstart_UserVote].[VoteId],
+	[Connect_Kickstart_UserVote].[CommentId],
+	[Connect_Kickstart_UserVote].[ProjectId],
+	[Connect_Kickstart_UserVote].[UserId],
+	[Connect_Kickstart_UserVote].[Votes]
+FROM {objectQualifier}Connect_Kickstart_UserVote
+WHERE
+	[Connect_Kickstart_UserVote].[ProjectId] = @ProjectId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_ListByUsers
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByUsers
+	@UserId int
+AS
+
+SELECT
+	[Connect_Kickstart_UserVote].[VoteId],
+	[Connect_Kickstart_UserVote].[CommentId],
+	[Connect_Kickstart_UserVote].[ProjectId],
+	[Connect_Kickstart_UserVote].[UserId],
+	[Connect_Kickstart_UserVote].[Votes]
+FROM {objectQualifier}Connect_Kickstart_UserVote
+WHERE
+	[Connect_Kickstart_UserVote].[UserId] = @UserId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add
+	@CommentId int
+	,@ProjectId int
+	,@UserId int
+	,@Votes int
+AS
+
+INSERT INTO {objectQualifier}Connect_Kickstart_UserVote (
+	[CommentId]
+	,[ProjectId]
+	,[UserId]
+	,[Votes]
+) VALUES (
+	@CommentId
+	,@ProjectId
+	,@UserId
+	,@Votes
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Update
+	@VoteId int, 
+	@CommentId int, 
+	@ProjectId int, 
+	@UserId int, 
+	@Votes int 
+
+AS
+
+UPDATE {objectQualifier}Connect_Kickstart_UserVote SET
+	   [CommentId] = @CommentId
+	   ,[ProjectId] = @ProjectId
+	   ,[UserId] = @UserId
+	   ,[Votes] = @Votes
+WHERE
+    
+	[VoteId] = @VoteId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete
+	@VoteId int
+    
+	AS
+
+DELETE FROM {objectQualifier}Connect_Kickstart_UserVote
+WHERE
+    
+	[VoteId] = @VoteId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
+
+

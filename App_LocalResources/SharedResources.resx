@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Active.Text" xml:space="preserve">
+    <value>active</value>
+  </data>
+  <data name="cmdCreateIdea.Text" xml:space="preserve">
+    <value>Submit Idea</value>
+  </data>
+  <data name="Deleted.Text" xml:space="preserve">
+    <value>deleted</value>
+  </data>
+  <data name="Delivered.Text" xml:space="preserve">
+    <value>delivered</value>
+  </data>
+  <data name="Locked.Text" xml:space="preserve">
+    <value>locked</value>
+  </data>
+  <data name="NoLeadYet.Text" xml:space="preserve">
+    <value>project has no lead</value>
+  </data>
+  <data name="NoProjectsFound.Text" xml:space="preserve">
+    <value>No projects found...</value>
+  </data>
+  <data name="NotDeleted.Text" xml:space="preserve">
+    <value>not deleted</value>
+  </data>
+  <data name="NotDelivered.Text" xml:space="preserve">
+    <value>not yet delivered</value>
+  </data>
+  <data name="ProjectNotFound.Text" xml:space="preserve">
+    <value>Project not found</value>
+  </data>
+  <data name="Published.Text" xml:space="preserve">
+    <value>published</value>
+  </data>
+  <data name="Suggested.Text" xml:space="preserve">
+    <value>suggested</value>
+  </data>
+  <data name="TeamMembers.Text" xml:space="preserve">
+    <value>team members</value>
+  </data>
+  <data name="UnLocked.Text" xml:space="preserve">
+    <value>unlocked</value>
+  </data>
+  <data name="UnPublished.Text" xml:space="preserve">
+    <value>unpublished</value>
+  </data>
+  <data name="Votes.Text" xml:space="preserve">
+    <value>votes</value>
+  </data>
+  <data name="KickstartApproveIdea.Text" xml:space="preserve">
+    <value>Approve Idea</value>
+  </data>
+  <data name="KickstartApproveIdea_Desc.Text" xml:space="preserve">
+    <value>Publish this idea in the kickstarter section</value>
+  </data>
+  <data name="KickstartDeleteIdea.Text" xml:space="preserve">
+    <value>Delete Idea</value>
+  </data>
+  <data name="KickstartDeleteIdeaConfirm.Text" xml:space="preserve">
+    <value>Are you sure to delete this Idea?</value>
+  </data>
+  <data name="KickstartDeleteIdea_Desc.Text" xml:space="preserve">
+    <value>Delete this idea from the kickstarter section</value>
+  </data>
+  <data name="BrowseToProjectLink.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;a href="{0}"&gt;Browse Project&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="cmdApproveProject.Text" xml:space="preserve">
+    <value>Approve Project</value>
+  </data>
+  <data name="cmdDeleteProject.Text" xml:space="preserve">
+    <value>Delete Project</value>
+  </data>
+  <data name="cmdEditProject.Text" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
+  <data name="cmdLockProject.Text" xml:space="preserve">
+    <value>Lock Project</value>
+  </data>
+  <data name="cmdUnApproveProject.Text" xml:space="preserve">
+    <value>Remove Approval</value>
+  </data>
+  <data name="cmdUnDeleteProject.Text" xml:space="preserve">
+    <value>Restore Project</value>
+  </data>
+  <data name="cmdUnLockProject.Text" xml:space="preserve">
+    <value>Unlock Project</value>
+  </data>
+  <data name="NewCommentNotificationBody.Text" xml:space="preserve">
+    <value>&lt;a href="{0}"&gt;{1}&lt;/a&gt; has commented on the project {2}:&lt;p&gt;&lt;i&gt;{3}&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="{4}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="NewCommentNotificationSubject.Text" xml:space="preserve">
+    <value>New Comment on Project: {0}</value>
+  </data>
+  <data name="NewFundingNotificationBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;a href="{0}"&gt;{1}&lt;/a&gt; wants to fund the project {2} with the amount of {3} &lt;/p&gt;&lt;p&gt;&lt;a href="{4}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="NewFundingNotificationSubject.Text" xml:space="preserve">
+    <value>New Funding Offer: </value>
+  </data>
+  <data name="NewIdeaNotificationBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;{0}&lt;/p&gt;&lt;p&gt;&lt;a href="{1}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="NewIdeaNotificationSubject.Text" xml:space="preserve">
+    <value>New Project Idea: {0}</value>
+  </data>
+  <data name="NewParticipationNotificationBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;a href="{0}"&gt;{1}&lt;/a&gt; wants to participate in the project {2} as a {3}&lt;/p&gt;&lt;p&gt;&lt;a href="{4}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="NewParticipationNotificationSubject.Text" xml:space="preserve">
+    <value>New Participation Offer: </value>
+  </data>
+  <data name="By.Text" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="CreatedBy.Text" xml:space="preserve">
+    <value>created</value>
+  </data>
+  <data name="Error_ProjectNotFound.Text" xml:space="preserve">
+    <value>Project could not be loaded!</value>
+  </data>
+  <data name="IsDeletedStatus.Text" xml:space="preserve">
+    <value>Project is deleted</value>
+  </data>
+  <data name="IsHiddenStatus.Text" xml:space="preserve">
+    <value>Project is awaiting approval</value>
+  </data>
+  <data name="IsLockedStatus.Text" xml:space="preserve">
+    <value>Project is locked</value>
+  </data>
+  <data name="IsVisibleStatus.Text" xml:space="preserve">
+    <value>Project is approved</value>
+  </data>
+  <data name="ItHasBeenCreated.Text" xml:space="preserve">
+    <value>it has been created</value>
+  </data>
+  <data name="ItHasBeenDeleted.Text" xml:space="preserve">
+    <value>it has been deleted</value>
+  </data>
+  <data name="ItHasBeenLocked.Text" xml:space="preserve">
+    <value>it has been locked</value>
+  </data>
+  <data name="On.Text" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="Sucess_VisibilityUpdated.Text" xml:space="preserve">
+    <value>Visibility sucessfully updated!</value>
+  </data>
+  <data name="waitText.Text" xml:space="preserve">
+    <value>Wait...</value>
+  </data>
+  <data name="AddComment.Text" xml:space="preserve">
+    <value>Add comment:</value>
+  </data>
+  <data name="ago.Text" xml:space="preserve">
+    <value>ago</value>
+  </data>
+  <data name="MinutesAgo.Text" xml:space="preserve">
+    <value>, {0} minutes ago</value>
+  </data>
+  <data name="PostComment.Text" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Today.Text" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="DateFormat.Text" xml:space="preserve">
+    <value>on {0}</value>
+  </data>
+  <data name="Yesterday.Text" xml:space="preserve">
+    <value>yesterday</value>
+  </data>
+  <data name="CommentDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CommentEdit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="CommentLike.Text" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="CommentNoVotesString.Text" xml:space="preserve">
+    <value>noone likes this yet</value>
+  </data>
+  <data name="CommentReply.Text" xml:space="preserve">
+    <value>Reply</value>
+  </data>
+  <data name="CommentSingleVoteString.Text" xml:space="preserve">
+    <value>{0} member likes this</value>
+  </data>
+  <data name="CommentVotesString.Text" xml:space="preserve">
+    <value>{0} others like this</value>
+  </data>
+  <data name="Error_CommentNotFound.Text" xml:space="preserve">
+    <value>Comment could not be loaded!</value>
+  </data>
+  <data name="CommentIsLiked.Text" xml:space="preserve">
+    <value>You like this</value>
+  </data>
+  <data name="CommentUnLike.Text" xml:space="preserve">
+    <value>Unlike</value>
+  </data>
+  <data name="JustNow.Text" xml:space="preserve">
+    <value>just now</value>
+  </data>
+  <data name="TimeFormat.Text" xml:space="preserve">
+    <value> at {0}</value>
+  </data>
+  <data name="Wrote.Text" xml:space="preserve">
+    <value>wrote</value>
+  </data>
+  <data name="BecomeLead.Text" xml:space="preserve">
+    <value>Become Lead Now</value>
+  </data>
+  <data name="ViewProfile.Text" xml:space="preserve">
+    <value>View Profile</value>
+  </data>
+  <data name="ProjectIsLiked.Text" xml:space="preserve">
+    <value>You like this</value>
+  </data>
+  <data name="ProjectLike.Text" xml:space="preserve">
+    <value>Give +1</value>
+  </data>
+  <data name="ProjectUnLike.Text" xml:space="preserve">
+    <value>Remove +1</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cmdBecomeLead.Text" xml:space="preserve">
+    <value>Understood. I'll do it.</value>
+  </data>
+  <data name="LeadIntroText.Text" xml:space="preserve">
+    <value>In order to become the lead in this project it is important to understand some key concepts of leading a project. Being a project lead means, that you are responsible for the project's future.</value>
+  </data>
+  <data name="CreatedByLabel.Text" xml:space="preserve">
+    <value>Submitted By</value>
+  </data>
+  <data name="Lead.Text" xml:space="preserve">
+    <value>Project Lead</value>
+  </data>
+  <data name="Approved.Text" xml:space="preserve">
+    <value>approved</value>
+  </data>
+  <data name="LoginToComment.Text" xml:space="preserve">
+    <value>Login to comment</value>
+  </data>
+  <data name="ProjectVisibilityChangedBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;The project {0} has changed its visibility. The new status of the project is &lt;strong&gt;{1}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="{2}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="ProjectVisibilityChangedSubject.Text" xml:space="preserve">
+    <value>Project Visibility Change</value>
+  </data>
+  <data name="UnApproved.Text" xml:space="preserve">
+    <value>unapproved</value>
+  </data>
+  <data name="PlatformRssUrl.Text" xml:space="preserve">
+    <value>Public RSS Feed</value>
+  </data>
+  <data name="ProjectPlatform.Text" xml:space="preserve">
+    <value>Hosted on</value>
+  </data>
+  <data name="ProjectUrlLink.Text" xml:space="preserve">
+    <value>Project Website</value>
+  </data>
+  <data name="SubscribeToRelease.Text" xml:space="preserve">
+    <value>Notify me about new Releases</value>
+  </data>
+  <data name="UnsubscribeFromRelease.Text" xml:space="preserve">
+    <value>Unsubscribe me from Releases</value>
+  </data>
+  <data name="NewProjectSubscriptionDescription.Text" xml:space="preserve">
+    <value>Kickstart Ideas</value>
+  </data>
+  <data name="NowSubscribedToComments.Text" xml:space="preserve">
+    <value>Thank you. You will now start receiving e-mail updates about new comments in this project.</value>
+  </data>
+  <data name="NowSubscribedToProjectList.Text" xml:space="preserve">
+    <value>Thank you. You will now start receiving e-mail updates about new project ideas,</value>
+  </data>
+  <data name="NowSubscribedToReleases.Text" xml:space="preserve">
+    <value>Thank you. You will now start receiving e-mail updates about new releases in this project.</value>
+  </data>
+  <data name="NowUnsubscribedFromComments.Text" xml:space="preserve">
+    <value>You will no longer receive updates about new comments in this project.</value>
+  </data>
+  <data name="NowUnsubscribedFromProjectList.Text" xml:space="preserve">
+    <value>You will no longer receive updates about new project ideas.</value>
+  </data>
+  <data name="NowUnsubscribedFromReleases.Text" xml:space="preserve">
+    <value>You will no longer receive updates about new releases in this project.</value>
+  </data>
+  <data name="SubscribeToComment.Text" xml:space="preserve">
+    <value>Notify me about new Comments</value>
+  </data>
+  <data name="SubscribeToProjects.Text" xml:space="preserve">
+    <value>Notify me about new Projects</value>
+  </data>
+  <data name="SubscriptionChangedHeading.Text" xml:space="preserve">
+    <value>Subscription Changed</value>
+  </data>
+  <data name="UnsubscribeFromComment.Text" xml:space="preserve">
+    <value>Unsubscribe me from Comments</value>
+  </data>
+  <data name="UnsubscribeFromProjects.Text" xml:space="preserve">
+    <value>Unsubscribe from Projects</value>
+  </data>
+  <data name="cmdParticipate.Text" xml:space="preserve">
+    <value>Participate Now</value>
+  </data>
+  <data name="KickstartPrefix.Text" xml:space="preserve">
+    <value>[Kickstart] - {0}</value>
+  </data>
+  <data name="ManageParticipation.Text" xml:space="preserve">
+    <value>Manage Participation</value>
+  </data>
+  <data name="RemovedParticipationNotificationBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;a href="{0}"&gt;{1}&lt;/a&gt; cancelled participation in the project {2} as a {3}&lt;/p&gt;&lt;p&gt;&lt;a href="{4}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="RemovedParticipationNotificationSubject.Text" xml:space="preserve">
+    <value>Participation Cancelled: </value>
+  </data>
+  <data name="CancelledFundingNotificationBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;a href="{0}"&gt;{1}&lt;/a&gt; has cancelled the funding of the project {2}. The origial amount was {3}.&lt;/p&gt;&lt;p&gt;&lt;a href="{4}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="CancelledFundingNotificationSubject.Text" xml:space="preserve">
+    <value>Cancelled Funding: </value>
+  </data>
+  <data name="UpdatedFundingNotificationBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;a href="{0}"&gt;{1}&lt;/a&gt; has updated the funding of the project {2}. The new amount is {3}.&lt;/p&gt;&lt;p&gt;&lt;a href="{4}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="UpdatedFundingNotificationSubject.Text" xml:space="preserve">
+    <value>Updated Funding: </value>
+  </data>
+  <data name="AddedFunding.Text" xml:space="preserve">
+    <value>{0} is funding this project. Thank you for your support!</value>
+  </data>
+</root>

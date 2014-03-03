@@ -1,0 +1,476 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_GetByProject    Script Date: Freitag, 14. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByProject
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_Comment_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByProject
+	@ProjectId int,
+	@ParentId int
+AS
+
+SELECT
+	[Connect_Kickstart_Comment].[CommentId],
+	[Connect_Kickstart_Comment].[ProjectId],
+	[Connect_Kickstart_Comment].[ContentItemId],
+	[Connect_Kickstart_Comment].[ParentId],
+	[Connect_Kickstart_Comment].[Content],
+	[Connect_Kickstart_Comment].[IsVisible],
+	[Connect_Kickstart_Comment].[CreatedBy],
+	[Connect_Kickstart_Comment].[DateCreated],
+	[Connect_Kickstart_Comment].[Votes],
+	[Connect_Kickstart_Comment].[Comments],
+	[Connect_Kickstart_Comment].[IsTeamResponse]
+FROM {objectQualifier}Connect_Kickstart_Comment
+WHERE
+	[Connect_Kickstart_Comment].[ProjectId] = @ProjectId
+AND
+	(
+		([Connect_Kickstart_Comment].[ParentId] = @ParentId) 
+		or 
+		(@ParentId Is NULL and [Connect_Kickstart_Comment].[ParentId] Is NULL )
+	)	
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/* =====================================================================================
+/   TABLE: UserVote
+/  ===================================================================================== */
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByUsers    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListUserVotes') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListUserVotes
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Update    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_ListUserVotes
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListUserVotes
+	@UserId int,
+	@ProjectId int,
+	@CommentId int
+AS
+
+SELECT
+	[Connect_Kickstart_UserVote].[VoteId],
+	[Connect_Kickstart_UserVote].[CommentId],
+	[Connect_Kickstart_UserVote].[ProjectId],
+	[Connect_Kickstart_UserVote].[UserId],
+	[Connect_Kickstart_UserVote].[Votes]
+FROM {objectQualifier}Connect_Kickstart_UserVote
+WHERE
+	[Connect_Kickstart_UserVote].[UserId] = @UserId
+AND
+	[Connect_Kickstart_UserVote].[ProjectId] = @ProjectId
+AND
+	(
+		([Connect_Kickstart_UserVote].[CommentId] = @CommentId) 
+		or 
+		(@CommentId Is NULL and [Connect_Kickstart_UserVote].[CommentId] Is NULL )
+	)
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Add
+	@CommentId int
+	,@ProjectId int
+	,@UserId int
+	,@Votes int
+AS
+
+INSERT INTO {objectQualifier}Connect_Kickstart_UserVote (
+	[CommentId]
+	,[ProjectId]
+	,[UserId]
+	,[Votes]
+) VALUES (
+	@CommentId
+	,@ProjectId
+	,@UserId
+	,@Votes
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_UserVote_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete
+	@UserId int,
+	@CommentId int,
+	@ProjectId int
+
+AS
+
+DELETE FROM Connect_Kickstart_UserVote
+WHERE
+    [UserId] = @UserId
+AND
+	([ProjectId] = @ProjectId or @ProjectId is NULL)
+AND
+	([CommentId] = @CommentId or @CommentId is NULL)
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Add
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Delete    Script Date: Dienstag, 25. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByProject
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_ProjectConfig_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[SettingId],
+	[ProjectId],
+	[Value],
+	[Setting]
+FROM 
+	{objectQualifier}Connect_Kickstart_ProjectConfig
+WHERE
+	[ProjectId] = @ProjectId
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_ProjectConfig_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Add
+	@ProjectId int,
+	@Value nvarchar(255),
+	@Setting nvarchar(MAX)
+AS
+
+INSERT INTO {objectQualifier}Connect_Kickstart_ProjectConfig (
+	[ProjectId],
+	[Value],
+	[Setting]
+) VALUES (
+	@ProjectId,
+	@Value,
+	@Setting
+)
+
+select SCOPE_IDENTITY()
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_ProjectConfig_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Update
+	@ProjectId int, 
+	@Value nvarchar(255), 
+	@Setting nvarchar(MAX) 
+AS
+
+UPDATE 
+	{objectQualifier}Connect_Kickstart_ProjectConfig 
+SET
+	[Setting] = @Setting
+WHERE
+    [Value] = @Value
+AND
+	[ProjectId] = @ProjectId
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_ProjectConfig_Update
+/  ------------------------------------------------------------------------------------- */
+
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_GetByProject    Script Date: Freitag, 14. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPublicProjectCount') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPublicProjectCount
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_GetByProject    Script Date: Freitag, 14. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPageByModules') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPageByModules
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPublicProjectCount
+	@ModuleId int
+AS
+
+Select 
+	Count(*)
+FROM 
+	{objectQualifier}Connect_Kickstart_Project
+WHERE
+	ModuleId = @ModuleId 
+AND
+	IsDeleted = 0
+AND
+	IsVisible = 1	
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPageByModules
+	@SortCol NVARCHAR(30),
+	@RequiredPage INT,
+	@RecordsPerPage INT,
+    @ModuleId int
+AS
+DECLARE @tabTempSort TABLE(
+	RowNum INT IDENTITY(1, 1) PRIMARY KEY CLUSTERED,
+		ProjectId int
+)
+	
+INSERT @tabTempSort 
+(
+	ProjectId
+)
+SELECT	
+	ProjectId
+FROM 
+	{objectQualifier}Connect_Kickstart_Project
+WHERE
+	ModuleId = @ModuleId 
+AND
+	IsDeleted = 0
+AND
+	IsVisible = 1	   
+ORDER BY 
+	CASE WHEN @SortCol = 'ProjectId_D'  THEN ProjectId else null END desc,
+	CASE WHEN @SortCol = 'ProjectId'  THEN ProjectId else null END asc,
+ 	CASE WHEN @SortCol = 'ModuleId_D'  THEN ModuleId else null END desc,
+	CASE WHEN @SortCol = 'ModuleId'  THEN ModuleId else null END asc,
+ 	CASE WHEN @SortCol = 'ContentItemId_D'  THEN ContentItemId else null END desc,
+	CASE WHEN @SortCol = 'ContentItemId'  THEN ContentItemId else null END asc,
+ 	CASE WHEN @SortCol = 'Status_D'  THEN Status else null END desc,
+	CASE WHEN @SortCol = 'Status'  THEN Status else null END asc,
+ 	CASE WHEN @SortCol = 'Subject_D'  THEN Subject else null END desc,
+	CASE WHEN @SortCol = 'Subject'  THEN Subject else null END asc,
+ 	CASE WHEN @SortCol = 'Summary_D'  THEN Summary else null END desc,
+	CASE WHEN @SortCol = 'Summary'  THEN Summary else null END asc,
+ 	CASE WHEN @SortCol = 'Content_D'  THEN Content else null END desc,
+	CASE WHEN @SortCol = 'Content'  THEN Content else null END asc,
+ 	CASE WHEN @SortCol = 'ProjectUrl_D'  THEN ProjectUrl else null END desc,
+	CASE WHEN @SortCol = 'ProjectUrl'  THEN ProjectUrl else null END asc,
+ 	CASE WHEN @SortCol = 'ProjectPlatform_D'  THEN ProjectPlatform else null END desc,
+	CASE WHEN @SortCol = 'ProjectPlatform'  THEN ProjectPlatform else null END asc,
+ 	CASE WHEN @SortCol = 'PlatformRssUrl_D'  THEN PlatformRssUrl else null END desc,
+	CASE WHEN @SortCol = 'PlatformRssUrl'  THEN PlatformRssUrl else null END asc,
+ 	CASE WHEN @SortCol = 'DateScheduled_D'  THEN DateScheduled else null END desc,
+	CASE WHEN @SortCol = 'DateScheduled'  THEN DateScheduled else null END asc,
+ 	CASE WHEN @SortCol = 'DateDelivered_D'  THEN DateDelivered else null END desc,
+	CASE WHEN @SortCol = 'DateDelivered'  THEN DateDelivered else null END asc,
+ 	CASE WHEN @SortCol = 'DateCreated_D'  THEN DateCreated else null END desc,
+	CASE WHEN @SortCol = 'DateCreated'  THEN DateCreated else null END asc,
+ 	CASE WHEN @SortCol = 'DateLocked_D'  THEN DateLocked else null END desc,
+	CASE WHEN @SortCol = 'DateLocked'  THEN DateLocked else null END asc,
+ 	CASE WHEN @SortCol = 'DateDeleted_D'  THEN DateDeleted else null END desc,
+	CASE WHEN @SortCol = 'DateDeleted'  THEN DateDeleted else null END asc,
+ 	CASE WHEN @SortCol = 'CreatedBy_D'  THEN CreatedBy else null END desc,
+	CASE WHEN @SortCol = 'CreatedBy'  THEN CreatedBy else null END asc,
+ 	CASE WHEN @SortCol = 'LockedBy_D'  THEN LockedBy else null END desc,
+	CASE WHEN @SortCol = 'LockedBy'  THEN LockedBy else null END asc,
+ 	CASE WHEN @SortCol = 'DeletedBy_D'  THEN DeletedBy else null END desc,
+	CASE WHEN @SortCol = 'DeletedBy'  THEN DeletedBy else null END asc,
+ 	CASE WHEN @SortCol = 'LeadBy_D'  THEN LeadBy else null END desc,
+	CASE WHEN @SortCol = 'LeadBy'  THEN LeadBy else null END asc,
+ 	CASE WHEN @SortCol = 'IsVisible_D'  THEN IsVisible else null END desc,
+	CASE WHEN @SortCol = 'IsVisible'  THEN IsVisible else null END asc,
+ 	CASE WHEN @SortCol = 'IsLocked_D'  THEN IsLocked else null END desc,
+	CASE WHEN @SortCol = 'IsLocked'  THEN IsLocked else null END asc,
+ 	CASE WHEN @SortCol = 'IsDeleted_D'  THEN IsDeleted else null END desc,
+	CASE WHEN @SortCol = 'IsDeleted'  THEN IsDeleted else null END asc,
+ 	CASE WHEN @SortCol = 'IsDelivered_D'  THEN IsDelivered else null END desc,
+	CASE WHEN @SortCol = 'IsDelivered'  THEN IsDelivered else null END asc,
+ 	CASE WHEN @SortCol = 'Views_D'  THEN Views else null END desc,
+	CASE WHEN @SortCol = 'Views'  THEN Views else null END asc,
+ 	CASE WHEN @SortCol = 'Comments_D'  THEN Comments else null END desc,
+	CASE WHEN @SortCol = 'Comments'  THEN Comments else null END asc,
+ 	CASE WHEN @SortCol = 'Votes_D'  THEN Votes else null END desc,
+	CASE WHEN @SortCol = 'Votes'  THEN Votes else null END asc,
+ 	CASE WHEN @SortCol = 'TeamMembers_D'  THEN TeamMembers else null END desc,
+	CASE WHEN @SortCol = 'TeamMembers'  THEN TeamMembers else null END asc
+
+SELECT 
+	t1.ProjectId,
+ 	t1.ModuleId,
+ 	t1.ContentItemId,
+ 	t1.Status,
+ 	t1.Subject,
+ 	t1.Summary,
+ 	t1.Content,
+ 	t1.ProjectUrl,
+ 	t1.ProjectPlatform,
+ 	t1.PlatformRssUrl,
+ 	t1.DateScheduled,
+ 	t1.DateDelivered,
+ 	t1.DateCreated,
+ 	t1.DateLocked,
+ 	t1.DateDeleted,
+ 	t1.CreatedBy,
+ 	t1.LockedBy,
+ 	t1.DeletedBy,
+ 	t1.LeadBy,
+ 	t1.IsVisible,
+ 	t1.IsLocked,
+ 	t1.IsDeleted,
+ 	t1.IsDelivered,
+ 	t1.Views,
+ 	t1.Comments,
+ 	t1.Votes,
+ 	t1.TeamMembers
+FROM 
+	{objectQualifier}Connect_Kickstart_Project t1
+INNER JOIN 
+	@tabTempSort t2 
+ON
+	t1.ProjectId = t2.ProjectId
+WHERE 
+	RowNum BETWEEN (@RequiredPage - 1) * @RecordsPerPage + 1 
+	AND @RequiredPage * @RecordsPerPage
+AND
+    [t1].[ModuleId] = @ModuleId
+AND
+	[t1].IsDeleted = 0
+AND
+	[t1].IsVisible = 1
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
