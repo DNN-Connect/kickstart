@@ -11,13 +11,42 @@ Namespace Connect.Modules.Kickstart
 
         Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
 
+
             If Request.IsAuthenticated = False Then
-                Response.Redirect(NavigateURL(KickstartSettings.ProjectListTabId))
+                Response.Redirect(NavigateURL(PortalSettings.LoginTabId, "", "ReturnUrl=" & Server.UrlEncode(Request.RawUrl)))
             End If
+
+            ReadQuerystring()
 
         End Sub
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+            If Not Project Is Nothing Then
+                If Project.CreatedBy = UserInfo.UserID Or KickstartSettings.CanApproveProject Then
+                    If Not Page.IsPostBack Then
+                        BindProject()
+                    End If                    
+                Else
+                    Response.Redirect(NavigateURL(KickstartSettings.ProjectListTabId))
+                End If
+            Else
+
+                If ActionMode.ToLower <> "create" Then
+                    Response.Redirect(NavigateURL(KickstartSettings.ProjectListTabId))
+                End If
+
+            End If
+
+        End Sub
+
+        Private Sub cmdCreate_Click(sender As Object, e As EventArgs) Handles cmdCreate.Click
+
+            If Project Is Nothing Then
+                CreateIdea()
+            Else
+                UpdateIdea()
+            End If
 
         End Sub
 
@@ -30,11 +59,50 @@ Namespace Connect.Modules.Kickstart
 
 #Region "Private Methods"
 
+        Private Sub BindProject()
 
-#End Region
+            cmdCreate.Text = Localization.GetString("UpdateIdea", LocalResourceFile)
+            txtContent.Text = Project.Content
+            txtSubject.Text = Project.Subject
+            txtSummary.Text = Project.Summary
 
-        Private Sub cmdCreate_Click(sender As Object, e As EventArgs) Handles cmdCreate.Click
-            CreateIdea()
+        End Sub
+
+        Private Sub UpdateIdea()
+
+            Project.Subject = txtSubject.Text
+            Project.Summary = txtSummary.Text
+            Project.Content = txtContent.Text
+
+            Dim blnNotifyCreator As Boolean = False
+            Dim blnNotifyApprovers As Boolean = False
+
+            If Project.IsVisible = False Then
+                If KickstartSettings.CanApproveProject Then
+                    Project.IsVisible = True
+                    blnNotifyCreator = True
+                Else
+                    blnNotifyApprovers = True
+                End If
+            Else
+                If KickstartSettings.CanApproveProject = False Then
+                    Project.IsVisible = False
+                    blnNotifyApprovers = True
+                End If
+            End If
+
+            ProjectController.Update(Project)
+
+            If blnNotifyApprovers Then
+                Integration.NotificationController.SendPendingProjectNotification(Project, PortalId, ProjectUrl(Project.ProjectId), True)
+            End If
+
+            If blnNotifyCreator Then
+                Integration.NotificationController.SendVisibilityChangedNotification(Project, UserInfo, ProjectUrl(Project.ProjectId))
+            End If
+
+            Response.Redirect(ProjectUrl(Project.ProjectId.ToString))
+
         End Sub
 
         Private Sub CreateIdea()
@@ -74,13 +142,21 @@ Namespace Connect.Modules.Kickstart
 
                 If objProject.ProjectId <> Null.NullInteger Then
 
-                    Integration.NotificationController.SendPendingProjectNotification(objProject, PortalId, ProjectUrl(objProject.ProjectId))
+                    Integration.NotificationController.SendPendingProjectNotification(objProject, PortalId, ProjectUrl(objProject.ProjectId), False)
 
                 End If
+
+                Response.Redirect(ProjectUrl(objProject.ProjectId.ToString))
 
             End If
 
         End Sub
+
+#End Region
+
+        
+
+        
 
     End Class
 

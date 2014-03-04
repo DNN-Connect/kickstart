@@ -3,6 +3,7 @@
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 <%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
 
+
 <div class="kickstart-projectdetails"></div>
 
 <script type="text/javascript">

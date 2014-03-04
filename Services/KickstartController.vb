@@ -79,18 +79,27 @@ Namespace Connect.Modules.Kickstart.Services
         <HttpPost>
         Public Function GetProject(postData As ProjectDTO) As HttpResponseMessage
 
+            Try
 
-            SetContext(postData)
+                SetContext(postData)
 
-            If _Project Is Nothing Then
-                Return Request.CreateResponse(HttpStatusCode.BadRequest, Utilities.GetSharedJSSafeResource("Error_ProjectNotFound"))
-            End If
+                If _Project Is Nothing Then
+                    Return Request.CreateResponse(HttpStatusCode.BadRequest, Utilities.GetSharedJSSafeResource("Error_ProjectNotFound"))
+                End If
 
-            Dim objKickstartSettings As KickstartSettings = New KickstartSettings(ActiveModule, _Project)
+                Dim objKickstartSettings As KickstartSettings = New KickstartSettings(ActiveModule, _Project)
 
-            Dim strHtml As String = ""
-            ProjectTemplateController.ProcessItemTemplate(strHtml, TemplateHelper.Template_ProjectDetails, _Project, objKickstartSettings, UserInfo)
-            Return Request.CreateResponse(HttpStatusCode.OK, strHtml)
+                Dim strHtml As String = ""
+                ProjectTemplateController.ProcessItemTemplate(strHtml, TemplateHelper.Template_ProjectDetails, _Project, objKickstartSettings, UserInfo)
+                Return Request.CreateResponse(HttpStatusCode.OK, strHtml)
+
+            Catch ex As Exception
+
+                Return Request.CreateResponse(HttpStatusCode.OK, "")
+                LogException(ex)
+
+            End Try
+
 
         End Function
 
@@ -160,7 +169,7 @@ Namespace Connect.Modules.Kickstart.Services
             objComment.ContentItemId = 0
             objComment.CreatedBy = UserInfo.UserID
             objComment.DateCreated = Date.Now
-            objComment.IsTeamResponse = Connect.Modules.Kickstart.Utilities.IsTeamMember(UserInfo.UserID, postData.ProjectId)
+            objComment.IsTeamResponse = Connect.Modules.Kickstart.Utilities.IsTeamMember(UserInfo.UserID, _Project)
             objComment.IsVisible = True
             objComment.ParentId = postData.ParentId
             objComment.ProjectId = postData.ProjectId
@@ -168,7 +177,7 @@ Namespace Connect.Modules.Kickstart.Services
 
             objComment.CommentId = CommentController.Add(objComment)
 
-            Dim ProjectUrl As String = NavigateURL(objKickstartSettings.ProjectDetailsTabId, "ProjectId=" & _Project.ProjectId.ToString)
+            Dim ProjectUrl As String = NavigateURL(objKickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & _Project.ProjectId.ToString)
             Integration.NotificationController.SendNewCommentNotification(_Project, objComment, UserInfo, ProjectUrl)
             Integration.SubscriptionController.NotifySubscribersAboutNewComment(objKickstartSettings.Portalsettings.PortalId, _Project, objComment, ProjectUrl)
 
@@ -308,7 +317,7 @@ Namespace Connect.Modules.Kickstart.Services
 
             ProjectController.Update(_Project)
 
-            Dim ProjectUrl As String = NavigateURL(objKickstartSettings.ProjectDetailsTabId, "ProjectId=" & _Project.ProjectId.ToString)
+            Dim ProjectUrl As String = NavigateURL(objKickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & _Project.ProjectId.ToString)
             Integration.NotificationController.SendVisibilityChangedNotification(_Project, UserInfo, ProjectUrl)
             Integration.SubscriptionController.NotifySubscribersAboutNewProject(objKickstartSettings.Portalsettings.PortalId, _Project, ProjectUrl)
 

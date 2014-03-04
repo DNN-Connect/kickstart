@@ -22,6 +22,30 @@ lblFundingIntro control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmFund.pnlWarning">
+	<summary>
+pnlWarning control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmFund.lblValidate">
+	<summary>
+lblValidate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmFund.pnlIncentiveSelect">
+	<summary>
+pnlIncentiveSelect control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Connect.Modules.Kickstart.frmFund.lblSelectIncentive">
 	<summary>
 lblSelectIncentive control.
@@ -33,6 +57,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Connect.Modules.Kickstart.frmFund.drpFundingAmount">
 	<summary>
 drpFundingAmount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmFund.pnlIncentiveDescription">
+	<summary>
+pnlIncentiveDescription control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -54,17 +86,17 @@ lblFundingIncentive control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Connect.Modules.Kickstart.frmFund.lblCustomFunding">
+</member><member name="F:Connect.Modules.Kickstart.frmFund.lblFundingAmount">
 	<summary>
-lblCustomFunding control.
+lblFundingAmount control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Connect.Modules.Kickstart.frmFund.ctlCustomFunding">
+</member><member name="F:Connect.Modules.Kickstart.frmFund.ctlFundingAmount">
 	<summary>
-ctlCustomFunding control.
+ctlFundingAmount control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -105,6 +137,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Connect.Modules.Kickstart.frmFund.cmdDeleteFunding">
 	<summary>
 cmdDeleteFunding control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmFund.cmdCancel">
+	<summary>
+cmdCancel control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -446,6 +486,22 @@ cmdStopTesting control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmParticipate.cmdEditProject">
+	<summary>
+cmdEditProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmParticipate.cmdCancel">
+	<summary>
+cmdCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Connect.Modules.Kickstart.Funding.lblFundingHead">
 	<summary>
 lblFundingHead control.
@@ -675,6 +731,14 @@ cmdCancel control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectMembers.pnlMembers">
+	<summary>
+pnlMembers control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Connect.Modules.Kickstart.ProjectMembers.lblOwnerHead">
 	<summary>
 lblOwnerHead control.
@@ -718,6 +782,22 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Connect.Modules.Kickstart.ProjectMembers.rptTeam">
 	<summary>
 rptTeam control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectMembers.pnlNoLead">
+	<summary>
+pnlNoLead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectMembers.lblNoLead">
+	<summary>
+lblNoLead control.
 </summary>
 	<remarks>
 Auto-generated field.

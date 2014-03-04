@@ -8,17 +8,19 @@
     <p><asp:Literal ID="lblFundingIntro" runat="server"></asp:Literal></p>
 
 
-
+    <asp:Panel ID="pnlWarning" runat="server" Visible="false" CssClass="dnnFormMessage dnnFormValidationSummary">
+        <asp:Literal ID="lblValidate" runat="server"></asp:Literal>
+    </asp:Panel>
 
 
     <div class="dnnForm dnnClear">
-
-        <div class="dnnFormItem selectfunding">
+        
+        <div class="dnnFormItem selectfunding" runat="server" id="pnlIncentiveSelect">
             <dnn:Label id="lblSelectIncentive" runat="server"></dnn:Label>
             <asp:DropDownList ID="drpFundingAmount" runat="server" AutoPostBack="true"></asp:DropDownList>
         </div>
 
-        <div class="dnnFormItem">
+        <div class="dnnFormItem" runat="server" id="pnlIncentiveDescription">
             <dnn:Label id="lblSelectedIncentive" runat="server"></dnn:Label>
             <div class="selectedIncentive">
                 <span class="selectedIncentive"><asp:Literal ID="lblFundingIncentive" runat="server"></asp:Literal></span>
@@ -26,8 +28,8 @@
         </div>
 
         <div class="dnnFormItem customfunding">
-            <dnn:Label id="lblCustomFunding" runat="server"></dnn:Label>
-            <dnn:DNNNumericTextBox ID="ctlCustomFunding" runat="server" Width="160px" ShowSpinButtons="false" MinValue="1" NumberFormat-DecimalDigits="0"></dnn:DNNNumericTextBox>
+            <dnn:Label id="lblFundingAmount" runat="server"></dnn:Label>
+            <dnn:DNNNumericTextBox ID="ctlFundingAmount" runat="server" Width="160px" ShowSpinButtons="false" MinValue="1" NumberFormat-DecimalDigits="0"></dnn:DNNNumericTextBox>
             <span class="currency"><asp:Literal ID="lblCurrency" runat="server"></asp:Literal></span>
         </div>
 
@@ -44,6 +46,9 @@
         </li>
         <li>
             <asp:LinkButton ID="cmdDeleteFunding" runat="server" CssClass="dnnSecondaryAction"></asp:LinkButton>
+        </li>
+        <li>
+            <asp:LinkButton ID="cmdCancel" runat="server" CssClass="dnnSecondaryAction"></asp:LinkButton>
         </li>
     </ul>
        

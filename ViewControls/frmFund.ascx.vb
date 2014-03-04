@@ -5,6 +5,11 @@ Namespace Connect.Modules.Kickstart
     Public Class frmFund
         Inherits KickstartModuleBase
 
+#Region "Private Members"
+
+
+
+#End Region
 
 #Region "Event Handlers"
 
@@ -19,14 +24,14 @@ Namespace Connect.Modules.Kickstart
             End If
 
             If Request.IsAuthenticated = False Then
-                Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString))
+                Response.Redirect(NavigateURL(PortalSettings.LoginTabId, "", "ReturnUrl=" & Server.UrlEncode(Request.RawUrl)))
             End If
 
         End Sub
 
         Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-            BindLocalization()
+            LocalizeForm()
 
             If Not Page.IsPostBack Then
 
@@ -39,27 +44,27 @@ Namespace Connect.Modules.Kickstart
 
         Protected Sub cmdAddFunding_Click(sender As Object, e As System.EventArgs) Handles cmdAddFunding.Click
 
-            If Request.IsAuthenticated = False Then
-                Response.Redirect(NavigateURL(PortalSettings.RegisterTabId, "", "ReturnUrl=" & Server.UrlEncode(ProjectUrl(ProjectId))))
-            End If
-
-            UpdateFunding()
-            RefreshPage()
+            UpdateFunding()            
 
         End Sub
 
         Protected Sub cmdDeleteFunding_Click(sender As Object, e As System.EventArgs) Handles cmdDeleteFunding.Click
 
-            If Request.IsAuthenticated = False Then
-                Response.Redirect(NavigateURL(PortalSettings.RegisterTabId, "", "ReturnUrl=" & Server.UrlEncode(ProjectUrl(ProjectId))))
-            End If
-
             RemoveFunding()
             RefreshPage()
+
         End Sub
 
         Protected Sub drpFundingAmount_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles drpFundingAmount.SelectedIndexChanged
-            BindIncentiveDescription()
+
+            BindIncentive()
+
+        End Sub
+
+        Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
+
+            Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString))
+
         End Sub
 
 #End Region
@@ -71,7 +76,7 @@ Namespace Connect.Modules.Kickstart
 
 #Region "Private Methods"
 
-        Private Sub BindIncentiveDescription()
+        Private Sub BindIncentive()
 
             Dim incentives As New List(Of IncentiveInfo)
             incentives = IncentiveController.ListByProject(ProjectId)
@@ -79,44 +84,58 @@ Namespace Connect.Modules.Kickstart
             For Each i As IncentiveInfo In incentives
                 If i.IncentiveId.ToString = drpFundingAmount.SelectedValue Then
                     lblFundingIncentive.Text = i.Incentive
+                    ctlFundingAmount.Value = i.Amount
                 End If
             Next
 
         End Sub
 
-        Private Sub BindLocalization()
+        Private Sub LocalizeForm()
 
             lblFundingHeader.Text = Localization.GetString("lblFundingHeader", LocalResourceFile)
             lblFundingIntro.Text = Localization.GetString("lblFundingIntro", LocalResourceFile)
-            lblCustomFunding.Text = Localization.GetString("lblCustomFunding", LocalResourceFile)
             cmdAddFunding.Text = Localization.GetString("cmdAddFunding", LocalResourceFile)
             cmdDeleteFunding.Text = Localization.GetString("cmdDeleteFunding", LocalResourceFile)
+            cmdCancel.Text = Localization.GetString("cmdCancel", LocalResourceFile)
             lblCurrency.Text = Utilities.FormatCurrency(ConfigController.GetConfig(ProjectId).FundingCurrency)
 
         End Sub
 
         Private Sub BindFundingOptions()
 
-            Dim incentives As New List(Of IncentiveInfo)
-            incentives = IncentiveController.ListByProject(ProjectId)
+            Dim _incentives As New List(Of IncentiveInfo)
+            _incentives = IncentiveController.ListByProject(ProjectId)
+
+            If _incentives.Count = 0 Then
+                pnlIncentiveDescription.Visible = False
+                pnlIncentiveSelect.Visible = False
+            End If
 
             drpFundingAmount.Items.Clear()
 
-            For Each i As IncentiveInfo In incentives
+            For Each i As IncentiveInfo In _incentives
                 Dim item As New ListItem
                 item.Text = Utilities.FormatCurrency(ConfigController.GetConfig(ProjectId).FundingCurrency) & " " & Utilities.FormatAmount(i.Amount)
                 item.Value = i.IncentiveId.ToString
                 drpFundingAmount.Items.Add(item)
             Next
 
-            If incentives.Count > 0 Then
-                lblFundingIncentive.Text = incentives(0).Incentive
+            If _incentives.Count > 0 Then
+                lblFundingIncentive.Text = _incentives(0).Incentive
+                ctlFundingAmount.Value = _incentives(0).Amount
             End If
 
 
         End Sub
 
         Private Sub UpdateFunding()
+
+            pnlWarning.Visible = False
+            If ctlFundingAmount.DbValue Is Nothing OrElse Convert.ToDecimal(ctlFundingAmount.DbValue) = CDec(0.0) Then
+                pnlWarning.Visible = True
+                lblValidate.Text = Localization.GetString("MustEnterAmount", LocalResourceFile)
+                Exit Sub
+            End If
 
             Dim objFunding As FundingInfo = Nothing
 
@@ -130,11 +149,7 @@ Namespace Connect.Modules.Kickstart
             objFunding.Anonymous = chkAnonymous.Checked
             objFunding.ProjectId = ProjectId
             objFunding.UserId = UserId
-            If ctlCustomFunding.DbValue > CDec(0.0) Then
-                objFunding.Funding = ctlCustomFunding.DbValue
-            Else
-                objFunding.Funding = IncentiveController.Get(Convert.ToInt32(drpFundingAmount.SelectedValue)).Amount
-            End If
+            objFunding.Funding = ctlFundingAmount.DbValue
 
             If IsFunding() Then
 
@@ -152,6 +167,8 @@ Namespace Connect.Modules.Kickstart
 
             End If
 
+            RefreshPage()
+
         End Sub
 
         Private Sub BindFunding()
@@ -164,6 +181,7 @@ Namespace Connect.Modules.Kickstart
                     lblFundingIntro.Text += " " & Localization.GetString("anonymously", LocalResourceFile)
                     chkAnonymous.Checked = True
                 End If
+                ctlFundingAmount.Value = MyFunding.Funding
             Else
                 cmdDeleteFunding.Visible = False
             End If

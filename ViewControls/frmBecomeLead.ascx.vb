@@ -17,7 +17,7 @@ Namespace Connect.Modules.Kickstart
             End If
 
             If Request.IsAuthenticated = False Then
-                Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString))
+                Response.Redirect(NavigateURL(PortalSettings.LoginTabId, "", "ReturnUrl=" & Server.UrlEncode(Request.RawUrl)))
             End If
 
             If Not Page.IsPostBack Then
@@ -64,11 +64,11 @@ Namespace Connect.Modules.Kickstart
         Private Sub BindForm()
 
             If Project Is Nothing Then
-                Response.Redirect(NavigateURL(ProjectListTabId))
+                Response.Redirect(NavigateURL(KickstartSettings.ProjectListTabId))
             End If
 
             If Request.IsAuthenticated = False Then
-                Response.Redirect(NavigateURL(TabId, "", "ProjectId=" & ProjectId.ToString))
+                Response.Redirect(NavigateURL(PortalSettings.LoginTabId, "", "ReturnUrl=" & Server.UrlEncode(Request.RawUrl)))
             End If
 
             If Project.LeadBy <> Null.NullInteger Then

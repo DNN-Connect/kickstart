@@ -19,11 +19,11 @@ Namespace Connect.Modules.Kickstart
             Return Localization.GetSafeJSString(strKey, SharedResourceFile)
         End Function
 
-        Public Shared Function GetProjectParticipants(ProjectId) As List(Of UserInfo)
+        Public Shared Function GetProjectParticipants(objProject As ProjectInfo, IncludeCreator As Boolean) As List(Of UserInfo)
 
             Dim objUsers As New List(Of UserInfo)
 
-            Dim participants As List(Of ParticipantInfo) = ParticipantController.ListByProject(ProjectId)
+            Dim participants As List(Of ParticipantInfo) = ParticipantController.ListByProject(objProject.ProjectId)
             For Each p As ParticipantInfo In participants
                 Dim objUser As UserInfo = UserController.GetUserById(GetPortalSettings.PortalId, p.UserId)
                 If Not objUser Is Nothing Then
@@ -31,13 +31,29 @@ Namespace Connect.Modules.Kickstart
                 End If
             Next
 
+            Dim objCreator As UserInfo = UserController.GetUserById(GetPortalSettings.PortalId, objProject.CreatedBy)
+            If Not objCreator Is Nothing Then
+                objUsers.Add(objCreator)
+            End If
+
             Return objUsers
 
         End Function
 
-        Public Shared Function IsTeamMember(UserId As Integer, ProjectId As Integer) As Boolean
+        'Public Shared Function GetProjectParticipants(ProjectId) As List(Of UserInfo)
 
-            For Each objUser As UserInfo In GetProjectParticipants(ProjectId)
+        '    Dim project As ProjectInfo = ProjectController.Get(ProjectId)
+        '    If Not project Is Nothing Then
+        '        Return GetProjectParticipants(project)
+        '    End If
+
+        '    Return New List(Of UserInfo)
+
+        'End Function
+
+        Public Shared Function IsTeamMember(UserId As Integer, objProject As ProjectInfo) As Boolean
+
+            For Each objUser As UserInfo In GetProjectParticipants(objProject, False)
                 If objUser.UserID = UserId Then
                     Return True
                 End If

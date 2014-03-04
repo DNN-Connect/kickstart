@@ -102,5 +102,10 @@
        
     </asp:Panel>
 
+    <ul class="dnnActions">
+        <li><asp:LinkButton ID="cmdEditProject" runat="server" CssClass="dnnPrimaryAction"></asp:LinkButton></li>
+        <li><asp:LinkButton ID="cmdCancel" runat="server" CssClass="dnnSecondaryAction"></asp:LinkButton></li>
+    </ul>
+
    
 </div>

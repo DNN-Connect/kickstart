@@ -192,4 +192,10 @@
   <data name="lblTranslatorsHead.Text" xml:space="preserve">
     <value>Translators</value>
   </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="cmdEditProject.Text" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
 </root>

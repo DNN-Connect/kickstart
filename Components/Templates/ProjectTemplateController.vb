@@ -148,7 +148,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "ifisparticipating"
 
-                            If Utilities.IsTeamMember(User.UserID, objProject.ProjectId) = False Then
+                            If Utilities.IsTeamMember(User.UserID, objProject) = False Then
                                 While (iPtr < templateArray.Length - 1)
                                     If (templateArray(iPtr + 1).ToLower = "/ifisparticipating") Then
                                         Exit While
@@ -159,7 +159,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "ifnotparticipating"
 
-                            If Utilities.IsTeamMember(User.UserID, objProject.ProjectId) = True Then
+                            If Utilities.IsTeamMember(User.UserID, objProject) = True Then
                                 While (iPtr < templateArray.Length - 1)
                                     If (templateArray(iPtr + 1).ToLower = "/ifnotparticipating") Then
                                         Exit While
@@ -170,7 +170,13 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "manageparticipationurl"
 
-                            strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "ProjectId=" & objProject.ProjectId.ToString, "Action=Participate")
+                            If objProject.LeadBy = Null.NullInteger Then
+                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "ProjectId=" & objProject.ProjectId.ToString, "Action=BecomeLead")
+                            Else
+                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "ProjectId=" & objProject.ProjectId.ToString, "Action=Participate")
+                            End If
+
+
 
                         Case "iseditor"
 
@@ -343,6 +349,17 @@ Namespace Connect.Modules.Kickstart.Templates
                             If String.IsNullOrEmpty(objProject.ProjectPlatform) Then
                                 While (iPtr < templateArray.Length - 1)
                                     If (templateArray(iPtr + 1).ToLower = "/hasprojectplatform") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
+
+                        Case "hasnoprojectplatform"
+
+                            If String.IsNullOrEmpty(objProject.ProjectPlatform) = False Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/hasnoprojectplatform") Then
                                         Exit While
                                     End If
                                     iPtr = iPtr + 1
@@ -760,7 +777,13 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "editprojecturl"
 
-                            strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "Action=EditProject", "ProjectId=" & objProject.ProjectId.ToString)
+                            If objProject.LeadBy = Null.NullInteger AndAlso (objProject.CreatedBy = User.UserID Or Settings.CanApproveProject) Then
+                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "Action=EditIdea", "ProjectId=" & objProject.ProjectId.ToString)
+                            End If
+
+                            If objProject.LeadBy <> Null.NullInteger Then
+                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "Action=EditProject", "ProjectId=" & objProject.ProjectId.ToString)
+                            End If
 
                         Case "lockprojecturl"
 

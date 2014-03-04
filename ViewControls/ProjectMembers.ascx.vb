@@ -22,25 +22,39 @@ Namespace Connect.Modules.Kickstart
 
         Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-            Dim objLead As UserInfo = UserController.GetUserById(PortalId, Project.LeadBy)
-            If Not objLead Is Nothing Then
 
-                lblOwnerHead.Text = Localization.GetString("lblOwnerHead", LocalResourceFile)
-                imgLead.ImageUrl = "~/ProfilePic.ashx?UserId=" & objLead.UserID.ToString & "&h=32&w=32"
-                lblLeadName.Text = objLead.DisplayName
-                lnkLeadProfile.NavigateUrl = NavigateURL(PortalSettings.UserTabId, "", "UserId=" & objLead.UserID.ToString)
-                lnkLeadProfile.Text = Localization.GetString("FullProfileUrl", LocalResourceFile)
+            If Project.LeadBy = Null.NullInteger Then
 
-                BindMembers()
+                pnlNoLead.Visible = True
+                pnlMembers.Visible = False
+                lblNoLead.Text = Utilities.GetSharedResource("NoLeadYetLong")
+                lnkParticipate.Text = Utilities.GetSharedResource("BecomeLead")
+                lnkParticipate.NavigateUrl = NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId, "Action=BecomeLead")
 
-                If Utilities.IsTeamMember(UserId, ProjectId) Then
-                    lnkParticipate.Text = Localization.GetString("JoinTeam", LocalResourceFile)
-                Else
-                    lnkParticipate.Text = Localization.GetString("ManageParticipation", LocalResourceFile)
+            Else
+
+                Dim objLead As UserInfo = UserController.GetUserById(PortalId, Project.LeadBy)
+                If Not objLead Is Nothing Then
+
+                    lblOwnerHead.Text = Localization.GetString("lblOwnerHead", LocalResourceFile)
+                    imgLead.ImageUrl = "~/ProfilePic.ashx?UserId=" & objLead.UserID.ToString & "&h=32&w=32"
+                    lblLeadName.Text = objLead.DisplayName
+                    lnkLeadProfile.NavigateUrl = NavigateURL(PortalSettings.UserTabId, "", "UserId=" & objLead.UserID.ToString)
+                    lnkLeadProfile.Text = Localization.GetString("FullProfileUrl", LocalResourceFile)
+
+                    BindMembers()
+
+                    If Utilities.IsTeamMember(UserId, Project) Then
+                        lnkParticipate.Text = Localization.GetString("JoinTeam", LocalResourceFile)
+                    Else
+                        lnkParticipate.Text = Localization.GetString("ManageParticipation", LocalResourceFile)
+                    End If
+                    lnkParticipate.NavigateUrl = NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString, "Action=Participate")
+
                 End If
-                lnkParticipate.NavigateUrl = NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString, "Action=Participate")
 
             End If
+
 
 
         End Sub

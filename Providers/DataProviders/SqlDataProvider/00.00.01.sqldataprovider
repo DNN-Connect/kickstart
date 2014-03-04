@@ -11,7 +11,7 @@
 
 
 /* =====================================================================================
-/   TABLE: Kickstart_Comment
+/   TABLE: Comment
 /  ===================================================================================== */
 
 /****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_Get    Script Date: Montag, 3. März 2014 ******/
@@ -24,9 +24,9 @@ if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{o
 drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_List
 GO
 
-/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_GetByKickstart_Project    Script Date: Montag, 3. März 2014 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByKickstart_Project') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByKickstart_Project
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_GetByProject    Script Date: Montag, 3. März 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByProject
 GO
 
 /****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_GetByUsers    Script Date: Montag, 3. März 2014 ******/
@@ -122,14 +122,14 @@ GO
 
 
 /* -------------------------------------------------------------------------------------
-/   Connect_Kickstart_Comment_ListByKickstart_Project
+/   Connect_Kickstart_Comment_ListByProject
 /  ------------------------------------------------------------------------------------- */
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS OFF 
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByKickstart_Project
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_ListByProject
 	@ProjectId int
 AS
 
@@ -392,7 +392,7 @@ SET ANSI_NULLS ON
 GO
 
 /* =====================================================================================
-/   TABLE: Kickstart_Funding
+/   TABLE: Funding
 /  ===================================================================================== */
 
 /****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_Get    Script Date: Montag, 3. März 2014 ******/
@@ -405,9 +405,9 @@ if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{o
 drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_List
 GO
 
-/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_GetByKickstart_Project    Script Date: Montag, 3. März 2014 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Funding_ListByKickstart_Project') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_ListByKickstart_Project
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_GetByProject    Script Date: Montag, 3. März 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Funding_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_ListByProject
 GO
 
 /****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_GetByUsers    Script Date: Montag, 3. März 2014 ******/
@@ -493,14 +493,14 @@ GO
 
 
 /* -------------------------------------------------------------------------------------
-/   Connect_Kickstart_Funding_ListByKickstart_Project
+/   Connect_Kickstart_Funding_ListByProject
 /  ------------------------------------------------------------------------------------- */
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS OFF 
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_ListByKickstart_Project
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Funding_ListByProject
 	@ProjectId int
 AS
 
@@ -713,7 +713,7 @@ SET ANSI_NULLS ON
 GO
 
 /* =====================================================================================
-/   TABLE: Kickstart_Incentive
+/   TABLE: Incentive
 /  ===================================================================================== */
 
 /****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_Get    Script Date: Montag, 3. März 2014 ******/
@@ -726,9 +726,9 @@ if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{o
 drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_List
 GO
 
-/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_GetByKickstart_Project    Script Date: Montag, 3. März 2014 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_ListByKickstart_Project') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_ListByKickstart_Project
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_GetByProject    Script Date: Montag, 3. März 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_ListByProject
 GO
 
 /****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_Add    Script Date: Montag, 3. März 2014 ******/
@@ -805,14 +805,14 @@ GO
 
 
 /* -------------------------------------------------------------------------------------
-/   Connect_Kickstart_Incentive_ListByKickstart_Project
+/   Connect_Kickstart_Incentive_ListByProject
 /  ------------------------------------------------------------------------------------- */
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS OFF 
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_ListByKickstart_Project
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Incentive_ListByProject
 	@ProjectId int
 AS
 
@@ -979,7 +979,7 @@ SET ANSI_NULLS ON
 GO
 
 /* =====================================================================================
-/   TABLE: Kickstart_Participant
+/   TABLE: Participant
 /  ===================================================================================== */
 
 /****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_Get    Script Date: Montag, 3. März 2014 ******/
@@ -992,9 +992,9 @@ if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{o
 drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_List
 GO
 
-/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_GetByKickstart_Project    Script Date: Montag, 3. März 2014 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Participant_ListByKickstart_Project') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_ListByKickstart_Project
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_GetByProject    Script Date: Montag, 3. März 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Participant_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_ListByProject
 GO
 
 /****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_GetByUsers    Script Date: Montag, 3. März 2014 ******/
@@ -1076,14 +1076,14 @@ GO
 
 
 /* -------------------------------------------------------------------------------------
-/   Connect_Kickstart_Participant_ListByKickstart_Project
+/   Connect_Kickstart_Participant_ListByProject
 /  ------------------------------------------------------------------------------------- */
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS OFF 
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_ListByKickstart_Project
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Participant_ListByProject
 	@ProjectId int
 AS
 
@@ -1276,7 +1276,7 @@ SET ANSI_NULLS ON
 GO
 
 /* =====================================================================================
-/   TABLE: Kickstart_Project
+/   TABLE: Project
 /  ===================================================================================== */
 
 /****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Project_Get    Script Date: Montag, 3. März 2014 ******/
@@ -1795,7 +1795,7 @@ SET ANSI_NULLS ON
 GO
 
 /* =====================================================================================
-/   TABLE: Kickstart_ProjectConfig
+/   TABLE: ProjectConfig
 /  ===================================================================================== */
 
 /****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Get    Script Date: Montag, 3. März 2014 ******/
@@ -1808,9 +1808,9 @@ if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{o
 drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_List
 GO
 
-/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_GetByKickstart_Project    Script Date: Montag, 3. März 2014 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByKickstart_Project') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByKickstart_Project
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_GetByProject    Script Date: Montag, 3. März 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByProject
 GO
 
 /****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_Add    Script Date: Montag, 3. März 2014 ******/
@@ -1887,14 +1887,14 @@ GO
 
 
 /* -------------------------------------------------------------------------------------
-/   Connect_Kickstart_ProjectConfig_ListByKickstart_Project
+/   Connect_Kickstart_ProjectConfig_ListByProject
 /  ------------------------------------------------------------------------------------- */
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS OFF 
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByKickstart_Project
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_ProjectConfig_ListByProject
 	@ProjectId int
 AS
 
@@ -2061,7 +2061,7 @@ SET ANSI_NULLS ON
 GO
 
 /* =====================================================================================
-/   TABLE: Kickstart_UserVote
+/   TABLE: UserVote
 /  ===================================================================================== */
 
 /****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_Get    Script Date: Montag, 3. März 2014 ******/
@@ -2074,14 +2074,14 @@ if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{o
 drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_List
 GO
 
-/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByKickstart_Comment    Script Date: Montag, 3. März 2014 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByKickstart_Comment') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByKickstart_Comment
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByComment    Script Date: Montag, 3. März 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByComment') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByComment
 GO
 
-/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByKickstart_Project    Script Date: Montag, 3. März 2014 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByKickstart_Project') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByKickstart_Project
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByProject    Script Date: Montag, 3. März 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByProject
 GO
 
 /****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_GetByUsers    Script Date: Montag, 3. März 2014 ******/
@@ -2165,14 +2165,14 @@ GO
 
 
 /* -------------------------------------------------------------------------------------
-/   Connect_Kickstart_UserVote_ListByKickstart_Comment
+/   Connect_Kickstart_UserVote_ListByComment
 /  ------------------------------------------------------------------------------------- */
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS OFF 
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByKickstart_Comment
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByComment
 	@CommentId int
 AS
 
@@ -2192,14 +2192,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 /* -------------------------------------------------------------------------------------
-/   Connect_Kickstart_UserVote_ListByKickstart_Project
+/   Connect_Kickstart_UserVote_ListByProject
 /  ------------------------------------------------------------------------------------- */
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS OFF 
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByKickstart_Project
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_UserVote_ListByProject
 	@ProjectId int
 AS
 

@@ -33,6 +33,33 @@ Namespace Connect.Modules.Kickstart
         Protected WithEvents lblFundingIntro As Global.System.Web.UI.WebControls.Literal
 
         '''<summary>
+        '''pnlWarning control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents pnlWarning As Global.System.Web.UI.WebControls.Panel
+
+        '''<summary>
+        '''lblValidate control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblValidate As Global.System.Web.UI.WebControls.Literal
+
+        '''<summary>
+        '''pnlIncentiveSelect control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents pnlIncentiveSelect As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+        '''<summary>
         '''lblSelectIncentive control.
         '''</summary>
         '''<remarks>
@@ -49,6 +76,15 @@ Namespace Connect.Modules.Kickstart
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents drpFundingAmount As Global.System.Web.UI.WebControls.DropDownList
+
+        '''<summary>
+        '''pnlIncentiveDescription control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents pnlIncentiveDescription As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
         '''<summary>
         '''lblSelectedIncentive control.
@@ -69,22 +105,22 @@ Namespace Connect.Modules.Kickstart
         Protected WithEvents lblFundingIncentive As Global.System.Web.UI.WebControls.Literal
 
         '''<summary>
-        '''lblCustomFunding control.
+        '''lblFundingAmount control.
         '''</summary>
         '''<remarks>
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblCustomFunding As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblFundingAmount As Global.DotNetNuke.UI.UserControls.LabelControl
 
         '''<summary>
-        '''ctlCustomFunding control.
+        '''ctlFundingAmount control.
         '''</summary>
         '''<remarks>
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents ctlCustomFunding As Global.DotNetNuke.Web.UI.WebControls.DnnNumericTextBox
+        Protected WithEvents ctlFundingAmount As Global.DotNetNuke.Web.UI.WebControls.DnnNumericTextBox
 
         '''<summary>
         '''lblCurrency control.
@@ -130,5 +166,14 @@ Namespace Connect.Modules.Kickstart
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents cmdDeleteFunding As Global.System.Web.UI.WebControls.LinkButton
+
+        '''<summary>
+        '''cmdCancel control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents cmdCancel As Global.System.Web.UI.WebControls.LinkButton
     End Class
 End Namespace

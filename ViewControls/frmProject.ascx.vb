@@ -106,7 +106,7 @@ Namespace Connect.Modules.Kickstart
         Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
             ProjectController.Delete(Project, UserId)
-            Response.Redirect(NavigateURL(ProjectListTabId))
+            Response.Redirect(NavigateURL(KickstartSettings.ProjectListTabId))
 
         End Sub
 
@@ -144,7 +144,7 @@ Namespace Connect.Modules.Kickstart
                     ParticipantController.Delete(pI.ParticipationId)
 
                     'check if still team member in another role maybe
-                    If Not Utilities.IsTeamMember(UserId, ProjectId) Then
+                    If Not Utilities.IsTeamMember(UserId, Project) Then
                         Project.TeamMembers -= 1
                         ProjectController.Update(Project) 'reset team members count
                     End If

@@ -21,8 +21,14 @@ Namespace Connect.Modules.Kickstart
             End If
 
             If Request.IsAuthenticated = False Then
-                Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString))
+                Response.Redirect(NavigateURL(PortalSettings.LoginTabId, "", "ReturnUrl=" & Server.UrlEncode(Request.RawUrl)))
             End If
+
+            If Project.LeadBy = Null.NullInteger Then
+                Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString, "Action=BecomeLead"))
+            End If
+
+            cmdEditProject.Visible = (Project.LeadBy = UserInfo.UserID)
 
         End Sub
 
@@ -86,6 +92,14 @@ Namespace Connect.Modules.Kickstart
             Response.Redirect(Request.RawUrl)
         End Sub
 
+        Private Sub cmdEditProject_Click(sender As Object, e As EventArgs) Handles cmdEditProject.Click
+            Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString, "Action=EditProject"))
+        End Sub
+
+        Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
+            Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString))
+        End Sub
+
 #End Region
 
 #Region "Templating"
@@ -107,7 +121,7 @@ Namespace Connect.Modules.Kickstart
             ParticipantController.Add(pI)
 
             'check if not already member in another role
-            If Not Utilities.IsTeamMember(UserId, ProjectId) Then
+            If Not Utilities.IsTeamMember(UserId, Project) Then
                 Project.TeamMembers += 1
                 ProjectController.Update(Project) 'update team members count
             End If
@@ -127,7 +141,7 @@ Namespace Connect.Modules.Kickstart
                     ParticipantController.Delete(pI.ParticipationId)
 
                     'check if still team member in another role maybe
-                    If Not Utilities.IsTeamMember(UserId, ProjectId) Then
+                    If Not Utilities.IsTeamMember(UserId, Project) Then
                         Project.TeamMembers -= 1
                         ProjectController.Update(Project) 'reset team members count
                     End If
@@ -240,6 +254,9 @@ Namespace Connect.Modules.Kickstart
         End Sub
 
         Private Sub LocalizeForm()
+
+            cmdEditProject.Text = Localization.GetString("cmdEditProject", LocalResourceFile)
+            cmdCancel.Text = Localization.GetString("cmdCancel", LocalResourceFile)
 
             lblParticipateHeading.Text = Localization.GetString("lblParticipateHeading", LocalResourceFile)
             lblParticipateIntro.Text = Localization.GetString("lblParticipateIntro", LocalResourceFile)

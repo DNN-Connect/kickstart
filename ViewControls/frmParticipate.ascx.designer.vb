@@ -391,5 +391,23 @@ Namespace Connect.Modules.Kickstart
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents cmdStopTesting As Global.System.Web.UI.WebControls.LinkButton
+
+        '''<summary>
+        '''cmdEditProject control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents cmdEditProject As Global.System.Web.UI.WebControls.LinkButton
+
+        '''<summary>
+        '''cmdCancel control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents cmdCancel As Global.System.Web.UI.WebControls.LinkButton
     End Class
 End Namespace

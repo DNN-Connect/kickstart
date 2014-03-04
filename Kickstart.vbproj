@@ -236,6 +236,7 @@
     <Content Include="js\Kickstart.js" />
     <Content Include="License.txt" />
     <Content Include="module.css" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\CreateTables.sql" />
     <Content Include="ReleaseNotes.txt" />
     <Content Include="Settings.ascx" />
     <Content Include="Templates\DnnConnect\Comment_ListFooter.html" />

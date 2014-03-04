@@ -15,6 +15,15 @@ Namespace Connect.Modules.Kickstart
     Partial Public Class ProjectMembers
 
         '''<summary>
+        '''pnlMembers control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents pnlMembers As Global.System.Web.UI.WebControls.Panel
+
+        '''<summary>
         '''lblOwnerHead control.
         '''</summary>
         '''<remarks>
@@ -67,6 +76,24 @@ Namespace Connect.Modules.Kickstart
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rptTeam As Global.System.Web.UI.WebControls.Repeater
+
+        '''<summary>
+        '''pnlNoLead control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents pnlNoLead As Global.System.Web.UI.WebControls.Panel
+
+        '''<summary>
+        '''lblNoLead control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblNoLead As Global.System.Web.UI.WebControls.Literal
 
         '''<summary>
         '''pnlParticipate control.

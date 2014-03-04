@@ -31,23 +31,28 @@ Namespace Connect.Modules.Kickstart.Integration
 
         Public Shared Sub NotifySubscribersAboutNewProject(PortalId As Integer, objProject As ProjectInfo, url As String)
 
-            Dim objType As SubscriptionType = SubscriptionTypeController.Instance.GetSubscriptionType(Function(st) (st.DesktopModuleId = objProject.ModuleId AndAlso st.SubscriptionName = Integration.Subscription_NewProjectTypeName))
-            Dim currentSubscriptions As List(Of Subscription) = DotNetNuke.Services.Social.Subscriptions.SubscriptionController.Instance.GetContentSubscriptions(PortalId, objType.SubscriptionTypeId, "ModuleId:" & objProject.ModuleId.ToString)
+            Dim deskModuleId As Integer = DesktopModuleController.GetDesktopModuleByFriendlyName("Kickstart").DesktopModuleID
+            Dim objType As SubscriptionType = SubscriptionTypeController.Instance.GetSubscriptionType(Function(st) (st.DesktopModuleId = deskModuleId AndAlso st.SubscriptionName = Integration.Subscription_NewProjectTypeName))
+            Dim currentSubscriptions As IEnumerable(Of Subscription) = DotNetNuke.Services.Social.Subscriptions.SubscriptionController.Instance.GetContentSubscriptions(PortalId, objType.SubscriptionTypeId, "ModuleId:" & objProject.ModuleId.ToString)
 
-            Dim recipients As New List(Of UserInfo)
-            For Each objSubscription As Subscription In currentSubscriptions
-                Dim objUser As UserInfo = UserController.GetUserById(PortalId, objSubscription.UserId)
-                recipients.Add(objUser)
-            Next
+            If currentSubscriptions.Count > 0 Then
 
-            Dim objMessage As New DotNetNuke.Services.Social.Messaging.Message
-            objMessage.Body = String.Format("a new project idea has been posted: {0}. Please check it out: <a href={1}>Link to Project</a>", objProject.Subject, Url)
-            objMessage.SenderUserID = objProject.CreatedBy
-            objMessage.Subject = "New Project Comment"
-            objMessage.ReplyAllAllowed = False
-            objMessage.PortalID = PortalId
+                Dim recipients As New List(Of UserInfo)
+                For Each objSubscription As Subscription In currentSubscriptions
+                    Dim objUser As UserInfo = UserController.GetUserById(PortalId, objSubscription.UserId)
+                    recipients.Add(objUser)
+                Next
 
-            DotNetNuke.Services.Social.Messaging.MessagingController.Instance.SendMessage(objMessage, Nothing, recipients, Nothing)
+                Dim objMessage As New DotNetNuke.Services.Social.Messaging.Message
+                objMessage.Body = String.Format("a new project idea has been posted: {0}. Please check it out: <a href={1}>Link to Project</a>", objProject.Subject, url)
+                objMessage.SenderUserID = objProject.CreatedBy
+                objMessage.Subject = "New Project Comment"
+                objMessage.ReplyAllAllowed = False
+                objMessage.PortalID = PortalId
+
+                DotNetNuke.Services.Social.Messaging.MessagingController.Instance.SendMessage(objMessage, Nothing, recipients, Nothing)
+
+            End If            
 
         End Sub
 
@@ -74,23 +79,28 @@ Namespace Connect.Modules.Kickstart.Integration
 
         Public Shared Sub NotifySubscribersAboutNewComment(PortalId As Integer, objProject As ProjectInfo, objComment As CommentInfo, url As String)
 
-            Dim objType As SubscriptionType = SubscriptionTypeController.Instance.GetSubscriptionType(Function(st) (st.DesktopModuleId = objProject.ModuleId AndAlso st.SubscriptionName = Integration.Subscription_NewCommentTypeName))
-            Dim currentSubscriptions As List(Of Subscription) = DotNetNuke.Services.Social.Subscriptions.SubscriptionController.Instance.GetContentSubscriptions(PortalId, objType.SubscriptionTypeId, "ProjectId:" & objProject.ProjectId.ToString & ":Comment")
+            Dim deskModuleId As Integer = DesktopModuleController.GetDesktopModuleByFriendlyName("Kickstart").DesktopModuleID
+            Dim objType As SubscriptionType = SubscriptionTypeController.Instance.GetSubscriptionType(Function(st) (st.DesktopModuleId = deskModuleId AndAlso st.SubscriptionName = Integration.Subscription_NewCommentTypeName))
+            Dim currentSubscriptions As IEnumerable(Of Subscription) = DotNetNuke.Services.Social.Subscriptions.SubscriptionController.Instance.GetContentSubscriptions(PortalId, objType.SubscriptionTypeId, "ProjectId:" & objProject.ProjectId.ToString & ":Comment")
 
-            Dim recipients As New List(Of UserInfo)
-            For Each objSubscription As Subscription In currentSubscriptions
-                Dim objUser As UserInfo = UserController.GetUserById(PortalId, objSubscription.UserId)
-                recipients.Add(objUser)
-            Next
+            If currentSubscriptions.Count > 0 Then
 
-            Dim objMessage As New DotNetNuke.Services.Social.Messaging.Message
-            objMessage.Body = String.Format("The project {0} has a new comment. Please check it out: <a href={1}>Link to Project</a>", objProject.Subject, Url)
-            objMessage.SenderUserID = objProject.LeadBy
-            objMessage.Subject = "New Project Comment"
-            objMessage.ReplyAllAllowed = False
-            objMessage.PortalID = PortalId
+                Dim recipients As New List(Of UserInfo)
+                For Each objSubscription As Subscription In currentSubscriptions
+                    Dim objUser As UserInfo = UserController.GetUserById(PortalId, objSubscription.UserId)
+                    recipients.Add(objUser)
+                Next
 
-            DotNetNuke.Services.Social.Messaging.MessagingController.Instance.SendMessage(objMessage, Nothing, recipients, Nothing)
+                Dim objMessage As New DotNetNuke.Services.Social.Messaging.Message
+                objMessage.Body = String.Format("The project {0} has a new comment. Please check it out: <a href={1}>Link to Project</a>", objProject.Subject, url)
+                objMessage.SenderUserID = objProject.LeadBy
+                objMessage.Subject = "New Project Comment"
+                objMessage.ReplyAllAllowed = False
+                objMessage.PortalID = PortalId
+
+                DotNetNuke.Services.Social.Messaging.MessagingController.Instance.SendMessage(objMessage, Nothing, recipients, Nothing)
+
+            End If
 
         End Sub
 
@@ -117,25 +127,30 @@ Namespace Connect.Modules.Kickstart.Integration
 
         Public Shared Sub NotifySubscribersAboutNewRelease(PortalId As Integer, objProject As ProjectInfo, url As String)
 
-            Dim objType As SubscriptionType = SubscriptionTypeController.Instance.GetSubscriptionType(Function(st) (st.DesktopModuleId = objProject.ModuleId AndAlso st.SubscriptionName = Integration.Subscription_NewReleaseTypeName))
-            Dim currentSubscriptions As List(Of Subscription) = DotNetNuke.Services.Social.Subscriptions.SubscriptionController.Instance.GetContentSubscriptions(PortalId, objType.SubscriptionTypeId, "ProjectId:" & objProject.ProjectId.ToString & ":Release")
+            Dim deskModuleId As Integer = DesktopModuleController.GetDesktopModuleByFriendlyName("Kickstart").DesktopModuleID
+            Dim objType As SubscriptionType = SubscriptionTypeController.Instance.GetSubscriptionType(Function(st) (st.DesktopModuleId = deskModuleId AndAlso st.SubscriptionName = Integration.Subscription_NewReleaseTypeName))
+            Dim currentSubscriptions As IEnumerable(Of Subscription) = DotNetNuke.Services.Social.Subscriptions.SubscriptionController.Instance.GetContentSubscriptions(PortalId, objType.SubscriptionTypeId, "ProjectId:" & objProject.ProjectId.ToString & ":Release")
 
-            Dim recipients As New List(Of UserInfo)
-            For Each objSubscription As Subscription In currentSubscriptions
-                Dim objUser As UserInfo = UserController.GetUserById(PortalId, objSubscription.UserId)
-                recipients.Add(objUser)
-            Next
+            If currentSubscriptions.Count > 0 Then
 
-            'todo send message  
-            Dim objMessage As New DotNetNuke.Services.Social.Messaging.Message
-            objMessage.Body = String.Format("The project {0} has a new release. Please check it out: <a href={1}>Link to Project</a>", objProject.Subject, url)
-            objMessage.SenderUserID = objProject.LeadBy
-            objMessage.Subject = "New Project Release"
-            objMessage.ReplyAllAllowed = False
-            objMessage.PortalID = PortalId
+                Dim recipients As New List(Of UserInfo)
+                For Each objSubscription As Subscription In currentSubscriptions
+                    Dim objUser As UserInfo = UserController.GetUserById(PortalId, objSubscription.UserId)
+                    recipients.Add(objUser)
+                Next
 
-            DotNetNuke.Services.Social.Messaging.MessagingController.Instance.SendMessage(objMessage, Nothing, recipients, Nothing)
+                'todo send message  
+                Dim objMessage As New DotNetNuke.Services.Social.Messaging.Message
+                objMessage.Body = String.Format("The project {0} has a new release. Please check it out: <a href={1}>Link to Project</a>", objProject.Subject, url)
+                objMessage.SenderUserID = objProject.LeadBy
+                objMessage.Subject = "New Project Release"
+                objMessage.ReplyAllAllowed = False
+                objMessage.PortalID = PortalId
 
+                DotNetNuke.Services.Social.Messaging.MessagingController.Instance.SendMessage(objMessage, Nothing, recipients, Nothing)
+
+            End If
+            
         End Sub
 
         Private Shared Function CreateProjectListSubscription(ModuleId As Integer, UserId As Integer, PortalId As Integer) As Subscription

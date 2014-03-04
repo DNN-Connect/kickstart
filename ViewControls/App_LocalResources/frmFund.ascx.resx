@@ -135,11 +135,11 @@
   <data name="lblAnonymousFunding.Text" xml:space="preserve">
     <value>Anonymous Funding:</value>
   </data>
-  <data name="lblCustomFunding.Help" xml:space="preserve">
-    <value>Alternatively you also fund a custom amount. If the amount entered is higher than one of the available funding options, you will still receive the associated incentive</value>
+  <data name="lblFundingAmount.Help" xml:space="preserve">
+    <value>The amount that you will fund the project with</value>
   </data>
-  <data name="lblCustomFunding.Text" xml:space="preserve">
-    <value>Custom funding amount:</value>
+  <data name="lblFundingAmount.Text" xml:space="preserve">
+    <value>Funding amount:</value>
   </data>
   <data name="lblFundingHeader.Text" xml:space="preserve">
     <value>Funding</value>
@@ -164,5 +164,11 @@
   </data>
   <data name="AddedFunding.Text" xml:space="preserve">
     <value>{0} is funding this project. Thank you for your support!</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="MustEnterAmount.Text" xml:space="preserve">
+    <value>You must enter a funding amount!</value>
   </data>
 </root>

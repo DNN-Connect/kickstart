@@ -31,7 +31,11 @@ Namespace Connect.Modules.Kickstart
             Dim blnIsAuthenticated As Boolean = HttpContext.Current.Request.IsAuthenticated
             Dim blnIsModuleEditor As Boolean = (blnIsAuthenticated AndAlso DotNetNuke.Security.Permissions.ModulePermissionController.HasModulePermission(ActiveModule.ModulePermissions, "EDIT"))
 
-            CanEditProject = (blnIsModuleEditor Or ActiveProject.LeadBy = UserController.GetCurrentUserInfo.UserID)
+            If blnIsAuthenticated Then
+                CanEditProject = (blnIsModuleEditor Or ActiveProject.LeadBy = UserController.GetCurrentUserInfo.UserID Or (ActiveProject.LeadBy = Null.NullInteger And ActiveProject.CreatedBy = UserController.GetCurrentUserInfo.UserID))
+                CanParticipate = blnIsAuthenticated And ActiveProject.LeadBy <> Null.NullInteger
+            End If
+
 
         End Sub
 

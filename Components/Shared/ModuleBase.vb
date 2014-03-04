@@ -75,36 +75,6 @@ Namespace Connect.Modules.Kickstart
             End Get
         End Property
 
-        Public ReadOnly Property ProjectListTabId As Integer
-            Get
-
-                If Settings.Contains("Kickstart_RedirectTabId") Then
-                    If IsNumeric(Settings("Kickstart_RedirectTabId")) Then
-                        Return Convert.ToInt32(Settings("Kickstart_RedirectTabId"))
-                    End If
-                End If
-
-                Return PortalSettings.ActiveTab.TabID
-
-            End Get
-        End Property
-
-        Public ReadOnly Property ProjectDetailsTabId As Integer
-            Get
-
-                If Settings.Contains("Kickstart_RedirectTabId") Then
-                    If IsNumeric(Settings("Kickstart_RedirectTabId")) Then
-                        Return Convert.ToInt32(Settings("Kickstart_RedirectTabId"))
-                    End If
-                End If
-
-                Return PortalSettings.ActiveTab.TabID
-
-            End Get
-        End Property
-
-
-
         Public Sub ReadQuerystring()
 
             If Not Request.QueryString("ProjectId") Is Nothing Then
@@ -213,20 +183,13 @@ Namespace Connect.Modules.Kickstart
 
         Public Function MyFundingAsString() As String
 
-            Dim lstIncentives As New List(Of IncentiveInfo)
-            lstIncentives = IncentiveController.ListByProject(ProjectId)
-
-            If Not lstIncentives Is Nothing AndAlso lstIncentives.Count > 0 Then
-
-                Dim lstFunding As New List(Of FundingInfo)
-                lstFunding = FundingController.ListByProject(ProjectId)
-                For Each objFunding As FundingInfo In lstFunding
-                    If objFunding.UserId = UserId Then
-                        Return Utilities.FormatFunding(objFunding)
-                    End If
-                Next
-
-            End If
+            Dim lstFunding As New List(Of FundingInfo)
+            lstFunding = FundingController.ListByProject(ProjectId)
+            For Each objFunding As FundingInfo In lstFunding
+                If objFunding.UserId = UserId Then
+                    Return Utilities.FormatFunding(objFunding)
+                End If
+            Next
 
             Return ""
 
@@ -234,20 +197,13 @@ Namespace Connect.Modules.Kickstart
 
         Public Function MyFunding() As FundingInfo
 
-            Dim lstIncentives As New List(Of IncentiveInfo)
-            lstIncentives = IncentiveController.ListByProject(ProjectId)
-
-            If Not lstIncentives Is Nothing AndAlso lstIncentives.Count > 0 Then
-
-                Dim lstFunding As New List(Of FundingInfo)
-                lstFunding = FundingController.ListByProject(ProjectId)
-                For Each objFunding As FundingInfo In lstFunding
-                    If objFunding.UserId = UserId Then
-                        Return objFunding
-                    End If
-                Next
-
-            End If
+            Dim lstFunding As New List(Of FundingInfo)
+            lstFunding = FundingController.ListByProject(ProjectId)
+            For Each objFunding As FundingInfo In lstFunding
+                If objFunding.UserId = UserId Then
+                    Return objFunding
+                End If
+            Next
 
             Return Nothing
 
@@ -287,13 +243,13 @@ Namespace Connect.Modules.Kickstart
 
         Public Function ProjectListUrl() As String
 
-            Return NavigateURL(ProjectListTabId)
+            Return NavigateURL(KickstartSettings.ProjectListTabId)
 
         End Function
 
         Public Function ProjectUrl(ProjectId As Integer) As String
 
-            Return NavigateURL(ProjectDetailsTabId, "", "ProjectId=" & ProjectId)
+            Return NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId)
 
         End Function
 

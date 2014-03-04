@@ -135,4 +135,7 @@
   <data name="lblSummary.Text" xml:space="preserve">
     <value>Enter a short summary that briefly describes the idea. We will use that summary in the project listing.</value>
   </data>
+  <data name="UpdateIdea.Text" xml:space="preserve">
+    <value>Update Idea</value>
+  </data>
 </root>

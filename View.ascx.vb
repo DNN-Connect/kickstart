@@ -57,9 +57,15 @@ Namespace Connect.Modules.Kickstart
             End Select
 
             If ActionMode <> "" Then
-                If ViewMode.ToLower = "projectsdetail" Then
+                If ViewMode.ToLower = "projectslist" Then
                     Select Case ActionMode.ToLower
                         Case "create"
+                            _controlToLoad = Me.TemplateSourceDirectory & "/ViewControls/frmIdea.ascx"
+                    End Select
+                End If
+                If ViewMode.ToLower = "projectsdetail" Then
+                    Select Case ActionMode.ToLower
+                        Case "create", "editidea"
                             _controlToLoad = Me.TemplateSourceDirectory & "/ViewControls/frmIdea.ascx"
                         Case "becomelead"
                             _controlToLoad = Me.TemplateSourceDirectory & "/ViewControls/frmBecomeLead.ascx"

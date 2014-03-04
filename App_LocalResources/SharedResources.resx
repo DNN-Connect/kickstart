@@ -375,7 +375,7 @@
   <data name="PlatformRssUrl.Text" xml:space="preserve">
     <value>Public RSS Feed</value>
   </data>
-  <data name="ProjectPlatform.Text" xml:space="preserve">
+  <data name="HostedOn.Text" xml:space="preserve">
     <value>Hosted on</value>
   </data>
   <data name="ProjectUrlLink.Text" xml:space="preserve">
@@ -452,5 +452,17 @@
   </data>
   <data name="AddedFunding.Text" xml:space="preserve">
     <value>{0} is funding this project. Thank you for your support!</value>
+  </data>
+  <data name="CreatorApprovalNote.Text" xml:space="preserve">
+    <value>Your idea has been submitted and is now awaiting approval through our team. That may take some time, usually we will take actions within 48 hours. You will receive a notification once your ideas is approved and visible to the world.</value>
+  </data>
+  <data name="UpdatedIdeaNotificationBody.Text" xml:space="preserve">
+    <value>&lt;p&gt;{0}&lt;/p&gt;&lt;p&gt;&lt;a href="{1}"&gt;Visit Project Page&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="UpdatedIdeaNotificationSubject.Text" xml:space="preserve">
+    <value>Updated Project Idea: {0}</value>
+  </data>
+  <data name="NoLeadYetLong.Text" xml:space="preserve">
+    <value>This project has no lead yet. Without a lead, a project hasn't become active yet. Maybe you want to take over this project?</value>
   </data>
 </root>
