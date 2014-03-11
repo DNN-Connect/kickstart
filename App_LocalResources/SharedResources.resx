@@ -153,7 +153,7 @@
   <data name="Suggested.Text" xml:space="preserve">
     <value>suggested</value>
   </data>
-  <data name="TeamMembers.Text" xml:space="preserve">
+  <data name="TeamMembersPlural.Text" xml:space="preserve">
     <value>team members</value>
   </data>
   <data name="UnLocked.Text" xml:space="preserve">
@@ -337,10 +337,10 @@
     <value>You like this</value>
   </data>
   <data name="ProjectLike.Text" xml:space="preserve">
-    <value>Give +1</value>
+    <value>Vote up</value>
   </data>
   <data name="ProjectUnLike.Text" xml:space="preserve">
-    <value>Remove +1</value>
+    <value>Remove vote</value>
   </data>
   <data name="Cancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -464,5 +464,83 @@
   </data>
   <data name="NoLeadYetLong.Text" xml:space="preserve">
     <value>This project has no lead yet. Without a lead, a project hasn't become active yet. Maybe you want to take over this project?</value>
+  </data>
+  <data name="cmdMySubmissions.Text" xml:space="preserve">
+    <value>My Ideas</value>
+  </data>
+  <data name="cmdViewAll.Text" xml:space="preserve">
+    <value>All Projects</value>
+  </data>
+  <data name="cmdViewApproved.Text" xml:space="preserve">
+    <value>View Approved</value>
+  </data>
+  <data name="cmdViewDeleted.Text" xml:space="preserve">
+    <value>View Deleted</value>
+  </data>
+  <data name="cmdViewMyParticipiation.Text" xml:space="preserve">
+    <value>Projects I'm participating</value>
+  </data>
+  <data name="cmdViewUnapproved.Text" xml:space="preserve">
+    <value>View Unapproved</value>
+  </data>
+  <data name="CurrentVersion.Text" xml:space="preserve">
+    <value>Current Version:</value>
+  </data>
+  <data name="Download.Text" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="VotingLegend.Text" xml:space="preserve">
+    <value>Votes</value>
+  </data>
+  <data name="CurrentVersionDate.Text" xml:space="preserve">
+    <value>Released on:</value>
+  </data>
+  <data name="FullProfileUrl.Text" xml:space="preserve">
+    <value>View Profile</value>
+  </data>
+  <data name="JoinTeam.Text" xml:space="preserve">
+    <value>Join the Team</value>
+  </data>
+  <data name="lblFundingHead.Text" xml:space="preserve">
+    <value>Funding</value>
+  </data>
+  <data name="lblFundingNeeded.Text" xml:space="preserve">
+    <value>{0} {1} needed</value>
+  </data>
+  <data name="lblFundingReached.Text" xml:space="preserve">
+    <value>{0} {1} reached</value>
+  </data>
+  <data name="lblOwnerHead.Text" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="lblReleasesHead.Text" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="lblTeam.Text" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="lnkFund.Text" xml:space="preserve">
+    <value>Fund this Project</value>
+  </data>
+  <data name="lnkManageFunding.Text" xml:space="preserve">
+    <value>My Funding</value>
+  </data>
+  <data name="ManageParticipation.Text1" xml:space="preserve">
+    <value>Manage Participation</value>
+  </data>
+  <data name="TeamMembersSingular.Text" xml:space="preserve">
+    <value>team member</value>
+  </data>
+  <data name="BackToProjects.Text" xml:space="preserve">
+    <value>Return to project list</value>
+  </data>
+  <data name="status-delivered.Text" xml:space="preserve">
+    <value>delivered</value>
+  </data>
+  <data name="status-inprogress.Text" xml:space="preserve">
+    <value>being worked on</value>
+  </data>
+  <data name="status-waiting.Text" xml:space="preserve">
+    <value>suggested</value>
   </data>
 </root>

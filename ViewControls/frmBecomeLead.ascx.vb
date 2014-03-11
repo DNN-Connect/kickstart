@@ -49,14 +49,21 @@ Namespace Connect.Modules.Kickstart
 
         Private Sub BecomeLead()
 
-            Dim lst As New List(Of Integer)
-            lst.Add(ParticipantRole.Manager)
-            ParticipantController.UpdateParticipation(lst, ProjectId, UserId)
+            'check if not already member in another role
+            Dim blnIsTeamMember As Boolean = Utilities.IsTeamMember(UserId, Project, False)
 
-            If Not Project Is Nothing Then
+            Dim pI As New ParticipantInfo
+            pI.ProjectRole = ParticipantRole.Manager
+            pI.UserId = UserId
+            pI.ProjectId = ProjectId
+
+            'add role to particiapant list
+            ParticipantController.Add(pI)
+
+            If blnIsTeamMember = False Then
                 Project.LeadBy = UserId
                 Project.TeamMembers += 1
-                ProjectController.Update(Project)
+                ProjectController.Update(Project) 'update team members count
             End If
 
         End Sub

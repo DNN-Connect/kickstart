@@ -37,9 +37,9 @@ Namespace Connect.Modules.Kickstart.Entities
         End Function
 
         <DataObjectMethod(DataObjectMethodType.Select, True)> _
-        Public Shared Function [PublicList](ByVal ModuleId As Integer, ByVal SortColumn As String, ByVal PageNo As Integer, RecordsPerPage As Integer) As List(Of ProjectInfo)
+        Public Shared Function [PublicList](ByVal ModuleId As Integer, ByVal SortColumn As String, ByVal PageNo As Integer, RecordsPerPage As Integer, IsVisible As Integer, IsDeleted As Integer, CreatedBy As Integer, LeadBy As Integer) As List(Of ProjectInfo)
 
-            Return CBO.FillCollection(Of ProjectInfo)(CType(DotNetNuke.Data.DataProvider.Instance().ExecuteReader("Connect_Kickstart_Project_GetPageByModules", SortColumn, PageNo, RecordsPerPage, ModuleId), IDataReader))
+            Return CBO.FillCollection(Of ProjectInfo)(CType(DotNetNuke.Data.DataProvider.Instance().ExecuteReader("Connect_Kickstart_Project_GetPageByModules", SortColumn, PageNo, RecordsPerPage, ModuleId, GetNull(IsVisible), GetNull(IsDeleted), GetNull(CreatedBy), GetNull(LeadBy)), IDataReader))
 
         End Function
 

@@ -6,7 +6,316 @@ Connect.Modules.Kickstart
 </name>
 </assembly>
 <members>
-<member name="F:Connect.Modules.Kickstart.frmFund.lblFundingHeader">
+<member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlStatus">
+	<summary>
+pnlStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.imgStatus">
+	<summary>
+imgStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblStatus">
+	<summary>
+lblStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlFunding">
+	<summary>
+pnlFunding control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblFundingHead">
+	<summary>
+lblFundingHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblFundingNeeded">
+	<summary>
+lblFundingNeeded control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblFundingReached">
+	<summary>
+lblFundingReached control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblMeterSpan">
+	<summary>
+lblMeterSpan control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lnkFund">
+	<summary>
+lnkFund control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlParticipation">
+	<summary>
+pnlParticipation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlMembers">
+	<summary>
+pnlMembers control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblOwnerHead">
+	<summary>
+lblOwnerHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.imgLead">
+	<summary>
+imgLead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblLeadName">
+	<summary>
+lblLeadName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lnkLeadProfile">
+	<summary>
+lnkLeadProfile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlTeam">
+	<summary>
+pnlTeam control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblTeam">
+	<summary>
+lblTeam control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.rptTeam">
+	<summary>
+rptTeam control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlNoLead">
+	<summary>
+pnlNoLead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblNoLead">
+	<summary>
+lblNoLead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlParticipate">
+	<summary>
+pnlParticipate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lnkParticipate">
+	<summary>
+lnkParticipate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.pnlRelease">
+	<summary>
+pnlRelease control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblReleasesHead">
+	<summary>
+lblReleasesHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblCurrentReleaseVersionLabel">
+	<summary>
+lblCurrentReleaseVersionLabel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblCurrentReleaseVersion">
+	<summary>
+lblCurrentReleaseVersion control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblCurrentReleaseDateLabel">
+	<summary>
+lblCurrentReleaseDateLabel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lblCurrentReleaseDate">
+	<summary>
+lblCurrentReleaseDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.ProjectSidebar.lnkDownload">
+	<summary>
+lnkDownload control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Funding.lblFundingHead">
+	<summary>
+lblFundingHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Funding.lblFundingNeeded">
+	<summary>
+lblFundingNeeded control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Funding.lblFundingReached">
+	<summary>
+lblFundingReached control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Funding.lblMeterSpan">
+	<summary>
+lblMeterSpan control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Funding.lnkFund">
+	<summary>
+lnkFund control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="M:Connect.Modules.Kickstart.Integration.NotificationController.AddNotificationTypes">
+	<summary>
+ This will create a notification type associated w/ the module and also handle the actions that must be associated with it.
+ </summary>
+	<remarks>This should only ever run once, during 1.0.0 install (via IUpgradeable)</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.lblLeadHeading">
+	<summary>
+lblLeadHeading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.lblLeadIntro">
+	<summary>
+lblLeadIntro control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.cmdBecomeLead">
+	<summary>
+cmdBecomeLead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.cmdCancel">
+	<summary>
+cmdCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmFund.lblFundingHeader">
 	<summary>
 lblFundingHeader control.
 </summary>
@@ -145,6 +454,86 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Connect.Modules.Kickstart.frmFund.cmdCancel">
 	<summary>
 cmdCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.lblViewMode">
+	<summary>
+lblViewMode control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.drpViewMode">
+	<summary>
+drpViewMode control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.rowListTab">
+	<summary>
+rowListTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.lblListTab">
+	<summary>
+lblListTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.drpListTab">
+	<summary>
+drpListTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.rowDetailsTab">
+	<summary>
+rowDetailsTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.lblDetailsTab">
+	<summary>
+lblDetailsTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.drpDetailsTab">
+	<summary>
+drpDetailsTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.lblModuleTheme">
+	<summary>
+lblModuleTheme control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.Settings.drpModuleTheme">
+	<summary>
+drpModuleTheme control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -497,163 +886,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Connect.Modules.Kickstart.frmParticipate.cmdCancel">
 	<summary>
 cmdCancel control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Funding.lblFundingHead">
-	<summary>
-lblFundingHead control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Funding.lblFundingNeeded">
-	<summary>
-lblFundingNeeded control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Funding.lblFundingReached">
-	<summary>
-lblFundingReached control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Funding.lblMeterSpan">
-	<summary>
-lblMeterSpan control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Funding.lnkFund">
-	<summary>
-lnkFund control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="M:Connect.Modules.Kickstart.Integration.NotificationController.AddNotificationTypes">
-	<summary>
- This will create a notification type associated w/ the module and also handle the actions that must be associated with it.
- </summary>
-	<remarks>This should only ever run once, during 1.0.0 install (via IUpgradeable)</remarks>
-</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.lblLeadHeading">
-	<summary>
-lblLeadHeading control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.lblLeadIntro">
-	<summary>
-lblLeadIntro control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.cmdBecomeLead">
-	<summary>
-cmdBecomeLead control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.frmBecomeLead.cmdCancel">
-	<summary>
-cmdCancel control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.lblViewMode">
-	<summary>
-lblViewMode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.drpViewMode">
-	<summary>
-drpViewMode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.rowListTab">
-	<summary>
-rowListTab control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.lblListTab">
-	<summary>
-lblListTab control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.drpListTab">
-	<summary>
-drpListTab control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.rowDetailsTab">
-	<summary>
-rowDetailsTab control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.lblDetailsTab">
-	<summary>
-lblDetailsTab control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.drpDetailsTab">
-	<summary>
-drpDetailsTab control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.lblModuleTheme">
-	<summary>
-lblModuleTheme control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Connect.Modules.Kickstart.Settings.drpModuleTheme">
-	<summary>
-drpModuleTheme control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1152,6 +1384,22 @@ txtPlatformUrl control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmProject.lblLogoUrl">
+	<summary>
+lblLogoUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmProject.txtLogoUrl">
+	<summary>
+txtLogoUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Connect.Modules.Kickstart.frmProject.lblIsDelivered">
 	<summary>
 lblIsDelivered control.
@@ -1179,6 +1427,38 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Connect.Modules.Kickstart.frmProject.ctlDateDelivered">
 	<summary>
 ctlDateDelivered control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmProject.lblCurrentVersion">
+	<summary>
+lblCurrentVersion control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmProject.txtCurrentVersion">
+	<summary>
+txtCurrentVersion control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmProject.lblDownloadUrl">
+	<summary>
+lblDownloadUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Connect.Modules.Kickstart.frmProject.txtDownloadUrl">
+	<summary>
+txtDownloadUrl control.
 </summary>
 	<remarks>
 Auto-generated field.

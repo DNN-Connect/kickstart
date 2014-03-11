@@ -1,14 +1,35 @@
-﻿<div class="kickstart-projectlist">
+﻿
+<ul class="dnnActions kickstart-actions">
+    [IfCanSubmit]
+    <li><a href="[CREATEIDEAURL]" class="dnnPrimaryAction">[Resx:cmdCreateIdea]</a></li>
+    [/IfCanSubmit]
+    [IfCanSubscribe]
+    <li><a href="#" class="kickstart-managesubscription-project dnnSecondaryAction">[ifissubscribed][Resx:UnsubscribeFromProjects][/ifissubscribed][ifnotsubscribed][Resx:SubscribeToProjects][/ifnotsubscribed]</a></li>
+    [/IfCanSubscribe]
 
-    <div class="kickstart-actions dnnClear">
+</ul>
 
-        <ul class="dnnActions">
-            [IfCanSubmit]
-            <li><a href="[CREATEIDEAURL]" class="dnnPrimaryAction">[Resx:cmdCreateIdea]</a></li>
-            [/IfCanSubmit]
-            [IfCanSubscribe]
-            <li><a href="#" class="kickstart-managesubscription-project dnnSecondaryAction">[ifissubscribed][Resx:UnsubscribeFromProjects][/ifissubscribed][ifnotsubscribed][Resx:SubscribeToProjects][/ifnotsubscribed]</a></li>
-            [/IfCanSubscribe]
+<div class="kickstart-listcontainer dnnClear">
+
+    <div class="kickstart-viewtabs dnnClear">
+        <ul class="kickstart-viewtabs dnnClear">
+
+            [IfIsAuthenticated]
+            <li><a href="#" class="kickstart-view-myideas" id="cmdViewMySubmissions">[Resx:cmdMySubmissions]</a></li>
+            [/IfIsAuthenticated]
+            [IfCanApprove]
+            <li><a href="#" class="kickstart-view-unapproved" id="cmdViewUnapproved">[Resx:cmdViewUnapproved]</a></li>
+            [/IfCanApprove]
+            [IfCanApprove]
+            <li><a href="#" class="kickstart-view-deleted" id="cmdViewDeleted">[Resx:cmdViewDeleted]</a></li>
+            [/IfCanApprove]
+            [IfIsAuthenticated]
+            <li><a href="#" class="kickstart-view-myparticipation" id="cmdViewMyParticipation">[Resx:cmdViewMyParticipiation]</a></li>
+            [/IfIsAuthenticated]
+            <li><a href="#" class="kickstart-view-all" id="cmdviewAll">[Resx:cmdViewAll]</a></li>
         </ul>
-
     </div>
+    
+    <div class="kickstart-projectlist">
+        
+

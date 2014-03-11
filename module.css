@@ -101,7 +101,7 @@ img.nolead                              { width: 32px; height: 32px; }
 /*.kickstart-config select { height: 28px; padding: 1px 0 0 0; line-height: 28px; }*/
 .currencyinput  { padding: 18px 0 0 0;}
 .fundinginput { padding: 0px 0 0 0;}
-.dnnActions.kickstart-actions { margin: 30px 0 0 0;}
+.dnnActions.kickstart-actions { margin: 10px 0 20px 0;}
 
 .dnnFormItem.checkbox   { padding-bottom: 15px; }
 
@@ -140,7 +140,7 @@ img.nolead                              { width: 32px; height: 32px; }
 
 .kickstart-projectmeter         { padding: 15px; }
 .funding-needed,
-.funding-reached                { color: #fff; }
+.funding-reached                { color: #333; }
 .kickstart-projectmeter .dnnActions li { text-align: center; float: none;}
 
 .kickstart-funding div.selectedIncentive    { padding: 5px 0 25px 0;}
@@ -156,3 +156,168 @@ img.nolead                              { width: 32px; height: 32px; }
 .kickstart-members { padding: 15px; }
 .kickstart-members h4   { padding: 20px 0 10px 0; }
 .kickstart-participant-item { margin: 0 0 5px 0;}
+
+.cmdViewAll { display: none;}
+.cmdViewAll.show    {display: block; }
+
+.kickstart-container { position: relative; min-height: 500px; }
+.kickstart-loading   { position: absolute; left:0; top:0; background: #333; width: 100%; height: 100%; display: none; opacity:0.7; filter:alpha(opacity=70); text-align: center;}
+.kickstart-loading img  { margin: 30% auto; }
+
+
+div.kickstart-viewtabs     { width: 100%; }
+ul.kickstart-viewtabs      { list-style-type: none; padding: 0 0 8px 0; margin: 0; }
+ul.kickstart-viewtabs li   { list-style-type: none; float:left; margin: 0 1px 0 0; }
+ul.kickstart-viewtabs a    { padding: 10px; background: #dadada; color: #333; text-decoration: none; }
+ul.kickstart-viewtabs a.active  { color: #fff !important; background: #999; }
+.kickstart-projectlist      { background: #eee; padding: 10px; border: 1px solid #999; }
+.kickstart-projectitem      { background: #fff; padding: 10px; margin: 0 0 10px 0;}
+
+.kickstart-listcontainer    { position: relative; width: 100%;}
+.kickstart-viewtabs         { width: 100%;}
+.kickstart-projectlist      { width: 100%; position:relative; min-height: 300px; }
+
+.kickstart a.dnnPrimaryAction.kickstart-download        { background: #E671B8 url(images/icn-download.png) 90px 0 no-repeat; padding:  5px 35px 5px 10px;}
+
+
+		.meter { 
+			height: 20px;  /* Can be anything */
+			position: relative;
+			margin: 20px 0px 20px 0px; /* Just for demo spacing */
+			background: #fefefe;
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 0px;
+			border-radius: 0px;
+			padding: 5px;
+			-webkit-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+			-moz-box-shadow   : inset 0 -1px 1px rgba(255,255,255,0.3);
+			box-shadow        : inset 0 -1px 1px rgba(255,255,255,0.3);
+		}
+		.meter > span {
+			display: block;
+			height: 100%;
+			   -webkit-border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 0px;
+			       -moz-border-radius-topright: 0px;
+			    -moz-border-radius-bottomright: 0px;
+			           border-top-right-radius: 0px;
+			        border-bottom-right-radius: 0px;
+			    -webkit-border-top-left-radius: 0px;
+			 -webkit-border-bottom-left-radius: 0px;
+			        -moz-border-radius-topleft: 0px;
+			     -moz-border-radius-bottomleft: 0px;
+			            border-top-left-radius: 0px;
+			         border-bottom-left-radius: 0px;
+			background-color: rgb(43,194,83);
+			background-image: -webkit-gradient(
+			  linear,
+			  left bottom,
+			  left top,
+			  color-stop(0, rgb(43,194,83)),
+			  color-stop(1, rgb(84,240,84))
+			 );
+			background-image: -moz-linear-gradient(
+			  center bottom,
+			  rgb(43,194,83) 37%,
+			  rgb(84,240,84) 69%
+			 );
+			-webkit-box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			-moz-box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			position: relative;
+			overflow: hidden;
+		}
+		.meter > span:after, .animate > span > span {
+			content: "";
+			position: absolute;
+			top: 0; left: 0; bottom: 0; right: 0;
+			background-image: 
+			   -webkit-gradient(linear, 0 0, 100% 100%, 
+			      color-stop(.25, rgba(255, 255, 255, .2)), 
+			      color-stop(.25, transparent), color-stop(.5, transparent), 
+			      color-stop(.5, rgba(255, 255, 255, .2)), 
+			      color-stop(.75, rgba(255, 255, 255, .2)), 
+			      color-stop(.75, transparent), to(transparent)
+			   );
+			background-image: 
+				-moz-linear-gradient(
+				  -45deg, 
+			      rgba(255, 255, 255, .2) 25%, 
+			      transparent 25%, 
+			      transparent 50%, 
+			      rgba(255, 255, 255, .2) 50%, 
+			      rgba(255, 255, 255, .2) 75%, 
+			      transparent 75%, 
+			      transparent
+			   );
+			z-index: 1;
+			-webkit-background-size: 50px 50px;
+			-moz-background-size: 50px 50px;
+			background-size: 50px 50px;
+			-webkit-animation: move 2s linear infinite;
+			-moz-animation: move 2s linear infinite;
+			   -webkit-border-top-right-radius: 8px;
+			-webkit-border-bottom-right-radius: 8px;
+			       -moz-border-radius-topright: 8px;
+			    -moz-border-radius-bottomright: 8px;
+			           border-top-right-radius: 8px;
+			        border-bottom-right-radius: 8px;
+			    -webkit-border-top-left-radius: 20px;
+			 -webkit-border-bottom-left-radius: 20px;
+			        -moz-border-radius-topleft: 20px;
+			     -moz-border-radius-bottomleft: 20px;
+			            border-top-left-radius: 20px;
+			         border-bottom-left-radius: 20px;
+			overflow: hidden;
+		}
+		
+		.animate > span:after {
+			display: none;
+		}
+		
+		@-webkit-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+		
+		@-moz-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+		
+		
+		
+		.nostripes > span > span, .nostripes > span:after {
+			-webkit-animation: none;
+			-moz-animation: none;
+			background-image: none;
+		}
+
+        .kickstart-sidebar { padding: 15px; }
+        .kickstart-sidebar h4   { padding: 10px 0 25px 0;}
+        .kickstart-sidebarpanel { margin: 0 0 30px 0;}
+        .kickstart-sidebarpanel p   { margin: 0 0 1px 0; padding: 0;}
+
+        p.status    { text-align: center; padding: 0; margin: 0;}
+        p.status img    { margin: 0 0 20px 0;}
+        p.status span   { font-weight: bold; color: #000; }
+
+.pnlStatus {
+    background: none repeat scroll 0 0 #E671B8;
+    margin: -15px -15px 15px;
+    padding: 30px 0;
+}

@@ -138,6 +138,8 @@
     <Compile Include="Components\Integration\JournalController.vb" />
     <Compile Include="Components\Permissions\KickstartAuthorizeAttribute.vb" />
     <Compile Include="Components\Settings\Settings.vb" />
+    <Compile Include="Components\Shared\CacheUtilities.vb" />
+    <Compile Include="Components\Shared\Enums.vb" />
     <Compile Include="Components\Shared\Utilities.vb" />
     <Compile Include="Components\Templates\ParticipantsTemplateController.vb" />
     <Compile Include="Components\Templates\CommentsTemplateController.vb" />
@@ -171,6 +173,13 @@
     </Compile>
     <Compile Include="ViewControls\frmFund.ascx.vb">
       <DependentUpon>frmFund.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewControls\ProjectSidebar.ascx.designer.vb">
+      <DependentUpon>ProjectSidebar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\ProjectSidebar.ascx.vb">
+      <DependentUpon>ProjectSidebar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewControls\ProjectMembers.ascx.designer.vb">
@@ -239,6 +248,20 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\CreateTables.sql" />
     <Content Include="ReleaseNotes.txt" />
     <Content Include="Settings.ascx" />
+    <Content Include="Templates\ProjectDownloads\Comment_ListFooter.html" />
+    <Content Include="Templates\ProjectDownloads\Comment_ListHeader.html" />
+    <Content Include="Templates\ProjectDownloads\Comment_ListItem.html" />
+    <Content Include="Templates\ProjectDownloads\Participants_ListFooter.html" />
+    <Content Include="Templates\ProjectDownloads\Participants_ListHeader.html" />
+    <Content Include="Templates\ProjectDownloads\Participants_ListItem.html" />
+    <Content Include="Templates\ProjectDownloads\Project_Details.html" />
+    <Content Include="Templates\ProjectDownloads\Project_ListFooter.html" />
+    <Content Include="Templates\ProjectDownloads\Project_ListHeader.html" />
+    <Content Include="Templates\ProjectDownloads\Project_ListItem.html" />
+    <Content Include="Templates\ProjectDownloads\Project_Status.html" />
+    <Content Include="Templates\ProjectDownloads\TeamMembers_ListFooter.html" />
+    <Content Include="Templates\ProjectDownloads\TeamMembers_ListHeader.html" />
+    <Content Include="Templates\ProjectDownloads\TeamMembers_ListItem.html" />
     <Content Include="Templates\DnnConnect\Comment_ListFooter.html" />
     <Content Include="Templates\DnnConnect\Comment_ListHeader.html" />
     <Content Include="Templates\DnnConnect\Comment_ListItem.html" />
@@ -269,6 +292,7 @@
     <Content Include="Templates\Default\Project_ListHeader.html" />
     <Content Include="View.ascx" />
     <Content Include="ViewControls\frmFund.ascx" />
+    <Content Include="ViewControls\ProjectSidebar.ascx" />
     <Content Include="ViewControls\ProjectMembers.ascx" />
     <Content Include="ViewControls\images\Delete.png" />
     <Content Include="ViewControls\images\Edit.png" />
@@ -317,6 +341,7 @@
     <Content Include="ViewControls\App_LocalResources\ProjectsList.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.02.sqldataprovider" />
     <None Include="Providers\DataProviders\SqlDataProvider\01.00.00.sqldataprovider" />
   </ItemGroup>
   <ItemGroup>

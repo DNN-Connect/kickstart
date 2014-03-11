@@ -93,11 +93,11 @@ Namespace Connect.Modules.Kickstart
         End Sub
 
         Private Sub cmdEditProject_Click(sender As Object, e As EventArgs) Handles cmdEditProject.Click
-            Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString, "Action=EditProject"))
+            Response.Redirect(Utilities.NavigateUrl(ProjectId, KickstartSettings.ProjectDetailsTabId, Kickstart.ActionMode.EditProject))
         End Sub
 
         Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
-            Response.Redirect(NavigateURL(KickstartSettings.ProjectDetailsTabId, "", "ProjectId=" & ProjectId.ToString))
+            Response.Redirect(Utilities.NavigateUrl(ProjectId, KickstartSettings.ProjectDetailsTabId))
         End Sub
 
 #End Region
@@ -112,6 +112,9 @@ Namespace Connect.Modules.Kickstart
 
         Private Sub Participate(Role As ParticipantRole)
 
+            'check if not already member in another role
+            Dim blnIsTeamMember As Boolean = Utilities.IsTeamMember(UserId, Project, False)
+
             Dim pI As New ParticipantInfo
             pI.ProjectRole = Role
             pI.UserId = UserId
@@ -120,8 +123,7 @@ Namespace Connect.Modules.Kickstart
             'add role to particiapant list
             ParticipantController.Add(pI)
 
-            'check if not already member in another role
-            If Not Utilities.IsTeamMember(UserId, Project) Then
+            If blnIsTeamMember = False Then
                 Project.TeamMembers += 1
                 ProjectController.Update(Project) 'update team members count
             End If
@@ -141,8 +143,11 @@ Namespace Connect.Modules.Kickstart
                     ParticipantController.Delete(pI.ParticipationId)
 
                     'check if still team member in another role maybe
-                    If Not Utilities.IsTeamMember(UserId, Project) Then
+                    If Not Utilities.IsTeamMember(UserId, Project, False) Then
                         Project.TeamMembers -= 1
+                        If Project.TeamMembers < 0 Then
+                            Project.TeamMembers = 0
+                        End If
                         ProjectController.Update(Project) 'reset team members count
                     End If
 
@@ -172,62 +177,46 @@ Namespace Connect.Modules.Kickstart
 
         Private Sub BindData()
 
-            Dim intDesignersNeeded As Integer = Config.DesignersNeeded
-            Dim intDevelopersNeeded As Integer = Config.DevelopersNeeded
-            Dim intManagersNeeded As Integer = Config.ManagersNeeded
-            Dim intTranslatordNeeded As Integer = Config.TranslatorsNeeded
-            Dim intTestersNeeded As Integer = Config.TestersNeeded
-
             Dim intCurrentManagers As Integer = 0
 
             Dim currentParticipation As List(Of ParticipantInfo) = ParticipantController.ListByProject(ProjectId)
             For Each pI As ParticipantInfo In currentParticipation
                 If pI.ProjectRole = ParticipantRole.Designer Then
-                    intDesignersNeeded -= 1
                     AddParticipant(pnlDesignersCurrent, pI.UserId)
                 End If
                 If pI.ProjectRole = ParticipantRole.Developer Then
-                    intDevelopersNeeded -= 1
                     AddParticipant(pnlDevelopersCurrent, pI.UserId)
                 End If
                 If pI.ProjectRole = ParticipantRole.Manager Then
-                    intManagersNeeded -= 1
                     AddParticipant(pnlManagersCurrent, pI.UserId)
                     intCurrentManagers += 1
                 End If
                 If pI.ProjectRole = ParticipantRole.Tester Then
-                    intTestersNeeded -= 1
                     AddParticipant(pnlTestersCurrent, pI.UserId)
                 End If
                 If pI.ProjectRole = ParticipantRole.Translator Then
-                    intTranslatordNeeded -= 1
                     AddParticipant(pnlTranslatotsCurrent, pI.UserId)
                 End If
             Next
 
-            If intDesignersNeeded < 0 Then intDesignersNeeded = 0
-            If intDevelopersNeeded < 0 Then intDevelopersNeeded = 0
-            If intManagersNeeded < 0 Then intManagersNeeded = 0
-            If intTestersNeeded < 0 Then intTestersNeeded = 0
-            If intTranslatordNeeded < 0 Then intTranslatordNeeded = 0
 
-            lblDesignersNeeded.Text += intDesignersNeeded.ToString
-            cmdBecomeDesigner.Visible = intDesignersNeeded > 0
+            lblDesignersNeeded.Text += Config.DesignersNeeded.ToString
+            cmdBecomeDesigner.Visible = Config.DesignersNeeded > 0
 
-            lblDevelopersNeeded.Text += intDevelopersNeeded.ToString
-            cmdBecomeDeveloper.Visible = intDevelopersNeeded > 0
+            lblDevelopersNeeded.Text += Config.DevelopersNeeded.ToString
+            cmdBecomeDeveloper.Visible = Config.DevelopersNeeded > 0
 
-            lblManagersNeeded.Text += intManagersNeeded.ToString
-            cmdBecomeManager.Visible = intManagersNeeded > 0
+            lblManagersNeeded.Text += Config.ManagersNeeded.ToString
+            cmdBecomeManager.Visible = Config.ManagersNeeded > 0
 
-            lblTranlatorsNeeded.Text += intTranslatordNeeded.ToString
-            cmdBecomeTranslator.Visible = intTranslatordNeeded > 0
+            lblTranlatorsNeeded.Text += Config.TranslatorsNeeded.ToString
+            cmdBecomeTranslator.Visible = Config.TranslatorsNeeded > 0
 
-            lblTestersNeeded.Text += intTestersNeeded.ToString
-            cmdBecomeTester.Visible = intTestersNeeded > 0
+            lblTestersNeeded.Text += Config.TestersNeeded.ToString
+            cmdBecomeTester.Visible = Config.TestersNeeded > 0
 
 
-            Dim myParticipation As List(Of ParticipantInfo) = ParticipantController.ListByUsers(UserId)
+            Dim myParticipation As List(Of ParticipantInfo) = ParticipantController.GetUserParticipation(UserId, ProjectId)
             For Each pI As ParticipantInfo In myParticipation
                 If pI.ProjectRole = ParticipantRole.Designer Then
                     cmdBecomeDesigner.Visible = False

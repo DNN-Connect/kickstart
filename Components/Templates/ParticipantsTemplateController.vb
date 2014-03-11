@@ -91,9 +91,9 @@ Namespace Connect.Modules.Kickstart.Templates
                             End If
                             strHtml += usrParticipant.DisplayName
 
-                        Case "participantrole"
+                        Case "participantroles"
 
-                            strHtml += objParticipant.ProjectRole.ToString
+                            strHtml += objParticipant.ProjectRoles
 
                         Case "participantuserid"
 

@@ -131,6 +131,7 @@
         
         $(".kickstart-projectdetails").hide().html(data).slideDown("slow");
         attachStatusActions();
+
     }
 
     function processStatusResponse(data) {

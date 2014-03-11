@@ -384,6 +384,24 @@ Namespace Connect.Modules.Kickstart
         Protected WithEvents txtPlatformUrl As Global.System.Web.UI.WebControls.TextBox
 
         '''<summary>
+        '''lblLogoUrl control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblLogoUrl As Global.DotNetNuke.UI.UserControls.LabelControl
+
+        '''<summary>
+        '''txtLogoUrl control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents txtLogoUrl As Global.System.Web.UI.WebControls.TextBox
+
+        '''<summary>
         '''lblIsDelivered control.
         '''</summary>
         '''<remarks>
@@ -418,6 +436,42 @@ Namespace Connect.Modules.Kickstart
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents ctlDateDelivered As Global.DotNetNuke.Web.UI.WebControls.DnnDatePicker
+
+        '''<summary>
+        '''lblCurrentVersion control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblCurrentVersion As Global.DotNetNuke.UI.UserControls.LabelControl
+
+        '''<summary>
+        '''txtCurrentVersion control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents txtCurrentVersion As Global.System.Web.UI.WebControls.TextBox
+
+        '''<summary>
+        '''lblDownloadUrl control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblDownloadUrl As Global.DotNetNuke.UI.UserControls.LabelControl
+
+        '''<summary>
+        '''txtDownloadUrl control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents txtDownloadUrl As Global.System.Web.UI.WebControls.TextBox
 
         '''<summary>
         '''rptTeam control.

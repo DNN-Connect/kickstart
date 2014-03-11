@@ -1,0 +1,31 @@
+﻿
+</div>
+
+[IfCanComment]
+<a name="reply"></a>
+<div class="kickstart-comment-form dnnClear dnnForm">
+    
+    <h4 class="commenthead">[Resx:AddComment]</h4>
+
+    <div class="dnnFormItem">
+        <div class="kickstart-quote"></div>
+        <textarea class="kickstart-commentcontrol"></textarea>
+    </div>
+
+    <ul class="dnnActions">
+        <li><a href="#" class="dnnPrimaryAction submitcomment">[Resx:PostComment]</a></li>
+
+        [IfCanSubscribe]
+        <li><a href="#" class="kickstart-managesubscription-comment dnnSecondaryAction">[ifissubscribed][Resx:UnsubscribeFromComment][/ifissubscribed][ifnotsubscribed][Resx:SubscribeToComment][/ifnotsubscribed]</a></li>
+        [/IfCanSubscribe]
+
+    </ul>
+
+</div>
+[/IfCanComment]
+
+[IfIsAnonymous]
+    <ul class="dnnActions dnnClear">
+        <li><a href="[LoginUrl]" class="dnnPrimaryAction">[Resx:LoginToComment]</a></li>
+    </ul>
+[/IfIsAnonymous]

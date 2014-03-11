@@ -1,46 +1,74 @@
-﻿    
-[IfIsHidden]
-<div class="dnnFormMessage dnnFormWarning">[Resx:CreatorApprovalNote]</div>
-[/IfIsHidden]
-<div class="kickstart-projectitem">
+﻿    <div class="kickstart-projectitem">
 
         <h2>[Subject]</h2>
         <p>[Content]</p>
         <div class="kickstart-projectitem-meta dnnClear">
 
+            [HasLead]
+            <div class="kickstart-projectitem-metabox lead">
+                <img src="[LeadByPictureUrl]" />
+                <div class="kickstart-projectitem-metabox-content">
+                    <span class="line1">[LeadByDisplayname]</span>
+                    <span class="line2"><a href="[LeadByProfileUrl]">[Resx:ViewProfile]</a></span>
+                </div>
+            </div>
+            [/HasLead]
+            [HasNoLead]
+            <div class="kickstart-projectitem-metabox nolead">
+                <div class="kickstart-projectitem-metabox-content">
+                    <span class="line1">[Resx:NoLeadYet]</span>
+                    <span class="line2"><a href="[BecomeALeadUrl]">[Resx:BecomeLead]</a></span>
+                </div>
+            </div>
+            [/HasNoLead]
+
             <div class="kickstart-projectitem-metabox votes">
-                <span class="votes-count">+[VotesCount]</span><span class="votes-text">[Resx:Votes]</span>
-                [IfIsAuthenticated]
-                [ifcanvote]<a href="#" class="kickstart-projectitem-like">[Resx:ProjectLike]</a>[/ifcanvote]
-                [ifcannotvote]<a href="#" class="kickstart-projectitem-unlike">[Resx:ProjectUnLike]</a>[/ifcannotvote]
-                [/IfIsAuthenticated]
+                <div class="kickstart-projectitem-metabox-content">
+                    <span class="votes-count">+[VotesCount]</span><span class="votes-text">[Resx:Votes]</span>
+                    [IfIsAuthenticated]
+                    [ifcanvote]<a href="#" class="kickstart-projectitem-like">[Resx:ProjectLike]</a>[/ifcanvote]
+                    [ifcannotvote]<a href="#" class="kickstart-projectitem-unlike">[Resx:ProjectUnLike]</a>[/ifcannotvote]
+                    [/IfIsAuthenticated]
+                </div>
             </div>
 
-            [hasexternals]
+            <div class="kickstart-projectitem-metabox members">
+                <div class="kickstart-projectitem-metabox-content">
+                    <a href="#" class="kickstart-memberlist-popuplink">[TeamMembersCount] [Resx:TeamMembers]</a>
+                    <div class="kickstart-memberlist-popup">[Participants]</div>
+                </div>
+            </div>
+
+            [HasExternals]
             <div class="kickstart-projectitem-metabox external">
-                
-                [hasprojecturl]
-                <p><a href="[projecturl]" target="_blank">[Resx:ProjectUrlLink]</a></p>
-                [/hasprojecturl]
-                
-                [hasprojectplatform]
-                <p>[Resx:ProjectPlatform] [projectplatform]</p>
-                [/hasprojectplatform]
+                <div class="kickstart-projectitem-metabox-content">
+                    
+                    [HasProjectUrl]
+                    <span class="line1">[hasprojectplatform][resx:HostedOn] [/HasProjectPlatform]<a href="[ProjectUrl]" target="_blank">[HasProjectPlatform][ProjectPlatform][/HasProjectPlatform][HasNoProjectPlatform][Resx:ProjectUrlLink][/HasNoProjectPlatform]</a></span>
+                    [/HasProjectUrl]
+                    [HasPlatformRssUrl]
+                    <span class="line2"><a href="[PlatformRssUrl]" target="_blank">[Resx:PlatformRssUrl]</a></span>
+                    [/HasPlatformRssUrl]
 
-                [hasplatformrssurl]
-                <p><a href="[platformrssurl]" target="_blank">[Resx:PlatformRssUrl]</a></p>
-                [/hasplatformrssurl]
-
+                </div>
             </div>
-            [/hasexternals]
+            [/HasExternals]
 
             [IfCanSubscribe]
             <div class="kickstart-projectitem-metabox subscribe">
-                <div class="link">
+                <div class="kickstart-projectitem-metabox-content">
                     <a href="#" class="kickstart-managesubscription-release">[ifissubscribed][Resx:UnsubscribeFromRelease][/ifissubscribed][ifnotsubscribed][Resx:SubscribeToRelease][/ifnotsubscribed]</a>
                 </div>
             </div>
             [/IfCanSubscribe]
+
+            [IfCanParticipate]
+            <div class="kickstart-projectitem-metabox participate">
+                <div class="kickstart-projectitem-metabox-content">
+                    <a href="[ManageParticipationUrl]" class="kickstart-managesubscription-participate">[ifisparticipating][Resx:ManageParticipation][/ifisparticipating][ifnotparticipating][Resx:cmdParticipate][/ifnotparticipating]</a>
+                </div>
+            </div>
+            [/IfCanParticipate]
 
         </div>
 

@@ -1,18 +1,35 @@
-﻿function loadProjects(mid, pageNo, recordsCount, sortCol, success) {
+﻿var counter = 2;
+
+
+function decrement() {
+    if (--counter == 0) {
+        $(".kickstart-loading").hide();
+    }
+}
+
+function loadProjects(mid, pageNo, recordsCount, sortCol, isVisible, isDeleted, createdBy, leadBy, participantId, success) {
 
     var sf = $.ServicesFramework(mid);
-
+    counter = 2;
+    setTimeout(decrement, 500);
     $.ajax({
         type: "POST",
         url: sf.getServiceRoot('Connect/Kickstart') + 'Kickstart/GetProjectList',
-        beforeSend: sf.setModuleHeaders,
-        data: { PageNo: pageNo, RecordsPerPage: recordsCount, SortCol: sortCol },
+        beforeSend: function(xhr) {
+            showLoading();
+            sf.setModuleHeaders(xhr);            
+        },
+        data: { PageNo: pageNo, RecordsPerPage: recordsCount, SortCol: sortCol, IsVisible: isVisible, IsDeleted: isDeleted, CreatedBy: createdBy, LeadBy: leadBy, ParticipantId: participantId },
         success: success,
         error: function (xhr, status, error) {
             alert(error);
         }
     });
 
+}
+
+function showLoading() {
+    $(".kickstart-loading").show();
 }
 
 function loadProjectsPaging(mid, recordsCount, success) {

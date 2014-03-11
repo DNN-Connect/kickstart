@@ -1,0 +1,151 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Comment_GetByProject    Script Date: Freitag, 14. Februar 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPageByModules') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPageByModules
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Connect_Kickstart_Project_GetPageByModules
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Connect_Kickstart_Project_GetPageByModules
+	@SortCol NVARCHAR(30),
+	@RequiredPage INT,
+	@RecordsPerPage INT,
+    @ModuleId int,
+	@Visible int,
+	@Deleted int,
+	@CreatedBy int,
+	@LeadBy int
+AS
+DECLARE @tabTempSort TABLE(
+	RowNum INT IDENTITY(1, 1) PRIMARY KEY CLUSTERED,
+		ProjectId int
+)
+	
+INSERT @tabTempSort 
+(
+	ProjectId
+)
+SELECT	
+	ProjectId
+FROM 
+	{objectQualifier}Connect_Kickstart_Project
+WHERE
+	ModuleId = @ModuleId  
+ORDER BY 
+	CASE WHEN @SortCol = 'ProjectId_D'  THEN ProjectId else null END desc,
+	CASE WHEN @SortCol = 'ProjectId'  THEN ProjectId else null END asc,
+ 	CASE WHEN @SortCol = 'ModuleId_D'  THEN ModuleId else null END desc,
+	CASE WHEN @SortCol = 'ModuleId'  THEN ModuleId else null END asc,
+ 	CASE WHEN @SortCol = 'ContentItemId_D'  THEN ContentItemId else null END desc,
+	CASE WHEN @SortCol = 'ContentItemId'  THEN ContentItemId else null END asc,
+ 	CASE WHEN @SortCol = 'Status_D'  THEN Status else null END desc,
+	CASE WHEN @SortCol = 'Status'  THEN Status else null END asc,
+ 	CASE WHEN @SortCol = 'Subject_D'  THEN Subject else null END desc,
+	CASE WHEN @SortCol = 'Subject'  THEN Subject else null END asc,
+ 	CASE WHEN @SortCol = 'Summary_D'  THEN Summary else null END desc,
+	CASE WHEN @SortCol = 'Summary'  THEN Summary else null END asc,
+ 	CASE WHEN @SortCol = 'Content_D'  THEN Content else null END desc,
+	CASE WHEN @SortCol = 'Content'  THEN Content else null END asc,
+ 	CASE WHEN @SortCol = 'ProjectUrl_D'  THEN ProjectUrl else null END desc,
+	CASE WHEN @SortCol = 'ProjectUrl'  THEN ProjectUrl else null END asc,
+ 	CASE WHEN @SortCol = 'ProjectPlatform_D'  THEN ProjectPlatform else null END desc,
+	CASE WHEN @SortCol = 'ProjectPlatform'  THEN ProjectPlatform else null END asc,
+ 	CASE WHEN @SortCol = 'PlatformRssUrl_D'  THEN PlatformRssUrl else null END desc,
+	CASE WHEN @SortCol = 'PlatformRssUrl'  THEN PlatformRssUrl else null END asc,
+ 	CASE WHEN @SortCol = 'DateScheduled_D'  THEN DateScheduled else null END desc,
+	CASE WHEN @SortCol = 'DateScheduled'  THEN DateScheduled else null END asc,
+ 	CASE WHEN @SortCol = 'DateDelivered_D'  THEN DateDelivered else null END desc,
+	CASE WHEN @SortCol = 'DateDelivered'  THEN DateDelivered else null END asc,
+ 	CASE WHEN @SortCol = 'DateCreated_D'  THEN DateCreated else null END desc,
+	CASE WHEN @SortCol = 'DateCreated'  THEN DateCreated else null END asc,
+ 	CASE WHEN @SortCol = 'DateLocked_D'  THEN DateLocked else null END desc,
+	CASE WHEN @SortCol = 'DateLocked'  THEN DateLocked else null END asc,
+ 	CASE WHEN @SortCol = 'DateDeleted_D'  THEN DateDeleted else null END desc,
+	CASE WHEN @SortCol = 'DateDeleted'  THEN DateDeleted else null END asc,
+ 	CASE WHEN @SortCol = 'CreatedBy_D'  THEN CreatedBy else null END desc,
+	CASE WHEN @SortCol = 'CreatedBy'  THEN CreatedBy else null END asc,
+ 	CASE WHEN @SortCol = 'LockedBy_D'  THEN LockedBy else null END desc,
+	CASE WHEN @SortCol = 'LockedBy'  THEN LockedBy else null END asc,
+ 	CASE WHEN @SortCol = 'DeletedBy_D'  THEN DeletedBy else null END desc,
+	CASE WHEN @SortCol = 'DeletedBy'  THEN DeletedBy else null END asc,
+ 	CASE WHEN @SortCol = 'LeadBy_D'  THEN LeadBy else null END desc,
+	CASE WHEN @SortCol = 'LeadBy'  THEN LeadBy else null END asc,
+ 	CASE WHEN @SortCol = 'IsVisible_D'  THEN IsVisible else null END desc,
+	CASE WHEN @SortCol = 'IsVisible'  THEN IsVisible else null END asc,
+ 	CASE WHEN @SortCol = 'IsLocked_D'  THEN IsLocked else null END desc,
+	CASE WHEN @SortCol = 'IsLocked'  THEN IsLocked else null END asc,
+ 	CASE WHEN @SortCol = 'IsDeleted_D'  THEN IsDeleted else null END desc,
+	CASE WHEN @SortCol = 'IsDeleted'  THEN IsDeleted else null END asc,
+ 	CASE WHEN @SortCol = 'IsDelivered_D'  THEN IsDelivered else null END desc,
+	CASE WHEN @SortCol = 'IsDelivered'  THEN IsDelivered else null END asc,
+ 	CASE WHEN @SortCol = 'Views_D'  THEN Views else null END desc,
+	CASE WHEN @SortCol = 'Views'  THEN Views else null END asc,
+ 	CASE WHEN @SortCol = 'Comments_D'  THEN Comments else null END desc,
+	CASE WHEN @SortCol = 'Comments'  THEN Comments else null END asc,
+ 	CASE WHEN @SortCol = 'Votes_D'  THEN Votes else null END desc,
+	CASE WHEN @SortCol = 'Votes'  THEN Votes else null END asc,
+ 	CASE WHEN @SortCol = 'TeamMembers_D'  THEN TeamMembers else null END desc,
+	CASE WHEN @SortCol = 'TeamMembers'  THEN TeamMembers else null END asc
+
+SELECT 
+	t1.ProjectId,
+ 	t1.ModuleId,
+ 	t1.ContentItemId,
+ 	t1.Status,
+ 	t1.Subject,
+ 	t1.Summary,
+ 	t1.Content,
+ 	t1.ProjectUrl,
+ 	t1.ProjectPlatform,
+ 	t1.PlatformRssUrl,
+ 	t1.DateScheduled,
+ 	t1.DateDelivered,
+ 	t1.DateCreated,
+ 	t1.DateLocked,
+ 	t1.DateDeleted,
+ 	t1.CreatedBy,
+ 	t1.LockedBy,
+ 	t1.DeletedBy,
+ 	t1.LeadBy,
+ 	t1.IsVisible,
+ 	t1.IsLocked,
+ 	t1.IsDeleted,
+ 	t1.IsDelivered,
+ 	t1.Views,
+ 	t1.Comments,
+ 	t1.Votes,
+ 	t1.TeamMembers
+FROM 
+	{objectQualifier}Connect_Kickstart_Project t1
+INNER JOIN 
+	@tabTempSort t2 
+ON
+	t1.ProjectId = t2.ProjectId
+WHERE 
+	RowNum BETWEEN (@RequiredPage - 1) * @RecordsPerPage + 1 
+	AND @RequiredPage * @RecordsPerPage
+AND
+    [t1].[ModuleId] = @ModuleId
+AND
+	([t1].IsDeleted = @Deleted or @Deleted is NULL)
+AND
+	([t1].IsVisible = @Visible or @Visible is NULL)
+AND
+	([t1].CreatedBy = @CreatedBy or @CreatedBy is NULL)
+AND
+	([t1].LeadBy = @LeadBy or @Leadby is NULL)
+
+SET QUOTED_IDENTIFIER OFF

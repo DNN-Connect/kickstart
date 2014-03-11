@@ -315,8 +315,6 @@ Namespace Connect.Modules.Kickstart.Entities
             End Set
         End Property
 
-
-
         Public Property Votes() As Int32
             Get
                 Return _votes
@@ -325,8 +323,6 @@ Namespace Connect.Modules.Kickstart.Entities
                 _votes = Value
             End Set
         End Property
-
-
 
         Public Property TeamMembers() As Int32
             Get

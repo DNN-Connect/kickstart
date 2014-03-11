@@ -1,6 +1,7 @@
 ﻿Imports Connect.Modules.Kickstart.Entities
 Imports DotNetNuke.Entities.Users
 Imports DotNetNuke.Security.Permissions
+Imports Connect.Modules.Kickstart.Entities.ParticipantInfo
 
 Namespace Connect.Modules.Kickstart
     Public Class frmProject
@@ -30,8 +31,6 @@ Namespace Connect.Modules.Kickstart
         End Sub
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
-
 
             BindLocalization()
 
@@ -144,8 +143,11 @@ Namespace Connect.Modules.Kickstart
                     ParticipantController.Delete(pI.ParticipationId)
 
                     'check if still team member in another role maybe
-                    If Not Utilities.IsTeamMember(UserId, Project) Then
+                    If Not Utilities.IsTeamMember(UserId, Project, False) Then
                         Project.TeamMembers -= 1
+                        If Project.TeamMembers < 0 Then
+                            Project.TeamMembers = 0
+                        End If
                         ProjectController.Update(Project) 'reset team members count
                     End If
 
@@ -220,9 +222,32 @@ Namespace Connect.Modules.Kickstart
                 config.TestersNeeded = 0
                 config.TranslatorsNeeded = 0
                 config.FundingCurrency = drpFundingCurrency.SelectedValue
+                config.LogoUrl = ""
+                config.DownloadUrl = ""
+                config.CurrentVersion = ""
                 config.InitializedOnly = True
                 ConfigController.UpdateConfig(ProjectId, config)
+                CacheUtilities.ClearConfig(ProjectId)
             End If
+
+            Dim currentParticipation As List(Of ParticipantInfo) = ParticipantController.ListByProject(ProjectId)
+            For Each pI As ParticipantInfo In currentParticipation
+                If pI.ProjectRole = ParticipantRole.Designer Then
+                    config.DesignersNeeded += 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Developer Then
+                    config.DevelopersNeeded += 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Manager Then
+                    config.ManagersNeeded += 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Tester Then
+                    config.TestersNeeded += 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Translator Then
+                    config.TranslatorsNeeded += 1
+                End If
+            Next
 
             ctlDevelopersNeeded.Value = Convert.ToDecimal(config.DevelopersNeeded)
             ctlDesignersNeeded.Value = Convert.ToDecimal(config.DesignersNeeded)
@@ -230,6 +255,9 @@ Namespace Connect.Modules.Kickstart
             ctlManagersNeeded.Value = Convert.ToDecimal(config.ManagersNeeded)
             ctlTestersNeeded.Value = Convert.ToDecimal(config.TestersNeeded)
             ctlTranslatorsNeeded.Value = Convert.ToDecimal(config.TranslatorsNeeded)
+            txtLogoUrl.Text = Convert.ToString(config.LogoUrl)
+            txtDownloadUrl.Text = Convert.ToString(config.DownloadUrl)
+            txtCurrentVersion.Text = Convert.ToString(config.CurrentVersion)
 
             drpFundingCurrency.SelectedValue = config.FundingCurrency
 
@@ -261,7 +289,24 @@ Namespace Connect.Modules.Kickstart
                 config.IdeaDescription = Project.Content
             End If
 
+            If txtLogoUrl.Text.Length > 0 Then
+                If txtLogoUrl.Text.ToLower.StartsWith("https://") OrElse txtLogoUrl.Text.ToLower.StartsWith("http://") Then
+                    config.LogoUrl = txtLogoUrl.Text
+                End If
+            End If
+
+            If txtDownloadUrl.Text.Length > 0 Then
+                If txtDownloadUrl.Text.ToLower.StartsWith("https://") OrElse txtDownloadUrl.Text.ToLower.StartsWith("http://") Then
+                    config.DownloadUrl = txtDownloadUrl.Text
+                End If
+            End If
+
+            If txtCurrentVersion.Text.Length > 0 Then
+                config.CurrentVersion = txtCurrentVersion.Text
+            End If
+
             ConfigController.UpdateConfig(ProjectId, config)
+            CacheUtilities.ClearConfig(Project.ProjectId)
 
             If txtTitle.Text.Length > 0 Then
                 Project.Subject = txtTitle.Text
@@ -310,6 +355,8 @@ Namespace Connect.Modules.Kickstart
             End If
 
             ProjectController.Update(Project)
+
+
 
         End Sub
 

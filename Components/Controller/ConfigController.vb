@@ -2,6 +2,7 @@
 Imports DotNetNuke
 Imports DotNetNuke.Common.Utilities
 Imports Connect.Modules.Kickstart.Entities
+Imports Connect.Modules.Kickstart.Entities.ParticipantInfo
 
 
 Namespace Connect.Modules.Kickstart
@@ -78,9 +79,33 @@ Namespace Connect.Modules.Kickstart
                 DotNetNuke.Data.DataProvider.Instance().ExecuteNonQuery("Connect_Kickstart_ProjectConfig_Update", ProjectId, "FundingCurrency", objConfig.FundingCurrency.ToString)
             End If
 
+            If Not dicConfig.ContainsKey("LogoUrl") Then
+                DotNetNuke.Data.DataProvider.Instance().ExecuteNonQuery("Connect_Kickstart_ProjectConfig_Add", ProjectId, "LogoUrl", objConfig.LogoUrl.ToString)
+            Else
+                DotNetNuke.Data.DataProvider.Instance().ExecuteNonQuery("Connect_Kickstart_ProjectConfig_Update", ProjectId, "LogoUrl", objConfig.LogoUrl.ToString)
+            End If
+
+            If Not dicConfig.ContainsKey("DownloadUrl") Then
+                DotNetNuke.Data.DataProvider.Instance().ExecuteNonQuery("Connect_Kickstart_ProjectConfig_Add", ProjectId, "DownloadUrl", objConfig.DownloadUrl.ToString)
+            Else
+                DotNetNuke.Data.DataProvider.Instance().ExecuteNonQuery("Connect_Kickstart_ProjectConfig_Update", ProjectId, "DownloadUrl", objConfig.DownloadUrl.ToString)
+            End If
+
+            If Not dicConfig.ContainsKey("CurrentVersion") Then
+                DotNetNuke.Data.DataProvider.Instance().ExecuteNonQuery("Connect_Kickstart_ProjectConfig_Add", ProjectId, "CurrentVersion", objConfig.CurrentVersion.ToString)
+            Else
+                DotNetNuke.Data.DataProvider.Instance().ExecuteNonQuery("Connect_Kickstart_ProjectConfig_Update", ProjectId, "CurrentVersion", objConfig.CurrentVersion.ToString)
+            End If
+
         End Sub
 
         Public Shared Function GetConfig(ProjectId As Integer) As ProjectConfigInfo
+
+
+            If Not CacheUtilities.GetConfig(ProjectId) Is Nothing Then
+                Return CacheUtilities.GetConfig(ProjectId)
+            End If
+
 
             Dim dicConfig As New Dictionary(Of String, String)
             Dim dr As IDataReader = CType(DotNetNuke.Data.DataProvider.Instance().ExecuteReader("Connect_Kickstart_ProjectConfig_ListByProject", ProjectId), IDataReader)
@@ -92,6 +117,27 @@ Namespace Connect.Modules.Kickstart
 
 
             Dim config As New ProjectConfigInfo
+
+            If dicConfig.ContainsKey("CurrentVersion") Then
+                If dicConfig("LogoUrl") <> "" Then
+                    config.CurrentVersion = Convert.ToString(dicConfig("CurrentVersion"))
+                    config.InitializedOnly = False
+                End If
+            End If
+
+            If dicConfig.ContainsKey("DownloadUrl") Then
+                If dicConfig("LogoUrl") <> "" Then
+                    config.DownloadUrl = Convert.ToString(dicConfig("DownloadUrl"))
+                    config.InitializedOnly = False
+                End If
+            End If
+
+            If dicConfig.ContainsKey("LogoUrl") Then
+                If dicConfig("LogoUrl") <> "" Then
+                    config.LogoUrl = Convert.ToString(dicConfig("LogoUrl"))
+                    config.InitializedOnly = False
+                End If
+            End If
 
             If dicConfig.ContainsKey("IdeaTitle") Then
                 If dicConfig("IdeaTitle") <> "" Then
@@ -168,6 +214,44 @@ Namespace Connect.Modules.Kickstart
                 End If
             End If
 
+            Dim intDesignersNeeded As Integer = config.DesignersNeeded
+            Dim intDevelopersNeeded As Integer = config.DevelopersNeeded
+            Dim intManagersNeeded As Integer = config.ManagersNeeded
+            Dim intTranslatordNeeded As Integer = config.TranslatorsNeeded
+            Dim intTestersNeeded As Integer = config.TestersNeeded
+
+            Dim currentParticipation As List(Of ParticipantInfo) = ParticipantController.ListByProject(ProjectId)
+            For Each pI As ParticipantInfo In currentParticipation
+                If pI.ProjectRole = ParticipantRole.Designer Then
+                    intDesignersNeeded -= 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Developer Then
+                    intDevelopersNeeded -= 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Manager Then
+                    intManagersNeeded -= 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Tester Then
+                    intTestersNeeded -= 1
+                End If
+                If pI.ProjectRole = ParticipantRole.Translator Then
+                    intTranslatordNeeded -= 1
+                End If
+            Next
+
+            If intDesignersNeeded < 0 Then intDesignersNeeded = 0
+            If intDevelopersNeeded < 0 Then intDevelopersNeeded = 0
+            If intManagersNeeded < 0 Then intManagersNeeded = 0
+            If intTestersNeeded < 0 Then intTestersNeeded = 0
+            If intTranslatordNeeded < 0 Then intTranslatordNeeded = 0
+
+            config.DesignersNeeded = intDesignersNeeded
+            config.DevelopersNeeded = intDevelopersNeeded
+            config.ManagersNeeded = intManagersNeeded
+            config.TestersNeeded = intTestersNeeded
+            config.TranslatorsNeeded = intTranslatordNeeded
+
+            CacheUtilities.AddConfig(config, ProjectId)
 
             Return config
 

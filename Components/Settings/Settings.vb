@@ -23,6 +23,7 @@ Namespace Connect.Modules.Kickstart
         Public CanDeleteProject As Boolean = False
         Public CanVote As Boolean = False
         Public CanSubscribe As Boolean = False
+        Public IsAuthenticated As Boolean = False
         Public ModuleConfiguration As ModuleInfo
 
         Public Sub New(ActiveModule As ModuleInfo, ActiveProject As ProjectInfo)
@@ -72,6 +73,7 @@ Namespace Connect.Modules.Kickstart
             Dim blnIsModuleEditor As Boolean = (blnIsAuthenticated AndAlso DotNetNuke.Security.Permissions.ModulePermissionController.HasModulePermission(ActiveModule.ModulePermissions, "EDIT"))
             Dim blnIsAdmin As Boolean = (blnIsAuthenticated AndAlso UserController.GetCurrentUserInfo.IsInRole(GetPortalSettings.AdministratorRoleName))
 
+            IsAuthenticated = blnIsAuthenticated
             CanAddProject = blnIsAuthenticated
             CanApproveProject = blnIsModuleEditor
             CanComment = blnIsAuthenticated

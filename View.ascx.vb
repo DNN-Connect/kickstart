@@ -49,6 +49,8 @@ Namespace Connect.Modules.Kickstart
                     _controlToLoad = Me.TemplateSourceDirectory & "/ViewControls/ProjectsDetail.ascx"
                 Case "participation"
                     _controlToLoad = Me.TemplateSourceDirectory & "/ViewControls/ProjectMembers.ascx"
+                Case "projectsidebar"
+                    _controlToLoad = Me.TemplateSourceDirectory & "/ViewControls/ProjectSidebar.ascx"
                 Case "funding"
                     _controlToLoad = Me.TemplateSourceDirectory & "/ViewControls/Funding.ascx"
                 Case Else

@@ -12,6 +12,7 @@
                 <asp:ListItem Text="ProjectsList" Value="ProjectsList"></asp:ListItem>
                 <asp:ListItem Text="ProjectsDetail" Value="ProjectsDetail"></asp:ListItem>
                 <asp:ListItem Text="ProjectMembers" Value="Participation"></asp:ListItem>
+                <asp:ListItem Text="ProjectSidebar" Value="ProjectSidebar"></asp:ListItem>
                 <asp:ListItem Text="Funding" Value="Funding"></asp:ListItem>                
             </asp:DropDownList>            
         </div>

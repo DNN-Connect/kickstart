@@ -25,6 +25,8 @@ Namespace Connect.Modules.Kickstart.Entities
         Private _projectRole As ParticipantRole
         Private _displayname As String
         Private _photourl As String
+        Private _projectroles As String
+        Private _listroles As List(Of String)
 #End Region
 		
 #Region "Constructors"
@@ -35,6 +37,7 @@ Namespace Connect.Modules.Kickstart.Entities
 #End Region
 		
 #Region "Public Properties"
+
         Public Property ParticipationId() As Int32
             Get
                 Return _ParticipationId
@@ -43,24 +46,24 @@ Namespace Connect.Modules.Kickstart.Entities
                 _ParticipationId = Value
             End Set
         End Property
-		        
-		Public Property ProjectId() as Int32 
-			Get
-				Return _projectId
-			End Get
-			Set(ByVal Value as Int32)
-				_projectId = Value
-			End Set
-		End Property
 
-		Public Property UserId() as Int32 
-			Get
-				Return _userId
-			End Get
-			Set(ByVal Value as Int32)
-				_userId = Value
-			End Set
-		End Property
+        Public Property ProjectId() As Int32
+            Get
+                Return _projectId
+            End Get
+            Set(ByVal Value As Int32)
+                _projectId = Value
+            End Set
+        End Property
+
+        Public Property UserId() As Int32
+            Get
+                Return _userId
+            End Get
+            Set(ByVal Value As Int32)
+                _userId = Value
+            End Set
+        End Property
 
         Public Property ProjectRole() As ParticipantRole
             Get
@@ -70,39 +73,64 @@ Namespace Connect.Modules.Kickstart.Entities
                 _projectRole = Value
             End Set
         End Property
-		
-	Public Sub Fill(ByVal dr As System.Data.IDataReader) Implements DotNetNuke.Entities.Modules.IHydratable.Fill
+
+        Public ReadOnly Property ProjectRoles() As String
+            Get
+                Dim strRoles As String = ""
+                If Not ListRoles Is Nothing Then
+                    If ListRoles.Count > 0 Then
+                        For i As Integer = 1 To ListRoles.Count
+                            strRoles += ListRoles(i - 1)
+                            If i < ListRoles.Count Then
+                                strRoles += ", "
+                            End If
+                        Next
+                    End If
+                End If
+                Return strRoles
+            End Get
+        End Property
+
+        Public Property ListRoles() As List(Of String)
+            Get
+                Return _listroles
+            End Get
+            Set(ByVal Value As List(Of String))
+                _listroles = Value
+            End Set
+        End Property
+
+        Public Sub Fill(ByVal dr As System.Data.IDataReader) Implements DotNetNuke.Entities.Modules.IHydratable.Fill
 
             Try
                 ProjectId = Convert.ToInt32(dr("ProjectId"))
             Catch
             End Try
-    
-        
-    	try					
-    		UserId = Convert.ToInt32(dr("UserId"))
-    	catch
-    	end try
-    
-        
-    	try					
-    		ProjectRole = Convert.ToInt32(dr("ProjectRole"))
-    	catch
-    	end try
-    	try
-                ParticipationId = Convert.ToInt32(dr("ParticipationId"))
-    	catch
-    	end try
-	End Sub
 
-	Public Property KeyID() As Integer Implements DotNetNuke.Entities.Modules.IHydratable.KeyID
-		Get
+            Try
+                UserId = Convert.ToInt32(dr("UserId"))
+            Catch
+            End Try
+
+            Try
+                ProjectRole = Convert.ToInt32(dr("ProjectRole"))
+            Catch
+            End Try
+            Try
+                ParticipationId = Convert.ToInt32(dr("ParticipationId"))
+            Catch
+            End Try
+
+        End Sub
+
+        Public Property KeyID() As Integer Implements DotNetNuke.Entities.Modules.IHydratable.KeyID
+            Get
                 Return _ParticipationId
-		End Get
-		Set(ByVal value As Integer)
+            End Get
+            Set(ByVal value As Integer)
                 _ParticipationId = value
-		End Set
-	End Property             
+            End Set
+        End Property
 #End Region
 
 #Region "Hydrated Properties"

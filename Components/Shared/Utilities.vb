@@ -19,47 +19,97 @@ Namespace Connect.Modules.Kickstart
             Return Localization.GetSafeJSString(strKey, SharedResourceFile)
         End Function
 
-        Public Shared Function GetProjectParticipants(objProject As ProjectInfo, IncludeCreator As Boolean) As List(Of UserInfo)
+        Public Shared Function GetParticipationUsers(objProject As ProjectInfo, IncludeCreator As Boolean) As List(Of UserInfo)
 
             Dim objUsers As New List(Of UserInfo)
 
             Dim participants As List(Of ParticipantInfo) = ParticipantController.ListByProject(objProject.ProjectId)
             For Each p As ParticipantInfo In participants
+
+                Dim blnAdd As Boolean = True
+                For Each u As UserInfo In objUsers
+                    If u.UserID = p.UserId Then
+                        blnAdd = False
+                        Exit For
+                    End If
+                Next
+
                 Dim objUser As UserInfo = UserController.GetUserById(GetPortalSettings.PortalId, p.UserId)
-                If Not objUser Is Nothing Then
+                If objUser Is Nothing Then blnAdd = False
+
+                If blnAdd Then
                     objUsers.Add(objUser)
                 End If
+
             Next
 
-            Dim objCreator As UserInfo = UserController.GetUserById(GetPortalSettings.PortalId, objProject.CreatedBy)
-            If Not objCreator Is Nothing Then
-                objUsers.Add(objCreator)
+            If IncludeCreator Then
+                Dim objCreator As UserInfo = UserController.GetUserById(GetPortalSettings.PortalId, objProject.CreatedBy)
+                If Not objCreator Is Nothing Then
+
+                    Dim blnAdd As Boolean = True
+                    For Each u As UserInfo In objUsers
+                        If u.UserID = objCreator.UserID Then
+                            blnAdd = False
+                            Exit For
+                        End If
+                    Next
+
+                    If blnAdd Then
+                        objUsers.Add(objCreator)
+                    End If
+
+                End If
             End If
 
             Return objUsers
 
         End Function
 
-        'Public Shared Function GetProjectParticipants(ProjectId) As List(Of UserInfo)
+        Public Shared Function IsTeamMember(UserId As Integer, objProject As ProjectInfo, IncludeCreator As Boolean) As Boolean
 
-        '    Dim project As ProjectInfo = ProjectController.Get(ProjectId)
-        '    If Not project Is Nothing Then
-        '        Return GetProjectParticipants(project)
-        '    End If
-
-        '    Return New List(Of UserInfo)
-
-        'End Function
-
-        Public Shared Function IsTeamMember(UserId As Integer, objProject As ProjectInfo) As Boolean
-
-            For Each objUser As UserInfo In GetProjectParticipants(objProject, False)
+            For Each objUser As UserInfo In GetParticipationUsers(objProject, IncludeCreator)
                 If objUser.UserID = UserId Then
                     Return True
                 End If
             Next
 
             Return False
+
+        End Function
+
+        Public Shared Function GetParticipators(objProject As ProjectInfo, PortalId As Integer) As List(Of ParticipantInfo)
+
+            Dim objParticiapants As New List(Of ParticipantInfo)
+
+            Dim participants As List(Of ParticipantInfo) = ParticipantController.ListByProject(objProject.ProjectId)
+            For Each p As ParticipantInfo In participants
+
+                Dim blnAdd As Boolean = True
+                For Each u As ParticipantInfo In objParticiapants
+                    If u.UserId = p.UserId Then
+                        u.ListRoles.Add(p.ProjectRole.ToString)
+                        blnAdd = False
+                        Exit For
+                    End If
+                Next
+
+                If blnAdd Then
+
+                    p.ListRoles = New List(Of String)
+                    p.ListRoles.Add(p.ProjectRole.ToString)
+
+                    Dim oUser As UserInfo = UserController.GetUserById(PortalId, p.UserId)
+                    p.PhotoUrl = "~/ProfilePic.ashx?UserId=" & oUser.UserID.ToString & "&h=32&w=32"
+                    p.Displayname = oUser.DisplayName
+
+                    objParticiapants.Add(p)
+
+                End If
+
+            Next
+
+            Return objParticiapants
 
         End Function
 
@@ -99,7 +149,7 @@ Namespace Connect.Modules.Kickstart
         End Function
 
         Public Shared Function GetUserProfileUrl(UserId As Integer)
-            Return NavigateURL(GetPortalSettings.UserTabId, "", "UserId=" & UserId)
+            Return DotNetNuke.Common.Globals.NavigateURL(GetPortalSettings.UserTabId, "", "UserId=" & UserId.ToString)
         End Function
 
         Public Shared Function FormatCurrency(strIn As String) As String
@@ -146,6 +196,29 @@ Namespace Connect.Modules.Kickstart
             Next
 
             Return False
+
+        End Function
+
+
+        Public Shared Function NavigateUrl(ProjectId As Integer, TabId As Integer) As String
+            Return DotNetNuke.Common.Globals.NavigateURL(TabId, "", "ProjectId=" & ProjectId.ToString)
+        End Function
+
+        Public Shared Function NavigateUrl(TabId As Integer, ActionMode As ActionMode) As String
+            Return DotNetNuke.Common.Globals.NavigateURL(TabId, "", "Action=" & ActionMode.ToString)
+        End Function
+
+        Public Shared Function NavigateUrl(ProjectId As Integer, TabId As Integer, ActionMode As ActionMode) As String
+            Return DotNetNuke.Common.Globals.NavigateURL(TabId, "", "Action=" & ActionMode.ToString, "ProjectId=" & ProjectId.ToString)
+        End Function
+
+        Public Shared Function NavigateUrl(Settings As KickstartSettings, ProjectId As Integer, ActionMode As ActionMode) As String
+
+            If Not Settings Is Nothing Then
+                Return NavigateUrl(ProjectId, Settings.ProjectDetailsTabId, ActionMode)
+            End If
+
+            Return NavigateUrl(ProjectId, GetPortalSettings.ActiveTab.TabID)
 
         End Function
 

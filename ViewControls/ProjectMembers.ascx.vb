@@ -44,7 +44,7 @@ Namespace Connect.Modules.Kickstart
 
                     BindMembers()
 
-                    If Utilities.IsTeamMember(UserId, Project) Then
+                    If Utilities.IsTeamMember(UserId, Project, False) = False Then
                         lnkParticipate.Text = Localization.GetString("JoinTeam", LocalResourceFile)
                     Else
                         lnkParticipate.Text = Localization.GetString("ManageParticipation", LocalResourceFile)
@@ -57,6 +57,30 @@ Namespace Connect.Modules.Kickstart
 
 
 
+        End Sub
+
+        Private Sub rptTeam_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles rptTeam.ItemDataBound
+            If e.Item.ItemType = ListItemType.AlternatingItem Or e.Item.ItemType = ListItemType.Item Then
+
+                Dim pI As ParticipantInfo = CType(e.Item.DataItem, ParticipantInfo)
+
+                Dim img As Image = CType(e.Item.FindControl("imgParticipant"), Image)
+                If Not img Is Nothing Then
+                    img.ImageUrl = pI.PhotoUrl
+                End If
+
+                Dim lnk As HyperLink = CType(e.Item.FindControl("lnkProfile"), HyperLink)
+                If Not lnk Is Nothing Then
+                    lnk.NavigateUrl = NavigateURL(PortalSettings.UserTabId, "", "UserId=" & pI.UserId.ToString)
+                    lnk.Text = pI.Displayname
+                End If
+
+                Dim lblRole As Literal = CType(e.Item.FindControl("lblRole"), Literal)
+                If Not lblRole Is Nothing Then
+                    lblRole.Text = pI.ProjectRole.ToString
+                End If
+
+            End If
         End Sub
 
 #End Region
@@ -87,31 +111,7 @@ Namespace Connect.Modules.Kickstart
 
         End Sub
         
-
 #End Region
 
-        Private Sub rptTeam_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles rptTeam.ItemDataBound
-            If e.Item.ItemType = ListItemType.AlternatingItem Or e.Item.ItemType = ListItemType.Item Then
-
-                Dim pI As ParticipantInfo = CType(e.Item.DataItem, ParticipantInfo)
-
-                Dim img As Image = CType(e.Item.FindControl("imgParticipant"), Image)
-                If Not img Is Nothing Then
-                    img.ImageUrl = pI.PhotoUrl
-                End If
-
-                Dim lnk As HyperLink = CType(e.Item.FindControl("lnkParticipant"), HyperLink)
-                If Not lnk Is Nothing Then
-                    lnk.NavigateUrl = NavigateURL(PortalSettings.UserTabId, "", "UserId=" & pI.UserId.ToString)
-                    lnk.Text = pI.Displayname
-                End If
-
-                Dim lblRole As Literal = CType(e.Item.FindControl("lblRole"), Literal)
-                If Not lblRole Is Nothing Then
-                    lblRole.Text = pI.ProjectRole.ToString
-                End If
-
-            End If
-        End Sub
     End Class
 End Namespace

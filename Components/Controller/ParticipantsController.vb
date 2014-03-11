@@ -64,25 +64,25 @@ Namespace Connect.Modules.Kickstart.Entities
 
         End Function
 
-        Public Shared Sub UpdateParticipation(ProjectRoles As List(Of Integer), ProjectId As Integer, UserId As Integer)
+        'Public Shared Sub UpdateParticipation(ProjectRoles As List(Of Integer), ProjectId As Integer, UserId As Integer)
 
-            Dim lstCurrent As New List(Of ParticipantInfo)
-            lstCurrent = ListByProject(ProjectId)
-            For Each objP As ParticipantInfo In lstCurrent
-                If objP.UserId = UserId Then
-                    Delete(objP.ParticipationId)
-                End If
-            Next
+        '    Dim lstCurrent As New List(Of ParticipantInfo)
+        '    lstCurrent = ListByProject(ProjectId)
+        '    For Each objP As ParticipantInfo In lstCurrent
+        '        If objP.UserId = UserId Then
+        '            Delete(objP.ParticipationId)
+        '        End If
+        '    Next
 
-            For Each RoleId As Integer In ProjectRoles
-                Dim objNP As New ParticipantInfo
-                objNP.ProjectId = ProjectId
-                objNP.ProjectRole = RoleId
-                objNP.UserId = UserId
-                Add(objNP)
-            Next
+        '    For Each RoleId As Integer In ProjectRoles
+        '        Dim objNP As New ParticipantInfo
+        '        objNP.ProjectId = ProjectId
+        '        objNP.ProjectRole = RoleId
+        '        objNP.UserId = UserId
+        '        Add(objNP)
+        '    Next
 
-        End Sub
+        'End Sub
 
         <DataObjectMethod(DataObjectMethodType.Update, True)> _
         Public Shared Sub Update(ByVal objParticipantInfo As ParticipantInfo)
@@ -101,7 +101,5 @@ Namespace Connect.Modules.Kickstart.Entities
 #End Region
 
     End Class
-
-
 
 End Namespace

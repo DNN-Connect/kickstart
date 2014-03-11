@@ -27,7 +27,27 @@ Namespace Connect.Modules.Kickstart.Templates
 
                     Select Case templateArray(iPtr + 1).ToLower
 
+                        Case "ifisauthenticated"
 
+                            If Settings.IsAuthenticated = False Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/ifisauthenticated") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
+
+                        Case "ifcanapprove"
+
+                            If Settings.CanApproveProject = False Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/ifcanapprove") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
 
 
                         Case "ifcansubscribe"
@@ -76,7 +96,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "createideaurl"
 
-                            strHtml += NavigateURL(Portalsettings.ActiveTab.TabID, "", "Action=Create")
+                            strHtml += Utilities.NavigateUrl(Settings.ProjectListTabId, ActionMode.Create)
 
                         Case Else
 
@@ -111,6 +131,7 @@ Namespace Connect.Modules.Kickstart.Templates
             Dim usrLockedBy As UserInfo = Nothing
             Dim usrDeletedBy As UserInfo = Nothing
             Dim usrLead As UserInfo = Nothing
+            Dim config As ProjectConfigInfo = ConfigController.GetConfig(objProject.ProjectId)
 
             Dim blnCanVote As Boolean = False
 
@@ -135,6 +156,77 @@ Namespace Connect.Modules.Kickstart.Templates
 
                     Select Case templateArray(iPtr + 1).ToLower
 
+                        Case "projectlisturl"
+
+                            strHtml += NavigateURL(Settings.ProjectListTabId)
+
+                        Case "ifisdelivered"
+
+                            If objProject.IsDelivered = False Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/ifisdelivered") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
+
+                        Case "ifnotisdelivered"
+
+                            If objProject.IsDelivered = True Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/ifnotisdelivered") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
+
+                        Case "ifhasdownloadurl"
+
+                            If config.DownloadUrl = "" Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/ifhasdownloadurl") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
+
+                        Case "downloadurl"
+
+                            strHtml += config.DownloadUrl
+
+                        Case "ifhascurrentversion"
+
+                            If config.CurrentVersion = "" Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/ifhascurrentversion") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
+
+                        Case "currentversion"
+
+                            strHtml += config.CurrentVersion
+
+                        Case "ifhaslogo"
+
+                            If ConfigController.GetConfig(objProject.ProjectId).LogoUrl = "" Then
+                                While (iPtr < templateArray.Length - 1)
+                                    If (templateArray(iPtr + 1).ToLower = "/ifhaslogo") Then
+                                        Exit While
+                                    End If
+                                    iPtr = iPtr + 1
+                                End While
+                            End If
+
+                        Case "logourl"
+
+                            strHtml += ConfigController.GetConfig(objProject.ProjectId).LogoUrl
+
                         Case "ifcanparticipate"
 
                             If Settings.CanParticipate = False Then
@@ -148,7 +240,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "ifisparticipating"
 
-                            If Utilities.IsTeamMember(User.UserID, objProject) = False Then
+                            If Utilities.IsTeamMember(User.UserID, objProject, False) = False Then
                                 While (iPtr < templateArray.Length - 1)
                                     If (templateArray(iPtr + 1).ToLower = "/ifisparticipating") Then
                                         Exit While
@@ -159,7 +251,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "ifnotparticipating"
 
-                            If Utilities.IsTeamMember(User.UserID, objProject) = True Then
+                            If Utilities.IsTeamMember(User.UserID, objProject, False) = True Then
                                 While (iPtr < templateArray.Length - 1)
                                     If (templateArray(iPtr + 1).ToLower = "/ifnotparticipating") Then
                                         Exit While
@@ -171,9 +263,9 @@ Namespace Connect.Modules.Kickstart.Templates
                         Case "manageparticipationurl"
 
                             If objProject.LeadBy = Null.NullInteger Then
-                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "ProjectId=" & objProject.ProjectId.ToString, "Action=BecomeLead")
+                                strHtml += Utilities.NavigateUrl(objProject.ProjectId, Settings.ProjectDetailsTabId, ActionMode.BecomeLead)
                             Else
-                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "ProjectId=" & objProject.ProjectId.ToString, "Action=Participate")
+                                strHtml += Utilities.NavigateUrl(objProject.ProjectId, Settings.ProjectDetailsTabId, ActionMode.Participate)
                             End If
 
 
@@ -615,7 +707,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "becomealeadurl"
 
-                            strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "ProjectId=" & objProject.ProjectId.ToString, "Action=BecomeLead")
+                            strHtml += Utilities.NavigateUrl(objProject.ProjectId, Settings.ProjectDetailsTabId, ActionMode.BecomeLead)
 
                         Case "isvisible"
 
@@ -653,7 +745,7 @@ Namespace Connect.Modules.Kickstart.Templates
                         Case "isdelivered"
 
                             Dim strKey As String = ""
-                            If objProject.IsDeleted Then
+                            If objProject.IsDelivered Then
                                 strKey = "Delivered"
                             Else
                                 strKey = "NotDelivered"
@@ -746,7 +838,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "detailurl"
 
-                            strHtml += NavigateURL(Settings.ProjectDetailsTabId, "", "ProjectId=" & objProject.ProjectId.ToString)
+                            strHtml += Utilities.NavigateUrl(objProject.ProjectId, Settings.ProjectDetailsTabId)
 
                         Case "comments"
 
@@ -759,7 +851,7 @@ Namespace Connect.Modules.Kickstart.Templates
 
                         Case "participants"
 
-                            Dim lstParticipants As List(Of ParticipantInfo) = ParticipantController.ListByProject(objProject.ProjectId)
+                            Dim lstParticipants As List(Of ParticipantInfo) = Utilities.GetParticipators(objProject, Settings.Portalsettings.PortalId)
                             ParticipantsTemplateController.ProcessCommonTemplate(strHtml, TemplateHelper.Template_ParticipantsHeader, lstParticipants, Settings)
                             For Each objParticipant As ParticipantInfo In lstParticipants
                                 ParticipantsTemplateController.ProcessItemTemplate(strHtml, TemplateHelper.Template_ParticipantsItem, objParticipant, Settings)
@@ -778,11 +870,11 @@ Namespace Connect.Modules.Kickstart.Templates
                         Case "editprojecturl"
 
                             If objProject.LeadBy = Null.NullInteger AndAlso (objProject.CreatedBy = User.UserID Or Settings.CanApproveProject) Then
-                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "Action=EditIdea", "ProjectId=" & objProject.ProjectId.ToString)
+                                strHtml += Utilities.NavigateUrl(objProject.ProjectId, Settings.ProjectDetailsTabId, ActionMode.EditIdea)
                             End If
 
                             If objProject.LeadBy <> Null.NullInteger Then
-                                strHtml += NavigateURL(Settings.Portalsettings.ActiveTab.TabID, "", "Action=EditProject", "ProjectId=" & objProject.ProjectId.ToString)
+                                strHtml += Utilities.NavigateUrl(objProject.ProjectId, Settings.ProjectDetailsTabId, ActionMode.EditProject)
                             End If
 
                         Case "lockprojecturl"
@@ -823,6 +915,14 @@ Namespace Connect.Modules.Kickstart.Templates
                                             strHtml += Utilities.GetSharedResource("cmdUnDeleteProject")
                                         Else
                                             strHtml += Utilities.GetSharedResource("cmdDeleteProject")
+                                        End If
+
+                                    Case "TeamMembers"
+
+                                        If objProject.TeamMembers = 1 Then
+                                            strHtml += Utilities.GetSharedResource("TeamMembersSingular")
+                                        ElseIf (objProject.TeamMembers > 1 Or objProject.TeamMembers = 0) Then
+                                            strHtml += Utilities.GetSharedResource("TeamMembersPlural")
                                         End If
 
                                     Case Else

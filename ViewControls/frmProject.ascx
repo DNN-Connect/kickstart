@@ -130,11 +130,11 @@
             <div class="dnnFormItem">
                 <dnn:label id="lblProjectPlatform" controlname="drpProjectPlatform" runat="server" />
                 <asp:DropDownList ID="drpProjectPlatform" runat="server">
-                    <asp:ListItem Text="No platform yet" Value="noplatform"></asp:ListItem>
-                    <asp:ListItem Text="Github" Value="github"></asp:ListItem>
-                    <asp:ListItem Text="Codeplex" Value="codeplex"></asp:ListItem>
-                    <asp:ListItem Text="SourceForge" Value="sourceforge"></asp:ListItem>
-                    <asp:ListItem Text="Other" Value="other"></asp:ListItem>
+                    <asp:ListItem Text="No platform yet" Value="NoPlatform"></asp:ListItem>
+                    <asp:ListItem Text="Github" Value="Github"></asp:ListItem>
+                    <asp:ListItem Text="Codeplex" Value="Codeplex"></asp:ListItem>
+                    <asp:ListItem Text="SourceForge" Value="Sourceforge"></asp:ListItem>
+                    <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
                 </asp:DropDownList>
             </div>
 
@@ -143,9 +143,15 @@
                 <asp:TextBox ID="txtPlatformRSSUrl" runat="server"></asp:TextBox>
             </div>
 
+
             <div class="dnnFormItem">
                 <dnn:label id="lblPlatformUrl" controlname="txtPlatformUrl" runat="server" />
                 <asp:TextBox ID="txtPlatformUrl" runat="server"></asp:TextBox>
+            </div>
+
+            <div class="dnnFormItem">
+                <dnn:label id="lblLogoUrl" controlname="txtLogoUrl" runat="server" />
+                <asp:TextBox ID="txtLogoUrl" runat="server"></asp:TextBox>
             </div>
 
             <div class="dnnFormItem checkbox">
@@ -156,6 +162,16 @@
             <div class="dnnFormItem">
                 <dnn:label id="lblDateDelivered" controlname="ctlDateDelivered" runat="server" />
                 <dnn:DnnDatePicker id="ctlDateDelivered" runat="server" ></dnn:DnnDatePicker>
+            </div>
+
+            <div class="dnnFormItem">
+                <dnn:label id="lblCurrentVersion" controlname="txtCurrentVersion" runat="server" />
+                <asp:TextBox ID="txtCurrentVersion" runat="server"></asp:TextBox>
+            </div>
+
+            <div class="dnnFormItem">
+                <dnn:label id="lblDownloadUrl" controlname="txtDownloadUrl" runat="server" />
+                <asp:TextBox ID="txtDownloadUrl" runat="server"></asp:TextBox>
             </div>
 
         </fieldset>

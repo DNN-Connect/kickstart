@@ -13,6 +13,9 @@ Namespace Connect.Modules.Kickstart.Entities
         Private _ideatitle As String
         Private _ideasummary As String
         Private _ideadescription As String
+        Private _logourl As String = ""
+        Private _currentVersion As String = ""
+        Private _downloadurl As String = ""
 
         Public Sub New()
             _initializedonly = True
@@ -26,6 +29,9 @@ Namespace Connect.Modules.Kickstart.Entities
             _ideatitle = ""
             _ideasummary = ""
             _ideadescription = ""
+            _logourl = ""
+            _currentVersion = ""
+            _downloadurl = ""
         End Sub
 
         Public Property InitializedOnly As Boolean
@@ -34,6 +40,33 @@ Namespace Connect.Modules.Kickstart.Entities
             End Get
             Set(Value As Boolean)
                 _initializedonly = Value
+            End Set
+        End Property
+
+        Public Property CurrentVersion As String
+            Get
+                Return _currentVersion
+            End Get
+            Set(Value As String)
+                _currentVersion = Value
+            End Set
+        End Property
+
+        Public Property DownloadUrl As String
+            Get
+                Return _downloadurl
+            End Get
+            Set(Value As String)
+                _downloadurl = Value
+            End Set
+        End Property
+
+        Public Property LogoUrl As String
+            Get
+                Return _logourl
+            End Get
+            Set(Value As String)
+                _logourl = Value
             End Set
         End Property
 
@@ -160,6 +193,12 @@ Namespace Connect.Modules.Kickstart.Entities
         Public ReadOnly Property NeedsTesters As Boolean
             Get
                 Return TestersNeeded > 0
+            End Get
+        End Property
+
+        Public ReadOnly Property HasOpenPositions As Boolean
+            Get
+                Return (NeedsDesigners Or NeedsDevelopers Or NeedsManagers Or NeedsTesters Or NeedsTranslators)
             End Get
         End Property
 

@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="Kickstart" type="Module" version="01.00.00">
+    <package name="Kickstart" type="Module" version="01.00.02">
       <friendlyName>Kickstart</friendlyName>
       <description>DNN-Connect Kickstart module</description>
       <iconFile>Desktopmodules/Connect/Kickstart/Images/icon_kickstart.png</iconFile>
@@ -19,6 +19,11 @@
         <component type="Script">
           <scripts>
             <basePath>DesktopModules\Kickstart</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>00.00.02.SqlDataProvider</name>
+              <version>00.00.02</version>
+            </script>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>00.00.01.SqlDataProvider</name>

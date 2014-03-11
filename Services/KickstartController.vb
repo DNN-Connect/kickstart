@@ -18,6 +18,11 @@ Namespace Connect.Modules.Kickstart.Services
             Public Property PageNo As Integer
             Public Property RecordsPerPage As Integer
             Public Property SortCol As String
+            Public Property IsVisible As Integer = 1
+            Public Property IsDeleted As Integer = 0
+            Public Property CreatedBy As Integer = Null.NullInteger
+            Public Property LeadBy As Integer = Null.NullInteger
+            Public Property ParticipantId As Integer = Null.NullInteger
         End Class
 
         Public Class ProjectDTO
@@ -51,7 +56,17 @@ Namespace Connect.Modules.Kickstart.Services
             Dim objKickstartSettings As KickstartSettings = New KickstartSettings(ActiveModule)
 
             Dim projects As New List(Of ProjectInfo)
-            projects = ProjectController.PublicList(ActiveModule.ModuleID, postData.SortCol, postData.PageNo, postData.RecordsPerPage)
+            projects = ProjectController.PublicList(ActiveModule.ModuleID, postData.SortCol, postData.PageNo, postData.RecordsPerPage, postData.IsVisible, postData.IsDeleted, postData.CreatedBy, postData.LeadBy)
+
+            If postData.ParticipantId > 0 Then
+                Dim myProjects As New List(Of ProjectInfo)
+                For Each p As ProjectInfo In projects
+                    If Utilities.IsTeamMember(postData.ParticipantId, p, False) Then
+                        myProjects.Add(p)
+                    End If
+                Next
+                projects = myProjects
+            End If
 
             Dim strHtml As String = ""
 
@@ -169,7 +184,7 @@ Namespace Connect.Modules.Kickstart.Services
             objComment.ContentItemId = 0
             objComment.CreatedBy = UserInfo.UserID
             objComment.DateCreated = Date.Now
-            objComment.IsTeamResponse = Connect.Modules.Kickstart.Utilities.IsTeamMember(UserInfo.UserID, _Project)
+            objComment.IsTeamResponse = Connect.Modules.Kickstart.Utilities.IsTeamMember(UserInfo.UserID, _Project, False)
             objComment.IsVisible = True
             objComment.ParentId = postData.ParentId
             objComment.ProjectId = postData.ProjectId

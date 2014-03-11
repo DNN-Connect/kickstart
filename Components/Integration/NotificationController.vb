@@ -54,7 +54,7 @@ Namespace Connect.Modules.Kickstart.Integration
             Dim ctrlRoles As New DotNetNuke.Security.Roles.RoleController
 
 
-            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetProjectParticipants(objProject, False))
+            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetParticipationUsers(objProject, False))
 
         End Sub
 
@@ -82,7 +82,7 @@ Namespace Connect.Modules.Kickstart.Integration
             Dim ctrlRoles As New DotNetNuke.Security.Roles.RoleController
 
 
-            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetProjectParticipants(objProject, True))
+            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetParticipationUsers(objProject, True))
 
         End Sub
 
@@ -115,7 +115,7 @@ Namespace Connect.Modules.Kickstart.Integration
 
             Dim ctrlRoles As New DotNetNuke.Security.Roles.RoleController
 
-            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetProjectParticipants(objProject, False))
+            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetParticipationUsers(objProject, False))
 
         End Sub
 
@@ -137,7 +137,7 @@ Namespace Connect.Modules.Kickstart.Integration
 
             Dim ctrlRoles As New DotNetNuke.Security.Roles.RoleController
 
-            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetProjectParticipants(objProject, True))
+            NotificationsController.Instance.SendNotification(objNotification, objUser.PortalID, Nothing, Utilities.GetParticipationUsers(objProject, True))
 
         End Sub
 
